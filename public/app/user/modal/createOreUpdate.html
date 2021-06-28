@@ -1,0 +1,30 @@
+<div class="modal-header">
+    <span class="pull-right" ng-click="vm.cancel()" aria-hidden="true"><i class="glyphicon glyphicon-remove"></i></span>
+    <h4 class="modal-title">
+        <span ng-if="!vm.data.id">Tạo mới user</span>
+        <span ng-if="vm.data.id">Sửa mới user</span>
+    </h4>
+</div>
+<div class="modal-body" id="userCreateOrEditForm">
+    <div class="form-group">
+        <label class="control-label">Họ và tên <span class="font-red">*</span></label>
+        <input class="form-control"
+        type="text"
+        name="userName"
+        ng-model="vm.data.userName" />
+        <!-- <check-validate datacheck="vm.data.username" namecheck="username"></check-validate> -->
+    </div>
+    <div class="form-group">
+        <label class="control-label">Mật khẩu <span class="font-red">*</span></label>
+        <input class="form-control"
+        type="text"
+        name="passWord"
+        ng-model="vm.data.passWord" />
+        <!-- <check-validate datacheck="vm.data.password" namecheck="password"></check-validate> -->
+    </div>
+    
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn green-meadow" ng-click="vm.save()"><i class="fa fa-save"></i> <span>Lưu</span></button>
+    <button type="button" class="btn red" ng-click="vm.cancel()"><i class="glyphicon glyphicon-remove"></i>Đóng</button>
+</div>

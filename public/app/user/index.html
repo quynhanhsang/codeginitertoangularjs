@@ -1,0 +1,59 @@
+<div class="portlet light portlet-fit " ng-controller="UserController as vm">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="icon-bubble font-dark"></i>
+            <span class="caption-subject font-dark bold uppercase">Danh sách người dùng</span>
+        </div>
+        <div class="actions">
+            <div class="btn-group">
+                <button type="submit" class="btn blue btn-sm" ng-click="vm.addUser(null)">Thêm mới</button>
+                <a class="btn dark btn-outline btn-circle btn-sm" href="javascript:;" data-toggle="dropdown" data-hover="dropdown" data-close-others="true"> Actions
+                    <i class="fa fa-angle-down"></i>
+                </a>
+                <ul class="dropdown-menu pull-right">
+                    <li>
+                        <a href="javascript:;"> Họ và tên</a>
+                    </li>
+                    <li class="divider"> </li>
+                    <li>
+                        <a href="javascript:;"></a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">Option 3</a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">Option 4</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="portlet-body">
+        <div class="table-scrollable">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th> # </th>
+                        <th> Tên </th>
+                        <th> Mật khẩu </th>
+                        <th> Time </th>
+                        <th> Status </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in vm.data">
+                        <td> {{$index}} </td>
+                        <td> {{item.userName}} </td>
+                        <td> {{item.passWord}} </td>
+                        <td> {{item.creaTime}} </td>
+                        <td>
+                            <a href="javascript:;" class="btn btn-outline btn-circle green btn-sm purple" ng-click="vm.editUser(item)"><i class="fa fa-edit"></i> </a>
+                            <a href="javascript:;" class="btn btn-outline btn-circle dark btn-sm black"  ng-click="vm.deleteUser(item)"> <i class="fa fa-trash-o"></i> </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
