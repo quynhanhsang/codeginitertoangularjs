@@ -17,10 +17,10 @@ MetronicApp.directive('ngSpinnerBar', ['$rootScope',
                 });
 
                 // hide the spinner bar on rounte change success(after the content loaded)
-                $rootScope.$on('$stateChangeSuccess', function() {
+                $rootScope.$on('$stateChangeSuccess', function(event) {
                     element.addClass('hide'); // hide spinner bar
                     $('body').removeClass('page-on-load'); // remove page loading indicator
-                    Layout.setMainMenuActiveLink('match'); // activate selected link in the sidebar menu
+                    Layout.setAngularJsSidebarMenuActiveLink('match',null, event.currentScope.$state); // activate selected link in the sidebar menu
 
                     // auto scorll to page top
                     setTimeout(function () {

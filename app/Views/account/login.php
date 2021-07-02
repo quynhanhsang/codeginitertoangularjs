@@ -60,11 +60,14 @@ License: You must have a valid license purchased only from themeforest(the above
         <div class="content">
             <!-- BEGIN LOGIN FORM -->
             <form class="login-form" action="authenticate" method="post">
-                <h3 class="form-title">Login to your account</h3>
-                <div class="alert alert-danger display-hide">
-                    <button class="close" data-close="alert"></button>
-                    <span> Enter any username and password. </span>
-                </div>
+                <h3 class="form-title">Đăng nhập</h3>
+                <?php if(session()->getFlashdata('msg')):?>
+                    <div class="alert alert-danger">
+                        <button class="close" data-close="alert"></button>
+                        <span> <?php echo session()->getFlashdata('msg') ?> </span>
+                    </div>
+                <?php endif;?>
+                
                 <div class="form-group">
                     <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
                     <label class="control-label visible-ie8 visible-ie9">Username</label>

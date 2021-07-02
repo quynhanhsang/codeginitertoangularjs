@@ -21,7 +21,7 @@ class Profile_Model extends Model {
     public function __construct() {
         parent::__construct();
         
-        $db = db_connect();
+        $db      = \Config\Database::connect();
     }
     
     public function get_user($data)

@@ -1,19 +1,19 @@
 /* Setup Layout Part - Header */
 angular.module('MetronicApp').controller('UserController', ['$rootScope','$scope', '$http', '$timeout', '$uibModal',
 function($rootScope, $scope, $http, $timeout, $uibModal) {
-
+    console.log('giang');
     var vm = this;
     vm.loading = false;
     vm.data =[];
     vm.loadData = function(){
+        
         $http({
             method: 'POST',
-            url: 'http://localhost:8080/project-root/application/user'
+            url: ApiUrl+'/user'
         }).then(function successCallback(response) {
-            debugger;
             vm.loading = true;
             vm.data = response.data;
-            console.log(vm.data);
+            console.log(vm.data, 'vm.data');
         }, function errorCallback(response) {
     
         });
@@ -31,7 +31,7 @@ function($rootScope, $scope, $http, $timeout, $uibModal) {
         openCreateOrEditadvModal(dataCopy);
     }
     vm.deleteUser = function(data){
-        $http.post('http://localhost:8080/project-root/application/user/delete', data.id)
+        $http.post(ApiUrl+'/user/delete', data.id)
         .then(function(response){
             console.log(response);
             vm.loadData();

@@ -6,7 +6,10 @@ var MetronicApp = angular.module("MetronicApp", [
     "ui.router", 
     "ui.bootstrap", 
     "oc.lazyLoad",  
-    "ngSanitize"
+    "ngSanitize",
+    "angularUtils.directives.dirPagination",
+    "cp.ngConfirm"
+
 ]); 
 
 /* Configure ocLazyLoader(refer: https://github.com/ocombe/ocLazyLoad) */
@@ -74,14 +77,14 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider
                 }]
             }
         })
-    debugger;
+
     $stateProvider
         // Home
         .state('user', {
             url: "/user",
             templateUrl: baseUrl+'/app/user/index.html',            
             data: {pageTitle: 'User'},
-            controller: "UserController",
+            controller: "UserController as vm",
             resolve: {
                 deps: ['$ocLazyLoad', function($ocLazyLoad) {
                     return $ocLazyLoad.load({
@@ -94,6 +97,31 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider
                 }]
             }
         })
+    
+    $stateProvider
+        // Home
+        .state('role', {
+            url: "/role",
+            templateUrl: baseUrl+'/app/role/index.html',            
+            data: {pageTitle: 'Role'},
+            controller: "app.role.index as vm",
+            resolve: {
+                deps: ['$ocLazyLoad', function($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        insertBefore: '#ng_load_plugins_before', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
+                        files: [
+                            baseUrl+'/app/role/index.js',
+                            baseUrl+'/app/role/modal/createOreUpdate.js',
+                            baseUrl+'/assets/admin/global/plugins/jstree/dist/themes/default/style.min.css',
+                            baseUrl+'/assets/admin/global/plugins/jstree/dist/jstree.min.js',
+                            baseUrl+'/assets/admin/pages/scripts/ui-tree.min.js',
+                            baseUrl+'/common/directives/jsTree.directive.js',
+                        ] 
+                    });
+                }]
+            }
+        })
+
         $qProvider.errorOnUnhandledRejections(false);
 }]);
 

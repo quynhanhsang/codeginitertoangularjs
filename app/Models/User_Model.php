@@ -27,7 +27,7 @@ class User_Model extends Model {
     public function __construct() {
         parent::__construct();
         
-        $db = db_connect();
+        $db      = \Config\Database::connect();
     }
     
     public function convertJsonToArray($data){
@@ -53,11 +53,11 @@ class User_Model extends Model {
         if(empty($array[$this->key])){
             $array['creaTime'] = $this->dateTime();
             $query = $this->db->table($this->table)->insert($array);
-            return $query->resultID;
+            return $this->db->insertID();
         }else{
             $array['editTime'] = $this->dateTime();
             $query = $this->db->table($this->table)->update($array, [$this->key => $array[$this->key]]);
-            return $query->resultID;
+            return $this->db->insertID();
         } 
     }
 

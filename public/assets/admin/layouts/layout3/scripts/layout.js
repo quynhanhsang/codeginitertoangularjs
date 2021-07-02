@@ -251,7 +251,102 @@ var Layout = function () {
             return false;
         });
     };
+    // Handle sidebar menu links
+    var handleTopMenuActiveLink = function (mode, el, $state) {
+        var url = location.hash.toLowerCase();
+        var menu = $('.page-sidebar-menu');
 
+        if (mode === 'click' || mode === 'set') {
+            el = $(el);
+        } else if (mode === 'match') {
+            menu.find('li > a').each(function () {
+                var state = $(this).attr('ui-sref');
+                if ($state && state) {
+                    if ($state.is(state)) {
+                        el = $(this);
+                        return;
+                    }
+                } else {
+                    var path = $(this).attr('href');
+                    if (path) {
+                        // url match condition         
+                        path = path.toLowerCase();
+                        if (path.length > 1 && url.substr(1, path.length - 1) == path.substr(1)) {
+                            el = $(this);
+                            return;
+                        }
+                    }
+                }
+            });
+        }
+
+        if (!el || el.size() == 0) {
+            return;
+        }
+
+        if (el.attr('href') == 'javascript:;' ||
+            el.attr('ui-sref') == 'javascript:;' ||
+            el.attr('href') == '#' ||
+            el.attr('ui-sref') == '#'
+            ) {
+            return;
+        }
+
+        var slideSpeed = parseInt(menu.data('slide-speed'));
+        var keepExpand = menu.data('keep-expanded');
+
+        // begin: handle active state
+        if (menu.hasClass('page-sidebar-menu-hover-submenu') === false) {
+            menu.find('li.nav-item.open').each(function () {
+                var match = false;
+                $(this).find('li').each(function () {
+                    var state = $(this).attr('ui-sref');
+                    if ($state && state) {
+                        if ($state.is(state)) {
+                            match = true;
+                            return;
+                        }
+                    } else if ($(this).find(' > a').attr('href') === el.attr('href')) {
+                        match = true;
+                        return;
+                    }
+                });
+
+                if (match === true) {
+                    return;
+                }
+
+                $(this).removeClass('open');
+                $(this).find('> a > .arrow.open').removeClass('open');
+                $(this).find('> .sub-menu').slideUp();
+            });
+        } else {
+            menu.find('li.open').removeClass('open');
+        }
+
+        menu.find('li.active').removeClass('active');
+        menu.find('li > a > .selected').remove();
+        // end: handle active state
+
+        el.parents('li').each(function () {
+            $(this).addClass('active');
+            $(this).find('> a > span.arrow').addClass('open');
+
+            if ($(this).parent('ul.page-sidebar-menu').size() === 1) {
+                $(this).find('> a').append('<span class="selected"></span>');
+            }
+
+            if ($(this).children('ul.sub-menu').size() === 1) {
+                $(this).addClass('open');
+            }
+        });
+
+        if (mode === 'click') {
+            if (App.getViewPort().width < resBreakpointMd && $('.page-sidebar').hasClass('in')) { // close the menu on mobile view while laoding a page 
+                $('.page-header .responsive-toggler').click();
+            }
+        }
+    };
     //* END:CORE HANDLERS *//
 
     return {
@@ -276,7 +371,9 @@ var Layout = function () {
         initFooter: function() {
             handleGoTop(); //handles scroll to top functionality in the footer
         },
-
+        setAngularJsSidebarMenuActiveLink: function(mode, el, $state) {
+            handleTopMenuActiveLink(mode, el, $state);
+        },
         init: function () {            
             this.initHeader();
             this.initContent();

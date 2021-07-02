@@ -17,11 +17,14 @@
         <link href="<?php echo base_url()?>/assets/admin/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
         <link href="<?php echo base_url()?>/assets/admin/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <link href="<?php echo base_url()?>/assets/admin/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css" />
+        <link href="<?php echo base_url()?>/assets/admin/global/plugins/bootstrap-toastr/toastr.css" rel="stylesheet" type="text/css" />
+        <link href="<?php echo base_url()?>/scripts/angular-confirm/css/angular-confirm.css" rel="stylesheet" type="text/css" />
         <script>
             var baseUrl =  '<?php echo base_url()?>';
+            var ApiUrl = '<?php echo base_admin_url()?>';
             var app = app || {};
         </script>
-        <script src="<?php echo base_url()?>/common/config/appUtility.js" type="text/javascript"></script>
+
         
         <!-- END GLOBAL MANDATORY STYLES -->
         <!-- BEGIN DYMANICLY LOADED CSS FILES(all plugin and page related styles must be loaded between GLOBAL and THEME css files ) -->
@@ -36,7 +39,11 @@
         <link href="<?php echo base_url()?>/assets/admin/layouts/layout3/css/custom.min.css" rel="stylesheet" type="text/css" />
         <!-- END THEME STYLES -->
         <link rel="shortcut icon" href="favicon.ico" /> 
-        
+        <style>
+            .form-group.form-md-line-input .help-block{
+                opacity: 1;
+            }
+        </style>
         
     </head>
     <!-- END HEAD -->
@@ -47,7 +54,7 @@
             <div class="bounce3"></div>
         </div>
         <!-- setheader -->
-        <div data-ng-include="'<?php echo base_url()?>/app/header.html'" data-ng-controller="HeaderController" class="page-header"></div>
+        <div data-ng-include="'<?php echo base_url()?>/app/header.html'" data-ng-controller="HeaderController as vm" class="page-header"></div>
         <!-- end setheader -->
         <div class="clearfix"> </div>
         <!-- setbody -->
@@ -74,6 +81,7 @@
         <!--[if lt IE 9]>
         <![endif]-->
         <script src="<?php echo base_url()?>/scripts/jquery/jquery.min.js" type="text/javascript"></script>
+        <script src="<?php echo base_url()?>/common/config/appUtility.js" type="text/javascript"></script>
         <script src="<?php echo base_url()?>/scripts/jquery/jquery-migrate.min.js" type="text/javascript"></script>
         <script src="<?php echo base_url()?>/assets/admin/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
         <script src="<?php echo base_url()?>/assets/admin/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js" type="text/javascript"></script>
@@ -81,7 +89,9 @@
         <script src="<?php echo base_url()?>/assets/admin/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
         <script src="<?php echo base_url()?>/assets/admin/global/plugins/js.cookie.min.js" type="text/javascript"></script>
         <script src="<?php echo base_url()?>/assets/admin/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
+        <script src="<?php echo base_url()?>/assets/admin/global/plugins/bootstrap-toastr/toastr.js" type="text/javascript"></script>
         <!-- END CORE JQUERY PLUGINS -->
+        
         <!-- BEGIN CORE ANGULARJS PLUGINS -->
         <script src="<?php echo base_url()?>/scripts/angular.min.js" type="text/javascript"></script>
         <script src="<?php echo base_url()?>/scripts/angular-sanitize.min.js" type="text/javascript"></script>
@@ -90,6 +100,8 @@
         <script src="<?php echo base_url()?>/assets/admin/global/plugins/angularjs/plugins/ocLazyLoad.min.js" type="text/javascript"></script>
         <script src="<?php echo base_url()?>/scripts/angular-ui/ui-bootstrap-tpls.min.js" type="text/javascript"></script>
         <!-- END CORE ANGULARJS PLUGINS -->
+        <script src="<?php echo base_url()?>/common/paging/dirPagination.js" type="text/javascript"></script>
+        <script src="<?php echo base_url()?>/scripts/angular-confirm/js/angular-confirm.js" type="text/javascript"></script>
         <!-- BEGIN APP LEVEL ANGULARJS SCRIPTS -->
         <script src="<?php echo base_url()?>/app/main/main.js" type="text/javascript"></script>
         <script src="<?php echo base_url()?>/app/header.js" type="text/javascript"></script>
@@ -97,12 +109,12 @@
         <script src="<?php echo base_url()?>/app/page-head.js" type="text/javascript"></script>
         <script src="<?php echo base_url()?>/app/quick-sidebar.js" type="text/javascript"></script>
         <script src="<?php echo base_url()?>/assets/admin/js/directives.js" type="text/javascript"></script>
-        <script src="<?php echo base_url()?>/common/checkValidateEmpty.js" type="text/javascript"></script>
-        <script src="<?php echo base_url()?>/common/checkValidate.js" type="text/javascript"></script>
+        <script src="<?php echo base_url()?>/common/directives/checkValidate.js" type="text/javascript"></script>
+        <!-- <script src="<?php echo base_url()?>/common/checkValidate.js" type="text/javascript"></script> -->
         <!-- END APP LEVEL ANGULARJS SCRIPTS -->
         <!-- BEGIN APP LEVEL JQUERY SCRIPTS -->
         <script src="<?php echo base_url()?>/assets/admin/global/scripts/app.min.js" type="text/javascript"></script>
-        <script src="<?php echo base_url()?>/assets/admin/layouts/layout3/scripts/layout.min.js" type="text/javascript"></script>
+        <script src="<?php echo base_url()?>/assets/admin/layouts/layout3/scripts/layout.js" type="text/javascript"></script>
         <script src="<?php echo base_url()?>/assets/admin/layouts/global/scripts/quick-sidebar.min.js" type="text/javascript"></script>
         <script src="<?php echo base_url()?>/assets/admin/layouts/layout3/scripts/demo.min.js" type="text/javascript"></script>
         <!-- END APP LEVEL JQUERY SCRIPTS -->

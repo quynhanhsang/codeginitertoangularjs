@@ -41,12 +41,20 @@ $routes->get('application/login', 'Login::index', ['namespace' => 'App\Controlle
 $routes->post('application/authenticate', 'Login::auth_user', ['namespace' => 'App\Controllers\Application']);
 $routes->get('application/authenticate/logout', 'Login::logout', ['namespace' => 'App\Controllers\Application']);
 
+$routes->post('application/navigation', 'Navigation::index', ['namespace' => 'App\Controllers\Application', 'filter' => 'auth']);
+
 $routes->add('application/dashboard', 'Dashboard::index', ['namespace' => 'App\Controllers\Application', 'filter' => 'auth']);
 $routes->post('application/dashboard/$1', 'Dashboard::index/$1', ['namespace' => 'App\Controllers\Application', 'filter' => 'auth']);
 
 $routes->post('application/user', 'User::index', ['namespace' => 'App\Controllers\Application', 'filter' => 'auth']);
 $routes->post('application/user/createOrUpdate(:any)', 'User::createOrUpdate/$1', ['namespace' => 'App\Controllers\Application', 'filter' => 'auth']);
 $routes->post('application/user/delete(:any)', 'User::delete/$1', ['namespace' => 'App\Controllers\Application', 'filter' => 'auth']);
+
+$routes->post('application/role', 'Role::index', ['namespace' => 'App\Controllers\Application', 'filter' => 'auth']);
+$routes->post('application/role/getList', 'Role::getList', ['namespace' => 'App\Controllers\Application', 'filter' => 'auth']);
+$routes->post('application/role/createOrUpdate', 'Role::createOrUpdate', ['namespace' => 'App\Controllers\Application', 'filter' => 'auth']);
+$routes->post('application/role/delete(:any)', 'Role::delete/$1', ['namespace' => 'App\Controllers\Application', 'filter' => 'auth']);
+$routes->post('application/getpermission', 'Role::getPermissionAll', ['namespace' => 'App\Controllers\Application', 'filter' => 'auth']);
 /*
  * --------------------------------------------------------------------
  * Additional Routing

@@ -9,12 +9,12 @@ class Role extends Migration
     public function up()
     {
         $this->forge->addField([
-            'id'          => [
-                    'type'           => 'INT',
-                    'unsigned'       => true,
-                    'auto_increment' => true,
+            'id'      => [
+                'type'           => 'INT',
+                'unsigned'       => true,
+                'auto_increment' => true,
             ],
-            'rolename' => [
+            'roleName' => [
                 'type' => 'VARCHAR',
                 'null' => true,
                 'constraint' => '100',
@@ -31,6 +31,14 @@ class Role extends Migration
                 'type' => 'BOOLEAN',
                 'null' => false,
             ],
+            'isDefault' => [
+                'type' => 'BOOLEAN',
+                'null' => false,
+            ],
+            'permissionID' => [
+                'type' => 'TEXT',
+                'null' => true,
+            ]
         ]);
         $this->forge->addKey('id', true);
         $this->forge->createTable('role');

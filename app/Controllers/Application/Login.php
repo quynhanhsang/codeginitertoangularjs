@@ -9,7 +9,7 @@ use \Psr\Log\LoggerInterface;
 use CodeIgniter\HTTP\Message;
 use App\Controllers\BaseController;
 use App\Models\Login_Model;
-
+use App\Models\Permission_Model;
 class Login extends BaseController
 {
 	protected $session;
@@ -38,11 +38,14 @@ class Login extends BaseController
 	{
 		$data['userName'] = $this->request->getPost("userName");
 		$data['passWord'] = $this->request->getPost("passWord");
-		
+		$remember = $this->request->getPost("remember");
+		if($remember){
+			$this->session->set('remember_me', $remember);
+		}
 		$this->validation->setRules([
 				'userName' => 'required',
-				'passWord' => 'required|min_length[4]'
-			]);
+				'passWord' => 'required|min_length[4]',
+		]);
 		// form validation
 		
 		//redirect()->to($this->baseUrl.'/application/login');
@@ -50,7 +53,8 @@ class Login extends BaseController
 		{
 			// validation fail
 			$id['invalid_credential'] = 'Email/Password Required ';
-			return view('account/login.php', $id);
+			$this->session->setFlashdata('msg', 'Bạn phải đăng nhập username và password!');
+			return redirect()->to($this->baseUrl.'/login');
 		}
 		else
 		{
@@ -67,14 +71,18 @@ class Login extends BaseController
 					'tennantId'=>$uresult[0]->tennantId,
 					'email'=>$uresult[0]->email,
 					'userId'=>$uresult[0]->userId,
+					// 'remember'=>$data['remember'],
 					'uid' => $uresult[0]->id);
+					// $permission = new Permission_model();
+					// $permission->setPermission();
 				$this->session->set($sess_data);
+				
 				return redirect()->to($this->baseUrl);
 			}
 			else
 			{
 				
-				$this->session->setFlashdata('msg', '<div class="alert alert-danger text-center">Wrong Email-ID or Password!</div>');
+				$this->session->setFlashdata('msg', 'Sai Email hoặc Password!');
 				return redirect()->to($this->baseUrl.'/login');
 			}
 		}

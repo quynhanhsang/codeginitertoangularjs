@@ -1,0 +1,59 @@
+<div class="portlet light portlet-fit " >
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-list font-dark"></i>
+            <span class="caption-subject font-dark bold uppercase">Danh sách role</span>
+        </div>
+        <div class="actions">
+            <div class="btn-group">
+                <button type="submit" class="btn blue btn-sm" ng-click="vm.addRole(null)">Thêm mới</button>
+            </div>
+        </div>
+    </div>
+    <div class="portlet-body">
+        <div class="row">
+            <div class="col-md-5">
+                <div class="form-group">
+                    <label class="control-label">Tìm kiếm</label>
+                    <div class="input-group">
+                        <div class="input-icon">
+                            <i class="fa fa-search fa-fw"></i>
+                            <input class="form-control" type="text" name="timkiem" ng-model="vm.filter.filter" placeholder="tìm kiếm"> 
+                        </div>
+                        <span class="input-group-btn">
+                            <button  class="btn btn-success" type="button" ng-click="vm.search()">
+                                <i class="fa fa-search fa-fw"></i> Tìm kiếm</button>
+                        </span>
+                    </div>
+                </div>                   
+            </div>
+        </div>
+
+        <div class="table-scrollable">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th style="max-width: 40px; width: 40px;"> # </th>
+                        <th> Tên vai trò </th>
+                        <th> Time </th>
+                        <th style="max-width: 100px; width: 100px;"> Hành động </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr dir-paginate="item in vm.data  | itemsPerPage: 10" pagination-id="pgPage" current-page="vm.currentPage">
+                        <td> {{ ($index + 1) + (vm.currentPage - 1) * 10}} </td>
+                        <td> {{item.roleName}} </td>
+                        <td> {{item.ngayTao}} </td>
+                        <td>
+                            <a href="javascript:;" class="btn btn-outline btn-circle green btn-sm purple" ng-click="vm.editRole(item)"><i class="fa fa-edit"></i> </a>
+                            <a href="javascript:;" class="btn btn-outline btn-circle dark btn-sm black"  ng-click="vm.deleteRole(item)"> <i class="fa fa-trash-o"></i> </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <dir-pagination-controls pagination-id="pgPage" max-size="10"
+            direction-links="true"
+            boundary-links="true"></dir-pagination-controls>
+    </div>
+</div>

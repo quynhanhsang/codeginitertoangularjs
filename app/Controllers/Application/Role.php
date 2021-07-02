@@ -8,42 +8,56 @@ use CodeIgniter\HTTP\ResponseInterface;
 use \Psr\Log\LoggerInterface;
 use CodeIgniter\HTTP\Message;
 use App\Controllers\BaseController;
-use App\Models\User_Model;
-
-class User extends BaseController
+use App\Models\Role_model;
+use App\Models\Permission_Model;
+use CodeIgniter\HTTP\IncomingRequest;
+class Role extends BaseController
 {
 	protected $session;
     protected $baseUrl;
 	protected $userModal;
 	protected $inputRequet;
+	protected $Role_model;
+	protected $permission;
     public function initController(RequestInterface $request, ResponseInterface $response, LoggerInterface $logger) {
        
 		parent::initController($request, $response, $logger);
 		$this->session = \Config\Services::session();
 		$this->session->start();
 		
-		$this->User_Model = new User_Model();
+		$this->Role_model = new Role_model();
+		$this->permission = new Permission_Model();
 		$this->baseUrl = base_url();
-		helper('url');
+		helper(['form', 'url']);
 		$this->inputRequet = $this->request->getJSON();
-		// if(empty(session()->get('login')))
-        // {	
-		// 	return redirect()->to(base_admin_url().'/login');
-        // }
+		
     }
 
 	public function index()
 	{
-		$uresult = $this->User_Model->get_list();
+		$uresult = $this->Role_model->get_list();
 		echo json_encode($uresult);
 	}
-
+	public function getList()
+	{	
+		$uresult = $this->Role_model->get_list($this->inputRequet);
+		echo json_encode($uresult);
+		
+	}
 	public function createOrUpdate()
 	{
-		$this->User_Model->createOrUpdate($this->inputRequet);
+		
+		$this->Role_model->createOrUpdate($this->inputRequet);
 	}
 
+	public function getPermissionAll()
+    {
+        echo json_encode($this->permission->getPermissionAll());
+    }
+
 	public function delete(){
-		$this->User_Model->deleteId($this->inputRequet);
+		
+		$this->Role_model->deleteId($this->inputRequet);
 	}
+
 }

@@ -14,7 +14,7 @@ function($rootScope, $uibModalInstance, $scope, $http, $timeout, user) {
             //abp.notify.error('Mời nhập dữ liệu !!!');
             return false;
         }
-        $http.post('http://localhost:8080/project-root/application/user/createOrUpdate', vm.data)
+        $http.post(ApiUrl+'/user/createOrUpdate', vm.data)
         .then(function(response){
             console.log(response)
             $uibModalInstance.close();
