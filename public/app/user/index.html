@@ -1,51 +1,65 @@
 <div class="portlet light portlet-fit ">
     <div class="portlet-title">
         <div class="caption">
-            <i class="icon-bubble font-dark"></i>
+            <i class="fa fa-list font-dark"></i>
             <span class="caption-subject font-dark bold uppercase">Danh sách người dùng</span>
         </div>
         <div class="actions">
             <div class="btn-group">
-                <button type="submit" class="btn blue btn-sm" ng-click="vm.addUser(null)">Thêm mới</button>
-                <a class="btn dark btn-outline btn-circle btn-sm" href="javascript:;" data-toggle="dropdown" data-hover="dropdown" data-close-others="true"> Actions
-                    <i class="fa fa-angle-down"></i>
-                </a>
-                <ul class="dropdown-menu pull-right">
-                    <li>
-                        <a href="javascript:;"> Họ và tên</a>
-                    </li>
-                    <li class="divider"> </li>
-                    <li>
-                        <a href="javascript:;"></a>
-                    </li>
-                    <li>
-                        <a href="javascript:;">Option 3</a>
-                    </li>
-                    <li>
-                        <a href="javascript:;">Option 4</a>
-                    </li>
-                </ul>
+                <button type="submit" class="btn blue btn-sm" ng-click="vm.addUser(null)"> <em class="icon-plus"></em> Thêm mới</button>
+                <button type="submit" ng-if="vm.arrCheckbox.length>0" class="btn red btn-sm" ng-click="vm.deleteAllUser()" style="margin-left: 5px;"><em class="icon-trash"></em> Xóa</button>
             </div>
         </div>
     </div>
     <div class="portlet-body">
+        <div class="row">
+            <div class="col-md-5">
+                <div class="form-group">
+                    <label class="control-label">Tìm kiếm</label>
+                    <div class="input-group">
+                        <div class="input-icon">
+                            <i class="fa fa-search fa-fw"></i>
+                            <input class="form-control" type="text" name="timkiem" ng-model="vm.filter.filter" placeholder="tìm kiếm"> 
+                        </div>
+                        <span class="input-group-btn">
+                            <button  class="btn btn-success" type="button" ng-click="vm.search()">
+                                <i class="fa fa-search fa-fw"></i> Tìm kiếm</button>
+                        </span>
+                    </div>
+                </div>                   
+            </div>
+        </div>
         <div class="table-scrollable">
             <table class="table table-bordered table-hover">
                 <thead>
                     <tr>
-                        <th> # </th>
+                        <th style="width: 40px" class="text-center"> # </th>
+                        <th style="width: 30px">
+                            <label class="mt-checkbox mt-checkbox-outline" >
+                                <input type="checkbox" ng-change="vm.clickAllCheckbox()" ng-model="vm.checkboxAll">
+                                <span></span>
+                            </label>
+                        </th>
+                        <th> Họ </th>
                         <th> Tên </th>
-                        <th> Mật khẩu </th>
-                        <th> Time </th>
-                        <th> Status </th>
+                        <th> Tên đăng nhập </th>
+                        <th> Ngày tạo </th>
+                        <th style="width:100px"> Thao tác </th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="item in vm.data">
-                        <td> {{$index}} </td>
+                    <tr dir-paginate="item in vm.data  | itemsPerPage: 10" pagination-id="pgPage" current-page="vm.currentPage">
+                        <td class="text-center"> {{$index}} </td>
+                        <td>
+                            <label class="mt-checkbox mt-checkbox-outline">
+                                <input type="checkbox" ng-change="vm.clickCheckbox(item)" ng-model="item.checkbox">
+                                <span></span>
+                            </label>
+                        </td>
+                        <td> {{item.surName}}</td>
+                        <td> {{item.name}} </td>
                         <td> {{item.userName}} </td>
-                        <td> {{item.passWord}} </td>
-                        <td> {{item.creaTime}} </td>
+                        <td> {{item.creatTime | date: 'dd-MM-yyyy HH:ss'}} </td>
                         <td>
                             <a href="javascript:;" class="btn btn-outline btn-circle green btn-sm purple" ng-click="vm.editUser(item)"><i class="fa fa-edit"></i> </a>
                             <a href="javascript:;" class="btn btn-outline btn-circle dark btn-sm black"  ng-click="vm.deleteUser(item)"> <i class="fa fa-trash-o"></i> </a>
@@ -53,6 +67,10 @@
                     </tr>
                 </tbody>
             </table>
+
+            <dir-pagination-controls pagination-id="pgPage" max-size="10"
+            direction-links="true"
+            boundary-links="true"></dir-pagination-controls>
         </div>
     </div>
 </div>

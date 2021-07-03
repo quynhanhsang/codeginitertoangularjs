@@ -8,7 +8,6 @@ function($rootScope, $uibModalInstance, $scope, $http, $timeout, role) {
     vm.temp = [];
 
     vm.save = function () {
-        debugger;
         if (!app.checkValidateForm("#roleCreateOrEditForm")) {
             app.error('Không được để trống');
             return false;
@@ -38,7 +37,6 @@ function($rootScope, $uibModalInstance, $scope, $http, $timeout, role) {
                 arrayPermission.forEach((item)=>{
                     arrayPermissionID.forEach((items)=>{
                         i++;
-                        debugger;
                         if(item.id == items){
                             item.selected =  true
                         }else{

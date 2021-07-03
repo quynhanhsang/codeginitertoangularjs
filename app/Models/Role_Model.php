@@ -47,8 +47,8 @@ class Role_Model extends Model {
         $array = $query->get()->getResult();   
         foreach($array as $result){
             // $result->id = (int) $result->id;
-            $result->ngayTao = date("d-m-Y H:s", strtotime($result->creatTime));
-            $result->ngaySua = date("d-m-Y H:s", strtotime($result->editTime));
+            // $result->ngayTao = date("d-m-Y H:s", strtotime($result->creatTime));
+            // $result->ngaySua = date("d-m-Y H:s", strtotime($result->editTime));
             $result->isDefault = (bool) $result->isDefault;
             $result->isDelete = (bool) $result->isDelete;
         }
@@ -76,5 +76,10 @@ class Role_Model extends Model {
        return $this->db->table($this->table)->update($array, [$this->key => $id]);
     }
 
-
+    public function getAllDLL()
+    {
+        $query = $this->db->table($this->table)->where('isDelete', 0); 
+        $array = $query->get()->getResult();
+        return $array;
+    }
 }

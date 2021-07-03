@@ -6,22 +6,46 @@
     </h4>
 </div>
 <div class="modal-body" id="userCreateOrEditForm">
-    <div class="form-group">
-        <label class="control-label">Họ và tên <span class="font-red">*</span></label>
-        <input class="form-control"
-        type="text"
-        name="userName"
-        ng-model="vm.data.userName" />
-        <!-- <check-validate datacheck="vm.data.username" namecheck="username"></check-validate> -->
-    </div>
-    <div class="form-group">
-        <label class="control-label">Mật khẩu <span class="font-red">*</span></label>
-        <input class="form-control"
-        type="text"
-        name="passWord"
-        ng-model="vm.data.passWord" />
-        <!-- <check-validate datacheck="vm.data.password" namecheck="password"></check-validate> -->
-    </div>
+    <uib-tabset class="tab-container tabbable-line">
+        <uib-tab heading="Thông tin người dùng">
+            <div class="form-group">
+                <label class="control-label">Họ <span class="font-red">*</span></label>
+                <input class="form-control"
+                type="text"
+                name="surname"
+                ng-model="vm.data.surName" />
+                <check-validate datacheck="vm.data.surName"></check-validate> 
+            </div>
+            <div class="form-group">
+                <label class="control-label">Tên <span class="font-red">*</span></label>
+                <input class="form-control"
+                type="text"
+                name="name"
+                ng-model="vm.data.name" />
+                <check-validate datacheck="vm.data.name"></check-validate> 
+            </div>
+            <div class="form-group">
+                <label class="control-label">Tên truy cập <span class="font-red">*</span></label>
+                <input class="form-control"
+                type="text"
+                name="userName"
+                ng-model="vm.data.userName" />
+                <check-validate datacheck="vm.data.userName" namecheck="username"></check-validate>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Mật khẩu <span class="font-red">*</span></label>
+                <input class="form-control"
+                type="text"
+                name="passWord"
+                ng-model="vm.data.passWord" />
+                <check-validate datacheck="vm.data.passWord" namecheck="password"></check-validate>
+            </div>
+        </uib-tab>
+        <uib-tab heading="Vai trò">
+            <div id="tree_vaitro" class="tree-vaitro"> </div>
+        </uib-tab>
+    </uib-tabset>
+    
     
 </div>
 <div class="modal-footer">

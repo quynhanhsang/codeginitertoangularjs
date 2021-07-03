@@ -92,6 +92,9 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider
                         files: [
                             baseUrl+'/app/user/index.js',
                             baseUrl+'/app/user/modal/createOreUpdate.js',
+                            baseUrl+'/assets/admin/global/plugins/jstree/dist/themes/default/style.min.css',
+                            baseUrl+'/assets/admin/global/plugins/jstree/dist/jstree.min.js',
+                            baseUrl+'/assets/admin/pages/scripts/ui-tree.min.js',
                         ] 
                     });
                 }]
@@ -115,7 +118,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider
                             baseUrl+'/assets/admin/global/plugins/jstree/dist/themes/default/style.min.css',
                             baseUrl+'/assets/admin/global/plugins/jstree/dist/jstree.min.js',
                             baseUrl+'/assets/admin/pages/scripts/ui-tree.min.js',
-                            baseUrl+'/common/directives/jsTree.directive.js',
+                            // baseUrl+'/common/directives/jsTree.directive.js',
                         ] 
                     });
                 }]

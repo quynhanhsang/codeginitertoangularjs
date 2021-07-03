@@ -37,7 +37,17 @@ class User extends Migration
                 'null' => true,
                 'constraint' => '100',
             ],
+            'phone' => [
+                'type' => 'VARCHAR',
+                'null' => true,
+                'constraint' => '11',
+            ],
             'name' => [
+                'type' => 'VARCHAR',
+                'null' => true,
+                'constraint' => '100',
+            ],
+            'surName' => [
                 'type' => 'VARCHAR',
                 'null' => true,
                 'constraint' => '100',
@@ -47,7 +57,7 @@ class User extends Migration
                 'null' => true,
                 'constraint' => '100',
             ],
-            'creaTime' => [
+            'creatTime' => [
                 'type' => 'DATETIME',
                 'null' => false,
             ],
@@ -59,11 +69,10 @@ class User extends Migration
                 'type' => 'BOOLEAN',
                 'null' => false,
             ],
-            'userId' => [
-                'type' => 'INT',
-                'unsigned' => true,
-                'auto_increment' => false,
-            ],
+            'userID' => [
+                'type' => 'TEXT',
+                'null' => true,
+            ]
         ]);
         $this->forge->addKey('id', true);
         $this->forge->createTable('user');

@@ -43,6 +43,9 @@
             .form-group.form-md-line-input .help-block{
                 opacity: 1;
             }
+            table .mt-checkbox{
+                padding-left: 19px;
+            }
         </style>
         
     </head>

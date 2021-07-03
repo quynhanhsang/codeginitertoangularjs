@@ -46,15 +46,21 @@ $routes->post('application/navigation', 'Navigation::index', ['namespace' => 'Ap
 $routes->add('application/dashboard', 'Dashboard::index', ['namespace' => 'App\Controllers\Application', 'filter' => 'auth']);
 $routes->post('application/dashboard/$1', 'Dashboard::index/$1', ['namespace' => 'App\Controllers\Application', 'filter' => 'auth']);
 
-$routes->post('application/user', 'User::index', ['namespace' => 'App\Controllers\Application', 'filter' => 'auth']);
-$routes->post('application/user/createOrUpdate(:any)', 'User::createOrUpdate/$1', ['namespace' => 'App\Controllers\Application', 'filter' => 'auth']);
-$routes->post('application/user/delete(:any)', 'User::delete/$1', ['namespace' => 'App\Controllers\Application', 'filter' => 'auth']);
+$routes->get('application/user', 'User::index', ['namespace' => 'App\Controllers\Application', 'filter' => 'auth']);
+$routes->post('application/user/getList', 'User::getList', ['namespace' => 'App\Controllers\Application', 'filter' => 'auth']);
+$routes->post('application/user/createOrUpdate', 'User::createOrUpdate', ['namespace' => 'App\Controllers\Application', 'filter' => 'auth']);
+$routes->post('application/user/delete', 'User::delete', ['namespace' => 'App\Controllers\Application', 'filter' => 'auth']);
+$routes->post('application/user/deleteAll', 'User::deleteAll', ['namespace' => 'App\Controllers\Application', 'filter' => 'auth']);
+$routes->post('application/user/getRollAllDLL', 'User::getRollAllDLL', ['namespace' => 'App\Controllers\Application', 'filter' => 'auth']);
 
 $routes->post('application/role', 'Role::index', ['namespace' => 'App\Controllers\Application', 'filter' => 'auth']);
 $routes->post('application/role/getList', 'Role::getList', ['namespace' => 'App\Controllers\Application', 'filter' => 'auth']);
 $routes->post('application/role/createOrUpdate', 'Role::createOrUpdate', ['namespace' => 'App\Controllers\Application', 'filter' => 'auth']);
 $routes->post('application/role/delete(:any)', 'Role::delete/$1', ['namespace' => 'App\Controllers\Application', 'filter' => 'auth']);
+
 $routes->post('application/getpermission', 'Role::getPermissionAll', ['namespace' => 'App\Controllers\Application', 'filter' => 'auth']);
+
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing

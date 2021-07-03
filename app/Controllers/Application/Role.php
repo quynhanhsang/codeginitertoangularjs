@@ -44,9 +44,9 @@ class Role extends BaseController
 		echo json_encode($uresult);
 		
 	}
+
 	public function createOrUpdate()
 	{
-		
 		$this->Role_model->createOrUpdate($this->inputRequet);
 	}
 

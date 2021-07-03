@@ -15,6 +15,7 @@ use CodeIgniter\Model;
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 use \Psr\Log\LoggerInterface;
+use App\Libraries\Common_Libraries;
 use \DateTime; 
 
 class User_Model extends Model {
@@ -23,39 +24,51 @@ class User_Model extends Model {
     var $table = 'qa_user';
     
     var $key = 'id';
+    
+    protected $libary;
 
     public function __construct() {
         parent::__construct();
         
         $db      = \Config\Database::connect();
-    }
-    
-    public function convertJsonToArray($data){
-        return json_decode(json_encode($data), true);
+        $this->libary = new Common_Libraries();
     }
 
-    public function dateTime(){
-        $dateTime = new \DateTime();
-        $dateTime=$this->convertJsonToArray($dateTime);
-        return $dateTime['date'];
-    }
-
-    public function get_list()
+    public function get_list($data)
     {
-        $query = $this->db->table($this->table)->where('isDelete !=', 1);        
-        return $query->get()->getResult();
+        $searchData = $this->libary->convertJsonToArray($data);
+        //$userNam = $searchData['filter'];
+        // $filter = array(
+        //     'userName' => $searchData['filter']? $searchData['filter']:'',
+        //     'name' =>  $searchData['filter']? $searchData['filter']:'',
+        //     'surName' =>  $searchData['filter']? $searchData['filter']:'',
+        // );
+        // $query = $this->db->table($this->table)
+        //->select('id,userName,level,tennantId,email,phone,name,surName,subName,creatTime,userId,isDelete')
+        //->where('isDelete',0)
+        // ->like('userName', $searchData['filter']? $searchData['filter'] : '')
+        //->orlike($filter); 
+        $query = $this->db->query('SELECT id,userName,level,tennantId,email,phone,name,surName,subName,creatTime,userId,isDelete FROM '.$this->table.' where isDelete = 0 AND (userName LIKE "%'.$searchData['filter'].'%" OR name LIKE "%'.$searchData['filter'].'%" OR surName LIKE "%'.$searchData['filter'].'%") ');
+        $array =$query->getResult(); 
+        foreach($array as $result){
+            // $result->id = (int) $result->id;
+            $result->isDelete = (bool) $result->isDelete;
+            
+        }
+        return $array;
     }
 
     public function createOrUpdate($data)
     {
-        $array = $this->convertJsonToArray($data);
+        $array =  $this->libary->convertJsonToArray($data);
         
         if(empty($array[$this->key])){
-            $array['creaTime'] = $this->dateTime();
+            $array['creatTime'] = $this->libary->dateTime();
             $query = $this->db->table($this->table)->insert($array);
             return $this->db->insertID();
         }else{
-            $array['editTime'] = $this->dateTime();
+            
+            $array['editTime'] = $this->libary->dateTime();
             $query = $this->db->table($this->table)->update($array, [$this->key => $array[$this->key]]);
             return $this->db->insertID();
         } 

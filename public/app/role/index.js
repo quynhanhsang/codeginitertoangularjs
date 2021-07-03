@@ -14,14 +14,14 @@ function($rootScope, $scope, $http, $timeout, $uibModal, $ngConfirm) {
     vm.loadData = function(){
         $http.post(ApiUrl+'/role/getList', vm.filter)
         .then(function(response){
-            app.success('success');
+            //app.success('success');
             vm.data = response.data;
             console.log(vm.data, 'vm.dat')
         }, function(){
 
         });
     }
-    vm.loadData();
+    
 
     vm.addRole = function(data){
         var dataCopy = angular.copy(data);
@@ -34,7 +34,6 @@ function($rootScope, $scope, $http, $timeout, $uibModal, $ngConfirm) {
     }
 
     vm.deleteRole = function(data){
-        debugger;
         $ngConfirm({
             theme: 'modern',
             title: '',
@@ -87,7 +86,7 @@ function($rootScope, $scope, $http, $timeout, $uibModal, $ngConfirm) {
     }
 
     var init = function () {
-        //vm.loadData();
+        vm.loadData();
     };
     init();
 

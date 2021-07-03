@@ -42,6 +42,10 @@ class Permission extends Migration
                 'type' => 'BOOLEAN',
                 'null' => false,
             ],
+            'roleID' => [
+                'type' => 'TEXT',
+                'null' => true,
+            ]
         ]);
         $this->forge->addKey('id', true);
         $this->forge->createTable('permission');

@@ -26,7 +26,7 @@ class Login_Model extends Model {
     
     public function get_user($data)
     {
-        $query = $this->db->table($this->table)->getWhere($data);        
+        $query = $this->db->table($this->table)->where("isDelete", 0)->getWhere($data);        
         return $query->getResult();
     }
 }
