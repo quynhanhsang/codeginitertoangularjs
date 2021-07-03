@@ -1,7 +1,6 @@
 var app = app || {};
 (function () {
     app.checkValidateForm = function (id) {
-        debugger;
         var _check = ($(id).find(".custom-error-validate").length);
         $(id).find(".custom-error-validate").show();
         return !_check;
