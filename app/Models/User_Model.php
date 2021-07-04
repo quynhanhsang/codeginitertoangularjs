@@ -48,7 +48,7 @@ class User_Model extends Model {
         //->where('isDelete',0)
         // ->like('userName', $searchData['filter']? $searchData['filter'] : '')
         //->orlike($filter); 
-        $query = $this->db->query('SELECT id,userName,level,tennantId,email,phone,name,surName,subName,creatTime,userId,isDelete FROM '.$this->table.' where isDelete = 0 AND (userName LIKE "%'.$searchData['filter'].'%" OR name LIKE "%'.$searchData['filter'].'%" OR surName LIKE "%'.$searchData['filter'].'%") ');
+        $query = $this->db->query('SELECT id,userName,level,tennantId,email,phone,name,surName,subName,creatTime,roleID,isDelete FROM '.$this->table.' where isDelete = 0 AND (userName LIKE "%'.$searchData['filter'].'%" OR name LIKE "%'.$searchData['filter'].'%" OR surName LIKE "%'.$searchData['filter'].'%") ');
         $array =$query->getResult(); 
         foreach($array as $result){
             // $result->id = (int) $result->id;
@@ -60,16 +60,34 @@ class User_Model extends Model {
 
     public function createOrUpdate($data)
     {
-        $array =  $this->libary->convertJsonToArray($data);
+        $arrayClient =  $this->libary->convertJsonToArray($data);
         
-        if(empty($array[$this->key])){
+        //set lại các trường cần insert hoặc update
+        $array = array(
+            'userName' => $arrayClient['userName'],  
+            'level' => $arrayClient['level'],
+            'tennantId' => $arrayClient['tennantId'],
+            'email' => $arrayClient['email'],
+            'phone' => $arrayClient['phone'],
+            'name' => $arrayClient['name'],       
+            'surName' => $arrayClient['surName'],
+            'subName' => $arrayClient['subName'],
+            'roleID' => $arrayClient['roleID'],
+        );
+
+        if(empty($arrayClient[$this->key])){
             $array['creatTime'] = $this->libary->dateTime();
+            $array['passWord'] = $arrayClient['passWord'];
             $query = $this->db->table($this->table)->insert($array);
             return $this->db->insertID();
         }else{
-            
+            //$array['id'] = $arrayClient[$this->key];
             $array['editTime'] = $this->libary->dateTime();
-            $query = $this->db->table($this->table)->update($array, [$this->key => $array[$this->key]]);
+            if(!empty($arrayClient['passWord'])){
+                $array['passWord'] = $arrayClient['passWord'];
+            }
+            
+            $query = $this->db->table($this->table)->update($array, [$this->key => $arrayClient[$this->key]]);
             return $this->db->insertID();
         } 
     }

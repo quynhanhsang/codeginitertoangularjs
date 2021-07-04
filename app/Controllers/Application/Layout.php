@@ -10,6 +10,8 @@ use CodeIgniter\HTTP\Message;
 use App\Controllers\BaseController;
 use App\Models\Permission_Model;
 use App\Models\Login_Model;
+use App\Models\User_model;
+use App\Models\Role_model;
 
 class Layout extends BaseController
 {
@@ -51,5 +53,53 @@ class Layout extends BaseController
 		$data['title'] = ucfirst('home');
 
 		echo view('app/layout', $data);
+	}
+
+	public function getSession()
+	{   
+		echo json_encode($this->session->get());
+	}
+
+	public function getRole ()
+	{	
+		$user = new Role_model();
+		$data =  json_decode($this->session->get('roleID'));
+		$array = array();
+		foreach($data as $item){
+			array_push($array ,$user->getListId($item));
+		}
+
+		echo json_encode($array);
+	}
+
+	public function roles()
+	{
+		$user = new Role_model();
+		$data =  json_decode($this->session->get('roleID'));
+		$array = array();
+		foreach($data as $item){
+			array_push($array ,$user->getListId($item));
+		}
+		return $array;
+	}
+
+	public function getPermission ()
+	{
+
+		$pormission = new Permission_Model();
+
+		$data = $this->roles();
+		$arrayString = array();
+		$i = 0;
+		foreach($data as $key => $item){
+			foreach($item as $in){
+				echo $in->permissionID;
+				//array_push($arrayString, json_decode($in->permissionID));
+			}
+			
+			// array_push($arrayString, json_decode($item[$i]->permissionID));
+			$i++;
+		}
+		//var_dump($arrayString);
 	}
 }

@@ -82,4 +82,11 @@ class Role_Model extends Model {
         $array = $query->get()->getResult();
         return $array;
     }
+
+    public function getListId($id)
+    {
+        $query = $this->db->table($this->table)->where('isDelete', 0)->where('id', $id); 
+        $array = $query->get()->getResult();
+        return $array;
+    }
 }

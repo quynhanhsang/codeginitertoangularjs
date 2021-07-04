@@ -48,7 +48,6 @@ class Login extends BaseController
 		]);
 		// form validation
 		
-		//redirect()->to($this->baseUrl.'/application/login');
 		if ($this->validation->run($data) == FALSE)
 		{
 			// validation fail
@@ -70,11 +69,8 @@ class Login extends BaseController
 					'level'=>$uresult[0]->level,
 					'tennantId'=>$uresult[0]->tennantId,
 					'email'=>$uresult[0]->email,
-					'userId'=>$uresult[0]->userId,
-					// 'remember'=>$data['remember'],
+					'roleID'=>$uresult[0]->roleID,
 					'uid' => $uresult[0]->id);
-					// $permission = new Permission_model();
-					// $permission->setPermission();
 				$this->session->set($sess_data);
 				
 				return redirect()->to($this->baseUrl);

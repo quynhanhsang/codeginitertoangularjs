@@ -69,7 +69,7 @@ class User extends Migration
                 'type' => 'BOOLEAN',
                 'null' => false,
             ],
-            'userID' => [
+            'roleID' => [
                 'type' => 'TEXT',
                 'null' => true,
             ]

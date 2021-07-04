@@ -7,14 +7,18 @@ function($rootScope, $uibModalInstance, $scope, $http, $timeout, user) {
     vm.data ={
         level: 1,
     };
-
+    vm.ckeckPassword =  false;
     vm.save = function () {
        
         if (!app.checkValidateForm("#userCreateOrEditForm")) {
             app.error('Mời nhập dữ liệu !!!');
             return false;
         }
-        debugger;
+        if (vm.data.passWord != vm.data.passwordRepeat) {
+            vm.ckeckPassword = true;
+            app.error('Mật khẩu và nhập lại mật khẩu không khớp !!!');
+            return false;
+        }
         $http.post(ApiUrl+'/user/createOrUpdate', vm.data)
         .then(function(response){
             console.log(response);
@@ -23,20 +27,20 @@ function($rootScope, $uibModalInstance, $scope, $http, $timeout, user) {
         }, function(){
 
         });
-
     };
-    vm.loadData = function(){
+    vm.loadDataRoll = function(){
         $http({
             method: 'POST',
             url: ApiUrl+'/user/getRollAllDLL'
         }).then(function (response) {
             vm.loading = true;
             var arrayRole = response.data;
-            var arrayUserID = (vm.data.userID) ? JSON.parse(vm.data.userID) : null;
-            if(arrayUserID){
+            debugger;
+            var arrayRoleID = (vm.data.roleID) ? JSON.parse(vm.data.roleID) : null;
+            if(arrayRoleID){
                 var i=0;
                 arrayRole.forEach((item)=>{
-                    arrayUserID.forEach((items)=>{
+                    arrayRoleID.forEach((items)=>{
                         i++;
                         if(item.id == items){
                             item.selected =  true
@@ -44,13 +48,21 @@ function($rootScope, $uibModalInstance, $scope, $http, $timeout, user) {
                         }
                     });
                 });
+            }else{
+                var i=0;
+                arrayRole.forEach((item)=>{
+                    if(item.isDefault == 1){
+                        item.selected =  true
+                    }else{
+                    }
+                });
             }
             
             vm.temp = vm.data_tree(arrayRole, null);
             console.log(vm.temp, 'vm.temp');
             vm.treeView(vm.temp);
             $('#tree_vaitro').on("changed.jstree", function (e, data) {
-                vm.data.userID = JSON.stringify(data.selected);
+                vm.data.roleID = JSON.stringify(data.selected);
             });
         }, function(response) {
     
@@ -103,9 +115,14 @@ function($rootScope, $uibModalInstance, $scope, $http, $timeout, user) {
     vm.cancel = function () {
         $uibModalInstance.dismiss();
     };
+    vm.editPassWord =  function(){
+        vm.ckeckPassword = false;
+    }
+    vm.clickEditPassWord = function(){
 
+    }
     var init = function () {
-        vm.loadData();
+        vm.loadDataRoll();
 
         if (user != null) {
             vm.data = user;

@@ -2,27 +2,33 @@
     <span class="pull-right" ng-click="vm.cancel()" aria-hidden="true"><i class="glyphicon glyphicon-remove"></i></span>
     <h4 class="modal-title">
         <span ng-if="!vm.data.id">Tạo mới user</span>
-        <span ng-if="vm.data.id">Sửa mới user</span>
+        <span ng-if="vm.data.id">Sửa user</span>
     </h4>
 </div>
 <div class="modal-body" id="userCreateOrEditForm">
     <uib-tabset class="tab-container tabbable-line">
         <uib-tab heading="Thông tin người dùng">
-            <div class="form-group">
-                <label class="control-label">Họ <span class="font-red">*</span></label>
-                <input class="form-control"
-                type="text"
-                name="surname"
-                ng-model="vm.data.surName" />
-                <check-validate datacheck="vm.data.surName"></check-validate> 
-            </div>
-            <div class="form-group">
-                <label class="control-label">Tên <span class="font-red">*</span></label>
-                <input class="form-control"
-                type="text"
-                name="name"
-                ng-model="vm.data.name" />
-                <check-validate datacheck="vm.data.name"></check-validate> 
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label">Họ <span class="font-red">*</span></label>
+                        <input class="form-control"
+                        type="text"
+                        name="surname"
+                        ng-model="vm.data.surName" />
+                        <check-validate datacheck="vm.data.surName"></check-validate> 
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label">Tên <span class="font-red">*</span></label>
+                        <input class="form-control"
+                        type="text"
+                        name="name"
+                        ng-model="vm.data.name" />
+                        <check-validate datacheck="vm.data.name"></check-validate> 
+                    </div>
+                </div>
             </div>
             <div class="form-group">
                 <label class="control-label">Tên truy cập <span class="font-red">*</span></label>
@@ -32,13 +38,28 @@
                 ng-model="vm.data.userName" />
                 <check-validate datacheck="vm.data.userName" namecheck="username"></check-validate>
             </div>
+            <!-- <div class="form-group" >
+                <label class="mt-checkbox mt-checkbox-outline" style="margin-bottom:0">
+                    <input type="checkbox" ng-change="vm.clickEditPassWord()"> sửa mật khẩu
+                    <span></span>
+                </label>
+            </div> -->
             <div class="form-group">
-                <label class="control-label">Mật khẩu <span class="font-red">*</span></label>
+                <label class="control-label">Mật khẩu <span class="font-red" ng-if="!vm.data.id">*</span></label>
                 <input class="form-control"
                 type="text"
                 name="passWord"
-                ng-model="vm.data.passWord" />
-                <check-validate datacheck="vm.data.passWord" namecheck="password"></check-validate>
+                ng-model="vm.data.passWord" ng-change="vm.editPassWord()"/>
+                <check-validate ng-if="!vm.data.id" datacheck="vm.data.passWord" namecheck="password"></check-validate>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Nhập lại mật khẩu </label>
+                <input class="form-control"
+                type="text"
+                name="passwordRepeat"
+                ng-model="vm.data.passwordRepeat" ng-change="vm.editPassWord()"/>
+                <check-validate ng-if="!vm.data.id" datacheck="vm.data.passwordRepeat" namecheck="password"></check-validate>
+                <small ng-if="vm.ckeckPassword" class="help-block custom-error-validate" style="color: #e40909;">Mật khẩu và nhập lại mật khẩu không khớp</small>
             </div>
         </uib-tab>
         <uib-tab heading="Vai trò">
