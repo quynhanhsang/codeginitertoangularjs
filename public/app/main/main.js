@@ -126,6 +126,8 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider
         })
 
         $qProvider.errorOnUnhandledRejections(false);
+
+    
 }]);
 
 /* Init global settings and run the app */

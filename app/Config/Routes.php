@@ -46,9 +46,9 @@ $routes->post('application/navigation', 'Navigation::index', ['namespace' => 'Ap
 $routes->add('application/dashboard', 'Dashboard::index', ['namespace' => 'App\Controllers\Application', 'filter' => 'auth']);
 $routes->post('application/dashboard/$1', 'Dashboard::index/$1', ['namespace' => 'App\Controllers\Application', 'filter' => 'auth']);
 
-$routes->get('application/layout/getSession', 'Layout::getSession', ['namespace' => 'App\Controllers\Application', 'filter' => 'auth']);
-$routes->get('application/layout/getRole', 'Layout::getRole', ['namespace' => 'App\Controllers\Application', 'filter' => 'auth']);
-$routes->get('application/layout/getPermission', 'Layout::getPermission', ['namespace' => 'App\Controllers\Application', 'filter' => 'auth']);
+$routes->post('application/layout/getSession', 'Layout::getSession', ['namespace' => 'App\Controllers\Application', 'filter' => 'auth']);
+$routes->post('application/layout/getRole', 'Layout::getRole', ['namespace' => 'App\Controllers\Application', 'filter' => 'auth']);
+$routes->post('application/layout/getPermission', 'Layout::getPermission', ['namespace' => 'App\Controllers\Application', 'filter' => 'auth']);
 
 $routes->get('application/user', 'User::index', ['namespace' => 'App\Controllers\Application', 'filter' => 'auth']);
 $routes->post('application/user/getList', 'User::getList', ['namespace' => 'App\Controllers\Application', 'filter' => 'auth']);

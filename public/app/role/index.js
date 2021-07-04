@@ -1,6 +1,6 @@
 /* Setup Layout Part - Header */
-angular.module('MetronicApp').controller('app.role.index', ['$rootScope','$scope', '$http', '$timeout', '$uibModal', '$ngConfirm',
-function($rootScope, $scope, $http, $timeout, $uibModal, $ngConfirm) {
+angular.module('MetronicApp').controller('app.role.index', ['$rootScope','$scope', '$http', '$timeout', '$uibModal', '$ngConfirm', 'appConfig',
+function($rootScope, $scope, $http, $timeout, $uibModal, $ngConfirm, $appConfig) {
 
     var vm = this;
     vm.loading = false;
@@ -10,7 +10,9 @@ function($rootScope, $scope, $http, $timeout, $uibModal, $ngConfirm) {
     vm.filter = {
         filter: null
     };
-
+    debugger;
+    m = $appConfig;
+    console.log(m, 'sang');
     vm.loadData = function(){
         $http.post(ApiUrl+'/role/getList', vm.filter)
         .then(function(response){

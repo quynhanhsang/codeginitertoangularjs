@@ -83,10 +83,16 @@ class Role_Model extends Model {
         return $array;
     }
 
-    public function getListId($id)
+    public function getListId($dataID)
     {
-        $query = $this->db->table($this->table)->where('isDelete', 0)->where('id', $id); 
-        $array = $query->get()->getResult();
+        $textQuery = '';
+        foreach($dataID as $item){
+            $textQuery .= 'id = '.$item.' OR ';
+        }
+        //echo trim($textQuery, 'OR ');
+        $query = $this->db->query('SELECT * FROM '.$this->table.' where isDelete = 0 AND ( '.trim($textQuery, 'OR ').')');
+        //$query = $this->db->table($this->table)->where('isDelete', 0); 
+        $array = $query->getResult();
         return $array;
     }
 }

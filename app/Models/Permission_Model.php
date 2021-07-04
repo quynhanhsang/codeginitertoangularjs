@@ -90,4 +90,16 @@ class Permission_Model extends Model {
         }
         return $array;
     }
+
+    public function getPermissionID($dataID){
+        $textQuery = '';
+        foreach($dataID as $item){
+            $textQuery .= 'id = '.$item.' OR ';
+        }
+        //echo trim($textQuery, 'OR ');
+        $query = $this->db->query('SELECT * FROM '.$this->table.' where isDelete = 0 AND ( '.trim($textQuery, 'OR ').')');
+        //$query = $this->db->table($this->table)->where('isDelete', 0); 
+        $array = $query->getResult();
+        return $array;
+    }
 }

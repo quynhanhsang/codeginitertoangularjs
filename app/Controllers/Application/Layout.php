@@ -64,42 +64,30 @@ class Layout extends BaseController
 	{	
 		$user = new Role_model();
 		$data =  json_decode($this->session->get('roleID'));
-		$array = array();
-		foreach($data as $item){
-			array_push($array ,$user->getListId($item));
-		}
-
+		$array = $user->getListId($data);
 		echo json_encode($array);
 	}
 
-	public function roles()
+	private function roleArrayID()
 	{
+		$array = array();
 		$user = new Role_model();
 		$data =  json_decode($this->session->get('roleID'));
-		$array = array();
-		foreach($data as $item){
-			array_push($array ,$user->getListId($item));
+		
+		$permissionString = '';
+		foreach($user->getListId($data) as $item){
+			$permissionString .= $item->permissionID;
 		}
-		return $array;
+		//cắt chuỗi và gọi lại
+		$array = json_decode(str_replace("][", ",",$permissionString));
+		return array_unique($array);
 	}
 
 	public function getPermission ()
 	{
-
 		$pormission = new Permission_Model();
-
-		$data = $this->roles();
-		$arrayString = array();
-		$i = 0;
-		foreach($data as $key => $item){
-			foreach($item as $in){
-				echo $in->permissionID;
-				//array_push($arrayString, json_decode($in->permissionID));
-			}
-			
-			// array_push($arrayString, json_decode($item[$i]->permissionID));
-			$i++;
-		}
-		//var_dump($arrayString);
+		$data = $this->roleArrayID();
+		$array = $pormission->getPermissionID($data);
+		echo json_encode($array);
 	}
 }
