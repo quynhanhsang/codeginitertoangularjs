@@ -10,6 +10,7 @@ use CodeIgniter\HTTP\Message;
 use App\Controllers\BaseController;
 use App\Models\Login_Model;
 use App\Models\Permission_Model;
+use App\Models\User_Model;
 class Login extends BaseController
 {
 	protected $session;
@@ -24,9 +25,13 @@ class Login extends BaseController
 		$this->session = \Config\Services::session();
 		$this->session->start();
 		$this->Login_Model = new Login_Model();
-
+		// $user = new User_Model();
+		// $user->createAdmin();
 		$this->baseUrl = base_admin_url();
 		helper('url');
+
+		//create admin
+
     }
 
 	public function index()

@@ -35,7 +35,8 @@ class Layout extends BaseController
     }
 
 	public function index()
-	{					
+	{				
+		
 		$permission = new Permission_model();
 		$role = new Role_model();
 		$permission->setPermission();
@@ -58,7 +59,7 @@ class Layout extends BaseController
 		//lấy danh sách role
 		$roleID =  json_decode( $this->session->get('roleID') );
 		$arrayRole = $role->getListId($roleID);
-
+		
 		$data['title'] = ucfirst('home');
 
 		$data['arrayPemission'] = json_encode($arrayPemission);

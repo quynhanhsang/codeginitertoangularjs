@@ -47,8 +47,30 @@ class Navigation_Model extends Model {
                 )
             )
         );
-        
+
+        $menuCauHinh =  array(
+            "name"       => "Cấu hình",
+            "permission" => "Page.cauhinh",
+            "url"        => "",
+            "icon"       => "",
+            "length"     => 2,
+            "items"      => array(
+                array(
+                    "name"       => "Vị trí quản cáo",
+                    "permission" => "Page.cauhinh.vitriquangcao",
+                    "url"        => "vitriquangcao",
+                    "icon"       => "",
+                ),
+                array(
+                    "name"       => "Cấu hình chung",
+                    "permission" => "Page.cauhinh.cauhinhchung",
+                    "url"        => "cauhinhchung",
+                    "icon"       => "",
+                )
+            )
+        );
         array_push($array, $menuDashboard);
+        array_push($array, $menuCauHinh);
         array_push($array, $menuHeThong);
 
         return $array;

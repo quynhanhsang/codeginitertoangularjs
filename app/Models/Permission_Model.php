@@ -32,6 +32,10 @@ class Permission_Model extends Model {
         $hethong = $this->createPermission('Hệ thống','Page.hethong');
         $hethongchils1 = $this->createChildPermission('User','Page.hethong.user', $hethong);
         $hethongchils2 = $this->createChildPermission('Role','Page.hethong.role', $hethong);
+
+        $cauHinh = $this->createPermission('Cấu hình','Page.cauhinh');
+        $cauHinh1 = $this->createChildPermission('Vị trí quảng cáo','Page.cauhinh.vitriquangcao', $cauHinh);
+        $cauHinh2 = $this->createChildPermission('Cấu hình chung','Page.cauhinh.cauhinhchung', $cauHinh);
     }
 
     public function createPermission($name, $key)
@@ -45,7 +49,7 @@ class Permission_Model extends Model {
         
         if(count($uresult) > 0){
             $array['editTime'] = $this->libary->dateTime();
-            $query = $this->db->table($this->table)->update($array, [$this->key => $array[$this->key]]);
+            $query = $this->db->table($this->table)->update($array, [$this->key => $uresult[0]->id]);
             return $this->db->insertID();
         }else{
             $array['creatTime'] = $this->libary->dateTime();
@@ -64,7 +68,7 @@ class Permission_Model extends Model {
         $uresult = $this->getPermission(array("permissionKey"   => $key));
         if(count($uresult) > 0){
             $array['editTime'] = $this->libary->dateTime();
-            $query = $this->db->table($this->table)->update($array, [$this->key => $array[$this->key]]);
+            $query = $this->db->table($this->table)->update($array, [$this->key => $uresult[0]->id]);
             return $this->db->insertID();
         }else{
             $array['creatTime'] = $this->libary->dateTime();
