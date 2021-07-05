@@ -37,6 +37,7 @@ class Layout extends BaseController
 	public function index()
 	{					
 		$permission = new Permission_model();
+		$role = new Role_model();
 		$permission->setPermission();
 		
 		if(empty(session()->get('login')))
@@ -50,7 +51,19 @@ class Layout extends BaseController
 			throw new \CodeIgniter\Exceptions\PageNotFoundException('layout');
 		}
 
+		//lấy danh sách Permission
+		$roleArrayID = $this->roleArrayID();
+		$arrayPemission = $permission->getPermissionID($roleArrayID);
+		
+		//lấy danh sách role
+		$roleID =  json_decode( $this->session->get('roleID') );
+		$arrayRole = $role->getListId($roleID);
+
 		$data['title'] = ucfirst('home');
+
+		$data['arrayPemission'] = json_encode($arrayPemission);
+		$data['arraySession'] = json_encode($this->session->get());
+		$data['arrayRole'] = json_encode($arrayRole);
 
 		echo view('app/layout', $data);
 	}

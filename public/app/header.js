@@ -4,23 +4,36 @@ function($rootScope, $scope, $http, $timeout, $uibModal, $state) {
     var vm = this;
     vm.menu = [];
     vm.getMenu = function(){
-        $http({
-            method: 'POST',
-            url: 'http://localhost:8080/project-root/application/navigation'
-        }).then(function successCallback(response) {
+        $http.post(ApiUrl+'/navigation').then(function(response) {
             // vm.loading = true;
             vm.menu = response.data;
-            console.log(vm.menu);
-        }, function errorCallback(response) {
+            console.log(vm.menu, 'meny');
+        }, function(response) {
     
         });
     }
-    vm.getMenu();
+    
 
     vm.goToPage = function(url){
         $state.go(url);
     }
     
+    vm.permission = function($data){
+        var data = abp.arrayPemission.filter(x=>x.permissionKey == $data);
+        if(data.length>0){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    var init = function(){
+
+        vm.getMenu();
+    }
+
+    init();
+
     $scope.$on('$includeContentLoaded', function() {
         Layout.initHeader(); // init header
     });

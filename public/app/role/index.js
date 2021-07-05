@@ -1,6 +1,6 @@
 /* Setup Layout Part - Header */
-angular.module('MetronicApp').controller('app.role.index', ['$rootScope','$scope', '$http', '$timeout', '$uibModal', '$ngConfirm', 'appConfig',
-function($rootScope, $scope, $http, $timeout, $uibModal, $ngConfirm, $appConfig) {
+angular.module('MetronicApp').controller('app.role.index', ['$rootScope','$scope', '$http', '$timeout', '$uibModal', '$ngConfirm',
+function($rootScope, $scope, $http, $timeout, $uibModal, $ngConfirm) {
 
     var vm = this;
     vm.loading = false;
@@ -10,9 +10,7 @@ function($rootScope, $scope, $http, $timeout, $uibModal, $ngConfirm, $appConfig)
     vm.filter = {
         filter: null
     };
-    debugger;
-    m = $appConfig;
-    console.log(m, 'sang');
+
     vm.loadData = function(){
         $http.post(ApiUrl+'/role/getList', vm.filter)
         .then(function(response){
@@ -24,7 +22,6 @@ function($rootScope, $scope, $http, $timeout, $uibModal, $ngConfirm, $appConfig)
         });
     }
     
-
     vm.addRole = function(data){
         var dataCopy = angular.copy(data);
         openCreateOrEditModal(dataCopy);

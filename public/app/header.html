@@ -371,7 +371,7 @@
         <!-- DOC: Remove dropdown-menu-hover and data-close-others="true" attributes below to disable the dropdown opening on mouse hover -->
         <div class="hor-menu">
             <ul class="nav navbar-nav">
-                <li class="menu-dropdown classic-menu-dropdown" ng-repeat="menuItem in vm.menu" ui-sref-active="active">
+                <li class="menu-dropdown classic-menu-dropdown" ng-repeat="menuItem in vm.menu" ng-if="vm.permission(menuItem.permission)" ui-sref-active="active">
                     <a ui-sref="{{menuItem.url}}" ng-if="!menuItem.length" ng-click="vm.goToPage(menuItem.url)" data-hover="megamenu-dropdown" data-close-others="true" data-toggle="dropdown" class="dropdown-toggle">
                         <i class="{{menuItem.icon}}"></i>
                         {{menuItem.name}}<span class="sr-only"></span>
@@ -381,7 +381,7 @@
                         {{menuItem.name}} <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu" ng-if="menuItem.items.length">
-                        <li ng-repeat="childMenuItem in menuItem.items" ui-sref-active="active" ng-class="{'start':$first}">
+                        <li ng-repeat="childMenuItem in menuItem.items" ng-if="vm.permission(childMenuItem.permission)" ui-sref-active="active" ng-class="{'start':$first}">
                             <a ui-sref="{{childMenuItem.url}}" ng-if="!childMenuItem.items.length" ng-click="vm.goToPage(childMenuItem.url)">
                                 <i class="{{childMenuItem.icon}}"></i>
                                 <span class="title">{{childMenuItem.name}}</span>
@@ -393,7 +393,7 @@
                             </a>
                             <ul class="dropdown-menu" ng-if="childMenuItem.items.length">
                                 <!-- Menu Level 3 -->
-                                <li class="nav-item" ng-repeat="childOfChildMenuItem in childMenuItem.items" ui-sref-active="active" ng-class="{'start':$first}">
+                                <li class="nav-item" ng-repeat="childOfChildMenuItem in childMenuItem.items" ng-if="vm.permission(childOfChildMenuItem.permission)" ui-sref-active="active" ng-class="{'start':$first}">
                                     <a ui-sref="{{childMenuItem.url}}" ng-if="!childOfChildMenuItem.items.length" ng-click="vm.goToPage(childOfChildMenuItem.url)">
                                         <i class="{{childOfChildMenuItem.icon}}"></i>
                                         <span class="title">{{childOfChildMenuItem.name}}</span>
@@ -405,7 +405,7 @@
                                     </a>
                                     <ul class="sub-menu" ng-if="childOfChildMenuItem.items.length">
                                         <!-- Menu Level 4 -->
-                                        <li class="nav-item" ng-repeat="childOfChildOfChildMenuItem in childOfChildMenuItem.items" ui-sref-active="active" ng-class="{'start':$first}">
+                                        <li class="nav-item" ng-repeat="childOfChildOfChildMenuItem in childOfChildMenuItem.items" ng-if="vm.permission(childOfChildOfChildMenuItem.permission)" ui-sref-active="active" ng-class="{'start':$first}">
                                             <a ui-sref="{{childOfChildOfChildMenuItem.url}}">
                                                 <i class="{{childOfChildOfChildMenuItem.icon}}"></i>
                                                 <span class="title">{{childOfChildOfChildMenuItem.name}}</span>

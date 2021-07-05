@@ -48,18 +48,21 @@ MetronicApp.factory('settings', ['$rootScope', function($rootScope) {
 }]);
 
 /* Setup App Main Controller */
-MetronicApp.controller('AppController', ['$scope', '$rootScope', function($scope, $rootScope) {
+MetronicApp.controller('AppController', ['$scope', '$rootScope',  function($scope, $rootScope) {
     $scope.$on('$viewContentLoaded', function() {
         App.initComponents(); // init core components
         //Layout.init(); //  Init entire layout(header, footer, sidebar, etc) on page load if the partials included in server side instead of loading with ng-include directive 
     });
 }]);
 
+
+
 /* Setup Rounting For All Pages */
-MetronicApp.config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider','$qProvider', function($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, $qProvider) {
+MetronicApp.config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider','$qProvider',  function($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, $qProvider) {
     // Redirect any unmatched url
     $urlRouterProvider.otherwise("/dashboard");  
-    $stateProvider
+    if(abp.hasPemission("Page.dashboard")){
+        $stateProvider
         // Home
         .state('dashboard', {
             url: "/dashboard",
@@ -77,8 +80,11 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider
                 }]
             }
         })
-
-    $stateProvider
+    }
+    
+    
+    if(abp.hasPemission("Page.hethong.user")){
+        $stateProvider
         // Home
         .state('user', {
             url: "/user",
@@ -100,8 +106,10 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider
                 }]
             }
         })
+    }
     
-    $stateProvider
+    if(abp.hasPemission("Page.hethong.role")){
+        $stateProvider
         // Home
         .state('role', {
             url: "/role",
@@ -124,10 +132,10 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider
                 }]
             }
         })
+    }
+   
 
-        $qProvider.errorOnUnhandledRejections(false);
-
-    
+    $qProvider.errorOnUnhandledRejections(false);
 }]);
 
 /* Init global settings and run the app */

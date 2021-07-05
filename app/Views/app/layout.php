@@ -23,6 +23,10 @@
             var baseUrl =  '<?php echo base_url()?>';
             var ApiUrl = '<?php echo base_admin_url()?>';
             var app = app || {};
+            var abp =  abp || {};
+            abp.arrayRole = <?php echo $arrayRole; ?>;
+            abp.arrayPemission = <?php echo $arrayPemission;  ?>;
+            abp.arraySession = <?php echo $arraySession; ?>;
         </script>
 
         
@@ -94,7 +98,7 @@
         <script src="<?php echo base_url()?>/assets/admin/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
         <script src="<?php echo base_url()?>/assets/admin/global/plugins/bootstrap-toastr/toastr.js" type="text/javascript"></script>
         <!-- END CORE JQUERY PLUGINS -->
-        
+        <script src="<?php echo base_url()?>/app/main/appConfig.js" type="text/javascript"></script>
         <!-- BEGIN CORE ANGULARJS PLUGINS -->
         <script src="<?php echo base_url()?>/scripts/angular.min.js" type="text/javascript"></script>
         <script src="<?php echo base_url()?>/scripts/angular-sanitize.min.js" type="text/javascript"></script>
@@ -106,6 +110,7 @@
         <script src="<?php echo base_url()?>/common/paging/dirPagination.js" type="text/javascript"></script>
         <script src="<?php echo base_url()?>/scripts/angular-confirm/js/angular-confirm.js" type="text/javascript"></script>
         <!-- BEGIN APP LEVEL ANGULARJS SCRIPTS -->
+        
         <script src="<?php echo base_url()?>/app/main/main.js" type="text/javascript"></script>
         <script src="<?php echo base_url()?>/app/header.js" type="text/javascript"></script>
         <script src="<?php echo base_url()?>/app/footer.js" type="text/javascript"></script>
@@ -113,6 +118,7 @@
         <script src="<?php echo base_url()?>/app/quick-sidebar.js" type="text/javascript"></script>
         <script src="<?php echo base_url()?>/assets/admin/js/directives.js" type="text/javascript"></script>
         <script src="<?php echo base_url()?>/common/directives/checkValidate.js" type="text/javascript"></script>
+
         <!-- <script src="<?php echo base_url()?>/common/checkValidate.js" type="text/javascript"></script> -->
         <!-- END APP LEVEL ANGULARJS SCRIPTS -->
         <!-- BEGIN APP LEVEL JQUERY SCRIPTS -->
