@@ -11,7 +11,7 @@ use App\Controllers\BaseController;
 use App\Models\Login_Model;
 use App\Models\Permission_Model;
 use App\Models\User_Model;
-class Login extends BaseController
+class Forget extends BaseController
 {
 	protected $session;
     protected $baseUrl;

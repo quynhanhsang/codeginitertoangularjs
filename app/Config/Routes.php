@@ -38,6 +38,8 @@ $routes->get('/application', 'Layout::index', ['namespace' => 'App\Controllers\A
 // $routes->get('(:any)', 'Page::view/$1');
 
 $routes->get('application/login', 'Login::index', ['namespace' => 'App\Controllers\Application']);
+$routes->get('application/register', 'Register::index', ['namespace' => 'App\Controllers\Application']);
+$routes->get('application/createAcount', 'CreateAcount::index', ['namespace' => 'App\Controllers\Application']);
 $routes->post('application/authenticate', 'Login::auth_user', ['namespace' => 'App\Controllers\Application']);
 $routes->get('application/authenticate/logout', 'Login::logout', ['namespace' => 'App\Controllers\Application']);
 

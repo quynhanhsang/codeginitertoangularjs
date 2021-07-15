@@ -21,7 +21,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
     <head>
         <meta charset="utf-8" />
-        <title>Đăng kí</title>
+        <title>Metronic | User Login 4</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta content="width=device-width, initial-scale=1" name="viewport" />
         <meta content="" name="description" />
@@ -64,69 +64,26 @@ License: You must have a valid license purchased only from themeforest(the above
         <!-- END LOGO -->
         <!-- BEGIN LOGIN -->
         <div class="content">
-            <!-- BEGIN LOGIN FORM -->
-            <form class="login-form" action="authenticate" method="post">
-                <h3 class="form-title">Đăng nhập</h3>
-                <?php if(session()->getFlashdata('msg')):?>
-                    <div class="alert alert-danger">
-                        <button class="close" data-close="alert"></button>
-                        <span> <?php echo session()->getFlashdata('msg') ?> </span>
-                    </div>
-                <?php endif;?>
-                
+            <!-- BEGIN FORGOT PASSWORD FORM -->
+            <form class="forget-form" action="index.html" method="post">
+                <h3>Forget Password ?</h3>
+                <p> Enter your e-mail address below to reset your password. </p>
                 <div class="form-group">
-                    <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
-                    <label class="control-label visible-ie8 visible-ie9">Username</label>
                     <div class="input-icon">
-                        <i class="fa fa-user"></i>
-                        <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Username" name="userName" /> </div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label visible-ie8 visible-ie9">Password</label>
-                    <div class="input-icon">
-                        <i class="fa fa-lock"></i>
-                        <input class="form-control placeholder-no-fix" type="password" autocomplete="off" placeholder="Password" name="passWord" /> </div>
+                        <i class="fa fa-envelope"></i>
+                        <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Email" name="email" /> </div>
                 </div>
                 <div class="form-actions">
-                    <label class="rememberme mt-checkbox mt-checkbox-outline">
-                        <input type="checkbox" name="remember" value="1" /> Remember me
-                        <span></span>
-                    </label>
-                    <button type="submit" class="btn green pull-right"> Login </button>
-                </div>
-                <!-- <div class="login-options">
-                    <h4>Or login with</h4>
-                    <ul class="social-icons">
-                        <li>
-                            <a class="facebook" data-original-title="facebook" href="javascript:;"> </a>
-                        </li>
-                        <li>
-                            <a class="twitter" data-original-title="Twitter" href="javascript:;"> </a>
-                        </li>
-                        <li>
-                            <a class="googleplus" data-original-title="Goole Plus" href="javascript:;"> </a>
-                        </li>
-                        <li>
-                            <a class="linkedin" data-original-title="Linkedin" href="javascript:;"> </a>
-                        </li>
-                    </ul>
-                </div> -->
-                <div class="forget-password">
-                    <h4>Quên mật khẩu</h4>
-                    <p> hãy nhấp <a href="javascript:;" id="forget-password"> vào đây </a> để đặt lại mật khẩu của bạn.</p>  
-                        
-                </div>
-                <div class="create-account">
-                    <p> Bạn chưa có tài khoản ?&nbsp;
-                        <a href="javascript:;" id="register-btn"> Tạo tài khoản </a>
-                    </p>
+                    <button type="button" id="back-btn" class="btn red btn-outline">Back </button>
+                    <button type="submit" class="btn green pull-right"> Submit </button>
                 </div>
             </form>
-            <!-- END LOGIN FORM -->
+            <!-- END FORGOT PASSWORD FORM -->
+
         </div>
         <!-- END LOGIN -->
         <!-- BEGIN COPYRIGHT -->
-        <div class="copyright"> 2021 &copy; basic template. </div>
+        <div class="copyright"> 2014 &copy; Metronic - Admin Dashboard Template. </div>
         <!-- END COPYRIGHT -->
         <!--[if lt IE 9]>
 <script src="<?php echo base_url()?>/assets/admin/global/plugins/respond.min.js"></script>

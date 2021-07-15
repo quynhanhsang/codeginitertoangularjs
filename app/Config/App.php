@@ -23,9 +23,9 @@ class App extends BaseConfig
 	 *
 	 * @var string
 	 */
-	public $baseURL = 'http://localhost:8080/project-root/public';
+	public $baseURL = 'http://localhost:80/duan/public';
 
-	public $baseAdminURL = 'http://localhost:8080/project-root/application';
+	public $baseAdminURL = 'http://localhost:80/duan/application';
 	/**
 	 * --------------------------------------------------------------------------
 	 * Index File

@@ -92,23 +92,12 @@ class User_Model extends Model {
         } 
     }
 
-    // public function createAdmin()
-    // {
-    //     $array = array(
-    //         'userName' => 'Admin',  
-    //         'level' => 1,
-    //         'tennantId' => 1,
-    //         'email' => 'sangtrank64@gmail.com',
-    //         'phone' => '0984407771',
-    //         'name' => '',       
-    //         'passWord' => '123456',
-    //         'subName' => '',
-    //         'roleID' => '',
-    //     );
-
-    //     $query = $this->db->table($this->table)->insert($array);
-    //     return $this->db->insertID();
-    // }
+    public function getAll()
+    {
+        $query = $this->db->table($this->table)->where('isDelete',0); 
+        $array =$query->get()->getResult(); 
+        return $array;
+    }
 
     public function deleteId($id)
     {
