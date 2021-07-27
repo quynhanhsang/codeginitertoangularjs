@@ -82,7 +82,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider
         })
     }
     
-    
+    //admin
     if(abp.hasPemission("Page.hethong.user")){
         $stateProvider
         // Home
@@ -133,7 +133,38 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider
             }
         })
     }
-   
+    //end admin
+
+    //cấu hình
+    debugger;
+    if(abp.hasPemission("Page.cauhinh.cauhinhchung")){
+        $stateProvider
+        // Home
+        .state('cauhinhchung', {
+            url: "/cauhinhchung",
+            templateUrl: baseUrl+'/app/cauhinhchung/index.html',            
+            data: {pageTitle: 'Cấu hình chung'},
+            controller: "app.cauhinhchung.index as vm",
+            resolve: {
+                deps: ['$ocLazyLoad', function($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        insertBefore: '#ng_load_plugins_before', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
+                        files: [
+                            baseUrl+'/app/cauhinhchung/index.js',
+                            baseUrl+'/app/cauhinhchung/modal/createOreUpdate.js',
+                            baseUrl+'/assets/admin/global/plugins/ckeditor/ckeditor.js',
+                            // baseUrl+'/assets/admin/global/plugins/jstree/dist/themes/default/style.min.css',
+                            // baseUrl+'/assets/admin/global/plugins/jstree/dist/jstree.min.js',
+                            // baseUrl+'/assets/admin/pages/scripts/ui-tree.min.js',
+                            // baseUrl+'/common/directives/jsTree.directive.js',
+                        ] 
+                    });
+                }]
+            }
+        })
+    }
+    //end cấu hình 
+
 
     $qProvider.errorOnUnhandledRejections(false);
 }]);
@@ -142,4 +173,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider
 MetronicApp.run(["$rootScope", "settings", "$state", function($rootScope, settings, $state) {
     $rootScope.$state = $state; // state to be accessed from view
     $rootScope.$settings = settings; // state to be accessed from view
+    // $rootScope.$on('$viewContentLoaded', function() {
+    //     $templateCache.removeAll();
+    //  });
 }]);

@@ -50,7 +50,7 @@ class Permission_Model extends Model {
         if(count($uresult) > 0){
             $array['editTime'] = $this->libary->dateTime();
             $query = $this->db->table($this->table)->update($array, [$this->key => $uresult[0]->id]);
-            return $this->db->insertID();
+            return $uresult[0]->id;
         }else{
             $array['creatTime'] = $this->libary->dateTime();
             $query = $this->db->table($this->table)->insert($array);
@@ -69,7 +69,7 @@ class Permission_Model extends Model {
         if(count($uresult) > 0){
             $array['editTime'] = $this->libary->dateTime();
             $query = $this->db->table($this->table)->update($array, [$this->key => $uresult[0]->id]);
-            return $this->db->insertID();
+            return $uresult[0]->id;
         }else{
             $array['creatTime'] = $this->libary->dateTime();
             $query = $this->db->table($this->table)->insert($array);
