@@ -142,6 +142,7 @@ function($rootScope, $scope, $http, $timeout, $uibModal, $ngConfirm) {
             templateUrl: baseUrl+'/app/cauhinhchung/modal/createOreUpdate.html',
             controller: 'app.cauhinhchung.modal.createOreUpdate as vm',
             backdrop: 'static',
+            size: 'lg',
             resolve: {
                 cauhinh: data
             }

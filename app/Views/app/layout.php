@@ -6,6 +6,11 @@
     <head>
         <meta charset="utf-8" />
         <title data-ng-bind="$state.current.data.pageTitle">Metronic | Dashboard 3</title>
+
+        <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />  
+        <meta http-equiv="Pragma" content="no-cache" />  
+        <meta http-equiv="Expires" content="0" /> 
+
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta content="width=device-width, initial-scale=1" name="viewport" />
         <meta content="" name="description" />
@@ -41,6 +46,7 @@
         <link href="<?php echo base_url()?>/assets/admin/layouts/layout3/css/layout.min.css" rel="stylesheet" type="text/css" />
         <link href="<?php echo base_url()?>/assets/admin/layouts/layout3/css/themes/default.min.css" rel="stylesheet" type="text/css" id="style_color" />
         <link href="<?php echo base_url()?>/assets/admin/layouts/layout3/css/custom.min.css" rel="stylesheet" type="text/css" />
+        <link href="<?php echo base_url()?>/scripts/ng-ckeditor/ng-ckeditor.css" rel="stylesheet" type="text/css" />
         <!-- END THEME STYLES -->
         <link rel="shortcut icon" href="favicon.ico" /> 
         <style>
@@ -109,6 +115,8 @@
         <!-- END CORE ANGULARJS PLUGINS -->
         <script src="<?php echo base_url()?>/common/paging/dirPagination.js" type="text/javascript"></script>
         <script src="<?php echo base_url()?>/scripts/angular-confirm/js/angular-confirm.js" type="text/javascript"></script>
+        <script src="<?php echo base_url()?>/assets/admin/global/plugins/ckeditor/ckeditor.js" type="text/javascript"></script>
+        <script src="<?php echo base_url()?>/scripts/ng-ckeditor/ng-ckeditor.js" type="text/javascript"></script>
         <!-- BEGIN APP LEVEL ANGULARJS SCRIPTS -->
         
         <script src="<?php echo base_url()?>/app/main/main.js" type="text/javascript"></script>

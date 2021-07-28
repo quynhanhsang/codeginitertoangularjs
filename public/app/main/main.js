@@ -8,8 +8,8 @@ var MetronicApp = angular.module("MetronicApp", [
     "oc.lazyLoad",  
     "ngSanitize",
     "angularUtils.directives.dirPagination",
-    "cp.ngConfirm"
-
+    "cp.ngConfirm",
+    'ngCkeditor'
 ]); 
 
 /* Configure ocLazyLoader(refer: https://github.com/ocombe/ocLazyLoad) */
