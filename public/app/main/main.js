@@ -273,6 +273,33 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider
             }
         })
     }
+
+    if(abp.hasPemission("Page.danhmuc.category")){
+        $stateProvider
+        // Home
+        .state('category', {
+            url: "/category",
+            templateUrl: baseUrl+'/app/category/index.html',            
+            data: {pageTitle: 'category'},
+            controller: "app.category.index as vm",
+            resolve: {
+                deps: ['$ocLazyLoad', function($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        insertBefore: '#ng_load_plugins_before', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
+                        files: [
+                            baseUrl+'/app/category/index.js',
+                            baseUrl+'/app/category/modal/createOreUpdate.js',
+                            //baseUrl+'/assets/admin/global/plugins/ckeditor/ckeditor.js',
+                            // baseUrl+'/assets/admin/global/plugins/jstree/dist/themes/default/style.min.css',
+                            // baseUrl+'/assets/admin/global/plugins/jstree/dist/jstree.min.js',
+                            // baseUrl+'/assets/admin/pages/scripts/ui-tree.min.js',
+                            // baseUrl+'/common/directives/jsTree.directive.js',
+                        ] 
+                    });
+                }]
+            }
+        })
+    }
     //end Danh mục
 
     $qProvider.errorOnUnhandledRejections(false);

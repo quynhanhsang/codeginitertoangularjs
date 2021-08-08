@@ -1,0 +1,88 @@
+<div class="portlet light portlet-fit ">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-list font-dark"></i>
+            <span class="caption-subject font-dark bold uppercase">Danh sách menu</span>
+        </div>
+        <div class="actions">
+            <div class="btn-group">
+                <button type="submit" class="btn blue btn-sm" ng-click="vm.addCauHinhChung(null)"> <em class="icon-plus"></em> Thêm mới</button>
+                <button type="submit" ng-if="vm.arrCheckbox.length>0" class="btn red btn-sm" ng-click="vm.deleteAll()" style="margin-left: 5px;"><em class="icon-trash"></em> Xóa</button>
+            </div>
+        </div>
+    </div>
+    <div class="portlet-body">
+        <div class="row">
+            <div class="col-md-5">
+                <div class="form-group">
+                    <label class="control-label">Tìm kiếm</label>
+                    <div class="input-group">
+                        <div class="input-icon">
+                            <i class="fa fa-search fa-fw"></i>
+                            <input class="form-control" type="text" name="timkiem" ng-model="vm.filter.filter" placeholder="tìm kiếm"> 
+                        </div>
+                        <span class="input-group-btn">
+                            <button  class="btn btn-success" type="button" ng-click="vm.search()">
+                                <i class="fa fa-search fa-fw"></i> Tìm kiếm</button>
+                        </span>
+                    </div>
+                </div>                   
+            </div>
+        </div>
+        <uib-tabset active="active">
+            <uib-tab index="$index" ng-repeat="menu in vm.listMenu" heading="{{menu.title}}">
+
+            </uib-tab>
+        </uib-tabset>
+        
+        <div class="table-scrollable">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th style="width: 40px" class="text-center"> # </th>
+                        <th style="width: 30px">
+                            <label class="mt-checkbox mt-checkbox-outline" >
+                                <input type="checkbox" ng-change="vm.clickAllCheckbox()" ng-model="vm.checkboxAll">
+                                <span></span>
+                            </label>
+                        </th>
+                        <th> Mã danh mục </th>
+                        <th> Tiêu đề </th>
+                        <th> Thứ tự </th>
+                        <th style="text-align: center;"> Trạng Thái </th>
+                        <th style="width:100px; text-align: center;"> Thao tác </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr dir-paginate="item in vm.data  | itemsPerPage: 10" pagination-id="pgPage" current-page="vm.currentPage">
+                        <td class="text-center"> {{$index}} </td>
+                        <td>
+                            <label class="mt-checkbox mt-checkbox-outline">
+                                <input type="checkbox" ng-change="vm.clickCheckbox(item)" ng-model="item.checkbox">
+                                <span></span>
+                            </label>
+                        </td>
+                        <td> {{item.typeCode}}</td>
+                        <td> {{item.title}} </td>
+                        <td> {{item.sortOrder}} </td>
+                        <td>
+                            <p style="margin: 0;text-align:center;">
+                                <i ng-if="item.isActive == 0" class="fa fa-times font-red"></i>
+                                <i ng-if="item.isActive == 1" class="fa fa-check font-green-meadow"></i>
+                            </p>    
+                        </td>
+                        <td>
+                            <a href="javascript:;" class="btn btn-outline btn-circle green btn-sm purple" ng-click="vm.editCauHinhChung(item)"><i class="fa fa-edit"></i> </a>
+                            <a href="javascript:;" class="btn btn-outline btn-circle dark btn-sm black"  ng-click="vm.deleteCauHinhChung(item)"> <i class="fa fa-trash-o"></i> </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <dir-pagination-controls pagination-id="pgPage" max-size="10"
+            direction-links="true"
+            boundary-links="true"></dir-pagination-controls>
+        </div>
+    </div>
+</div>
+

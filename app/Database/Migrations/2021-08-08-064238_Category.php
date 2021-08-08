@@ -14,14 +14,48 @@ class Category extends Migration
                     'unsigned'       => true,
                     'auto_increment' => true,
             ],
-            'menuId' => [
+            'target' => [
                 'type' => 'VARCHAR',
                 'null' => true,
                 'constraint' => '200',
             ],
-            'categoryId' => [
+            'description' => [
+                'type' => 'VARCHAR',
+                'null' => true,
+                'constraint' => '200',
+            ],
+            'image' => [
+                'type' => 'VARCHAR',
+                'null' => true,
+                'constraint' => '200',
+            ],
+            'parentId' => [
                 'type' => 'INT',
                 'constraint' => '11',
+            ],
+            'level' => [
+                'type' => 'INT',
+                'constraint' => '11',
+            ],
+            'seoTitle' => [
+                'type' => 'VARCHAR',
+                'null' => true,
+                'constraint' => '200',
+            ],
+            'seoAlias' => [
+                'type' => 'VARCHAR',
+                'null' => true,
+                'constraint' => '200',
+            ],
+            'seoKeywords' => [
+                'type' => 'VARCHAR',
+                'null' => true,
+                'constraint' => '200',
+            ],
+            'seoDescription' => [
+                'type' => 'VARCHAR',
+                'null' => true,
+                'constraint' => '200',
             ],
             'sortOrder' => [
                 'type' => 'INT',

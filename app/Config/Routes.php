@@ -90,6 +90,14 @@ $routes->post('application/categorytype/delete', 'Categorytype::delete', ['names
 $routes->post('application/categorytype/deleteAll', 'Categorytype::deleteAll', ['namespace' => 'App\Controllers\Application', 'filter' => 'auth']);
 $routes->post('application/categorytype/getRollAllDLL', 'Categorytype::getRollAllDLL', ['namespace' => 'App\Controllers\Application', 'filter' => 'auth']);
 
+//category
+$routes->get('application/category', 'Category::index', ['namespace' => 'App\Controllers\Application', 'filter' => 'auth']);
+$routes->post('application/category/getList', 'Category::getList', ['namespace' => 'App\Controllers\Application', 'filter' => 'auth']);
+$routes->post('application/category/createOrUpdate', 'Category::createOrUpdate', ['namespace' => 'App\Controllers\Application', 'filter' => 'auth']);
+$routes->post('application/category/delete', 'Category::delete', ['namespace' => 'App\Controllers\Application', 'filter' => 'auth']);
+$routes->post('application/category/deleteAll', 'Category::deleteAll', ['namespace' => 'App\Controllers\Application', 'filter' => 'auth']);
+$routes->post('application/category/getRollAllDLL', 'Category::getRollAllDLL', ['namespace' => 'App\Controllers\Application', 'filter' => 'auth']);
+
 //menu category
 $routes->get('application/menucategory', 'MenuCategory::index', ['namespace' => 'App\Controllers\Application', 'filter' => 'auth']);
 $routes->get('application/menucategory/menuGetAllDLL', 'MenuCategory::menuGetAllDLL', ['namespace' => 'App\Controllers\Application', 'filter' => 'auth']);

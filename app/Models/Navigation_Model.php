@@ -90,13 +90,13 @@ class Navigation_Model extends Model {
             "length"     => 2,
             "items"      => array(
                 array(
-                    "name"       => "Menu danh mục",
-                    "permission" => "Page.danhmuc.menucategory",
-                    "url"        => "menucategory",
+                    "name"       => "Danh mục",
+                    "permission" => "Page.danhmuc.category",
+                    "url"        => "category",
                     "icon"       => "",
                 ),
                 array(
-                    "name"       => "User",
+                    "name"       => "Menu danh mục",
                     "permission" => "Page.danhmuc.menucategory",
                     "url"        => "menucategory",
                     "icon"       => "",

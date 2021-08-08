@@ -40,7 +40,8 @@ class Permission_Model extends Model {
         $cauHinh4 = $this->createChildPermission('Menu','Page.cauhinh.categorytype', $cauHinh);
 
         $danhmuc = $this->createPermission('Danh mục','Page.danhmuc');
-        $danhmuc1 = $this->createChildPermission('Menu danh mục','Page.danhmuc.menucategory', $danhmuc);
+        $danhmuc1 = $this->createChildPermission('Danh mục','Page.danhmuc.category', $danhmuc);
+        $danhmuc2 = $this->createChildPermission('Menu danh mục','Page.danhmuc.menucategory', $danhmuc);
     }
 
     public function createPermission($name, $key)
