@@ -1,5 +1,5 @@
 /* Setup Layout Part - Header */
-angular.module('MetronicApp').controller('app.cauhinhchung.index', ['$rootScope','$scope', '$http', '$timeout', '$uibModal','$ngConfirm',
+angular.module('MetronicApp').controller('app.vitriquangcao.index', ['$rootScope','$scope', '$http', '$timeout', '$uibModal','$ngConfirm',
 function($rootScope, $scope, $http, $timeout, $uibModal, $ngConfirm) {
     var vm = this;
     vm.loading = false;
@@ -16,7 +16,7 @@ function($rootScope, $scope, $http, $timeout, $uibModal, $ngConfirm) {
             //app.success('success');
             vm.data = response.data;
             vm.data.forEach(function(item){
-               item.creatTime = new Date(item.creatTime);
+                item.creatTime = new Date(item.creatTime);
             })
             vm.arrCheckbox = [];
         }, function(){
@@ -138,8 +138,8 @@ function($rootScope, $scope, $http, $timeout, $uibModal, $ngConfirm) {
     function openCreateOrEditadvModal(data) {
         
         var modalInstance = $uibModal.open({
-            templateUrl: baseUrl+'/app/cauhinhchung/modal/createOreUpdate.html',
-            controller: 'app.cauhinhchung.modal.createOreUpdate as vm',
+            templateUrl: baseUrl+'/app/vitriquangcao/modal/createOreUpdate.html',
+            controller: 'app.vitriquangcao.modal.createOreUpdate as vm',
             backdrop: 'static',
             size: 'lg',
             resolve: {

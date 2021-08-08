@@ -2,7 +2,7 @@
     <div class="portlet-title">
         <div class="caption">
             <i class="fa fa-list font-dark"></i>
-            <span class="caption-subject font-dark bold uppercase">Danh sách cấu hình chung</span>
+            <span class="caption-subject font-dark bold uppercase">Danh sách menu</span>
         </div>
         <div class="actions">
             <div class="btn-group">
@@ -40,11 +40,11 @@
                                 <span></span>
                             </label>
                         </th>
-                        <th> Setting Key </th>
-                        <th> Setting Value </th>
-                        <th> Description </th>
-                        <th> Ngày tạo </th>
-                        <th style="width:100px"> Thao tác </th>
+                        <th> Mã danh mục </th>
+                        <th> Tiêu đề </th>
+                        <th> Thứ tự </th>
+                        <th style="text-align: center;"> Trạng Thái </th>
+                        <th style="width:100px; text-align: center;"> Thao tác </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -56,10 +56,15 @@
                                 <span></span>
                             </label>
                         </td>
-                        <td> {{item.settingKey}}</td>
-                        <td> {{item.settingValue}} </td>
-                        <td> {{item.description}} </td>
-                        <td> {{item.creatTimes | date: 'dd-MM-yyyy HH:ss'}} </td>
+                        <td> {{item.typeCode}}</td>
+                        <td> {{item.title}} </td>
+                        <td> {{item.sortOrder}} </td>
+                        <td>
+                            <p style="margin: 0;text-align:center;">
+                                <i ng-if="item.isActive == 0" class="fa fa-times font-red"></i>
+                                <i ng-if="item.isActive == 1" class="fa fa-check font-green-meadow"></i>
+                            </p>    
+                        </td>
                         <td>
                             <a href="javascript:;" class="btn btn-outline btn-circle green btn-sm purple" ng-click="vm.editCauHinhChung(item)"><i class="fa fa-edit"></i> </a>
                             <a href="javascript:;" class="btn btn-outline btn-circle dark btn-sm black"  ng-click="vm.deleteCauHinhChung(item)"> <i class="fa fa-trash-o"></i> </a>

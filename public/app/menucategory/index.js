@@ -1,9 +1,10 @@
 /* Setup Layout Part - Header */
-angular.module('MetronicApp').controller('app.cauhinhchung.index', ['$rootScope','$scope', '$http', '$timeout', '$uibModal','$ngConfirm',
+angular.module('MetronicApp').controller('app.menucategory.index', ['$rootScope','$scope', '$http', '$timeout', '$uibModal','$ngConfirm',
 function($rootScope, $scope, $http, $timeout, $uibModal, $ngConfirm) {
     var vm = this;
     vm.loading = false;
     vm.data =[];
+    vm.listMenu = [];
     vm.currentPage = 1;
 
     vm.filter = {
@@ -11,14 +12,23 @@ function($rootScope, $scope, $http, $timeout, $uibModal, $ngConfirm) {
     };
 
     vm.loadData = function(){
-        $http.post(ApiUrl+'/systemconfig/getList', vm.filter)
+        $http.post(ApiUrl+'/menucategory/getList', vm.filter)
         .then(function(response){
             //app.success('success');
             vm.data = response.data;
-            vm.data.forEach(function(item){
-               item.creatTime = new Date(item.creatTime);
-            })
+            // vm.data.forEach(function(item){
+            //     item.creatTime = new Date(item.creatTime);
+            // })
             vm.arrCheckbox = [];
+        }, function(){
+
+        });
+    }
+
+    vm.loadMenu = function(){
+        $http.get(ApiUrl+'/menucategory/menuGetAllDLL')
+        .then(function(response){
+            vm.listMenu = response.data;
         }, function(){
 
         });
@@ -47,7 +57,7 @@ function($rootScope, $scope, $http, $timeout, $uibModal, $ngConfirm) {
                     btnClass: 'btn-primary',
                     keys: ['enter'],
                     action: function (scope) {
-                        $http.post(ApiUrl+'/systemconfig/delete', data.id)
+                        $http.post(ApiUrl+'/menucategory/delete', data.id)
                             .then(function(response){
                                 console.log(response);
                                 vm.loadData();
@@ -79,7 +89,7 @@ function($rootScope, $scope, $http, $timeout, $uibModal, $ngConfirm) {
                     action: function (scope) {
                         
 
-                        $http.post(ApiUrl+'/systemconfig/deleteAll', vm.arrCheckbox)
+                        $http.post(ApiUrl+'/menucategory/deleteAll', vm.arrCheckbox)
                         .then(function(response){
                             console.log(response, 'response');
                             vm.loadData();
@@ -138,8 +148,8 @@ function($rootScope, $scope, $http, $timeout, $uibModal, $ngConfirm) {
     function openCreateOrEditadvModal(data) {
         
         var modalInstance = $uibModal.open({
-            templateUrl: baseUrl+'/app/cauhinhchung/modal/createOreUpdate.html',
-            controller: 'app.cauhinhchung.modal.createOreUpdate as vm',
+            templateUrl: baseUrl+'/app/menucategory/modal/createOreUpdate.html',
+            controller: 'app.menucategory.modal.createOreUpdate as vm',
             backdrop: 'static',
             size: 'lg',
             resolve: {
@@ -154,6 +164,7 @@ function($rootScope, $scope, $http, $timeout, $uibModal, $ngConfirm) {
 
     var init = function () {
         vm.loadData();
+        vm.loadMenu();
     };
     init();
 

@@ -66,6 +66,38 @@ $routes->post('application/role/delete(:any)', 'Role::delete/$1', ['namespace' =
 
 $routes->post('application/getpermission', 'Role::getPermissionAll', ['namespace' => 'App\Controllers\Application', 'filter' => 'auth']);
 
+// cấu hình chung
+$routes->get('application/systemconfig', 'SystemConfig::index', ['namespace' => 'App\Controllers\Application', 'filter' => 'auth']);
+$routes->post('application/systemconfig/getList', 'SystemConfig::getList', ['namespace' => 'App\Controllers\Application', 'filter' => 'auth']);
+$routes->post('application/systemconfig/createOrUpdate', 'SystemConfig::createOrUpdate', ['namespace' => 'App\Controllers\Application', 'filter' => 'auth']);
+$routes->post('application/systemconfig/delete', 'SystemConfig::delete', ['namespace' => 'App\Controllers\Application', 'filter' => 'auth']);
+$routes->post('application/systemconfig/deleteAll', 'SystemConfig::deleteAll', ['namespace' => 'App\Controllers\Application', 'filter' => 'auth']);
+$routes->post('application/systemconfig/getRollAllDLL', 'SystemConfig::getRollAllDLL', ['namespace' => 'App\Controllers\Application', 'filter' => 'auth']);
+
+//menus
+$routes->get('application/menus', 'Menus::index', ['namespace' => 'App\Controllers\Application', 'filter' => 'auth']);
+$routes->post('application/menus/getList', 'Menus::getList', ['namespace' => 'App\Controllers\Application', 'filter' => 'auth']);
+$routes->post('application/menus/createOrUpdate', 'Menus::createOrUpdate', ['namespace' => 'App\Controllers\Application', 'filter' => 'auth']);
+$routes->post('application/menus/delete', 'Menus::delete', ['namespace' => 'App\Controllers\Application', 'filter' => 'auth']);
+$routes->post('application/menus/deleteAll', 'Menus::deleteAll', ['namespace' => 'App\Controllers\Application', 'filter' => 'auth']);
+$routes->post('application/menus/getRollAllDLL', 'Menus::getRollAllDLL', ['namespace' => 'App\Controllers\Application', 'filter' => 'auth']);
+
+//category type
+$routes->get('application/categorytype', 'Categorytype::index', ['namespace' => 'App\Controllers\Application', 'filter' => 'auth']);
+$routes->post('application/categorytype/getList', 'Categorytype::getList', ['namespace' => 'App\Controllers\Application', 'filter' => 'auth']);
+$routes->post('application/categorytype/createOrUpdate', 'Categorytype::createOrUpdate', ['namespace' => 'App\Controllers\Application', 'filter' => 'auth']);
+$routes->post('application/categorytype/delete', 'Categorytype::delete', ['namespace' => 'App\Controllers\Application', 'filter' => 'auth']);
+$routes->post('application/categorytype/deleteAll', 'Categorytype::deleteAll', ['namespace' => 'App\Controllers\Application', 'filter' => 'auth']);
+$routes->post('application/categorytype/getRollAllDLL', 'Categorytype::getRollAllDLL', ['namespace' => 'App\Controllers\Application', 'filter' => 'auth']);
+
+//menu category
+$routes->get('application/menucategory', 'MenuCategory::index', ['namespace' => 'App\Controllers\Application', 'filter' => 'auth']);
+$routes->get('application/menucategory/menuGetAllDLL', 'MenuCategory::menuGetAllDLL', ['namespace' => 'App\Controllers\Application', 'filter' => 'auth']);
+$routes->post('application/menucategory/getList', 'MenuCategory::getList', ['namespace' => 'App\Controllers\Application', 'filter' => 'auth']);
+$routes->post('application/menucategory/createOrUpdate', 'MenuCategory::createOrUpdate', ['namespace' => 'App\Controllers\Application', 'filter' => 'auth']);
+$routes->post('application/menucategory/delete', 'MenuCategory::delete', ['namespace' => 'App\Controllers\Application', 'filter' => 'auth']);
+$routes->post('application/menucategory/deleteAll', 'MenuCategory::deleteAll', ['namespace' => 'App\Controllers\Application', 'filter' => 'auth']);
+$routes->post('application/menucategory/getRollAllDLL', 'MenuCategory::getRollAllDLL', ['namespace' => 'App\Controllers\Application', 'filter' => 'auth']);
 
 /*
  * --------------------------------------------------------------------

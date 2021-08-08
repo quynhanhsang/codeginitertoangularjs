@@ -35,7 +35,7 @@ function($rootScope, $uibModalInstance, $scope, $http, $timeout, user) {
         }).then(function (response) {
             vm.loading = true;
             var arrayRole = response.data;
-            debugger;
+            
             var arrayRoleID = (vm.data.roleID) ? JSON.parse(vm.data.roleID) : null;
             if(arrayRoleID){
                 var i=0;

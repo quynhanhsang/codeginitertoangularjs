@@ -53,12 +53,24 @@ class Navigation_Model extends Model {
             "permission" => "Page.cauhinh",
             "url"        => "",
             "icon"       => "",
-            "length"     => 2,
+            "length"     => 3,
             "items"      => array(
                 array(
-                    "name"       => "Vị trí quản cáo",
+                    "name"       => "Vị trí quảng cáo",
                     "permission" => "Page.cauhinh.vitriquangcao",
                     "url"        => "vitriquangcao",
+                    "icon"       => "",
+                ),
+                array(
+                    "name"       => "Kiểu Danh mục",
+                    "permission" => "Page.cauhinh.categorytype",
+                    "url"        => "categorytype",
+                    "icon"       => "",
+                ),
+                array(
+                    "name"       => "Menu",
+                    "permission" => "Page.cauhinh.menu",
+                    "url"        => "menu",
                     "icon"       => "",
                 ),
                 array(
@@ -69,8 +81,31 @@ class Navigation_Model extends Model {
                 )
             )
         );
+
+        $menuDanhmuc =  array(
+            "name"       => "Danh mục",
+            "permission" => "Page.danhmuc",
+            "url"        => "",
+            "icon"       => "",
+            "length"     => 2,
+            "items"      => array(
+                array(
+                    "name"       => "Menu danh mục",
+                    "permission" => "Page.danhmuc.menucategory",
+                    "url"        => "menucategory",
+                    "icon"       => "",
+                ),
+                array(
+                    "name"       => "User",
+                    "permission" => "Page.danhmuc.menucategory",
+                    "url"        => "menucategory",
+                    "icon"       => "",
+                )
+            )
+        );
         array_push($array, $menuDashboard);
         array_push($array, $menuCauHinh);
+        array_push($array, $menuDanhmuc);
         array_push($array, $menuHeThong);
 
         return $array;

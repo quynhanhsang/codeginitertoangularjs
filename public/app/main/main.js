@@ -136,7 +136,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider
     //end admin
 
     //cấu hình
-    debugger;
+    
     if(abp.hasPemission("Page.cauhinh.cauhinhchung")){
         $stateProvider
         // Home
@@ -163,8 +163,117 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider
             }
         })
     }
+
+    if(abp.hasPemission("Page.cauhinh.vitriquangcao")){
+        $stateProvider
+        // Home
+        .state('vitriquangcao', {
+            url: "/vitriquangcao",
+            templateUrl: baseUrl+'/app/vitriquangcao/index.html',            
+            data: {pageTitle: 'Vị trí quảng cáo'},
+            controller: "app.vitriquangcao.index as vm",
+            resolve: {
+                deps: ['$ocLazyLoad', function($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        insertBefore: '#ng_load_plugins_before', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
+                        files: [
+                            baseUrl+'/app/vitriquangcao/index.js',
+                            baseUrl+'/app/vitriquangcao/modal/createOreUpdate.js',
+                            baseUrl+'/assets/admin/global/plugins/ckeditor/ckeditor.js',
+                            // baseUrl+'/assets/admin/global/plugins/jstree/dist/themes/default/style.min.css',
+                            // baseUrl+'/assets/admin/global/plugins/jstree/dist/jstree.min.js',
+                            // baseUrl+'/assets/admin/pages/scripts/ui-tree.min.js',
+                            // baseUrl+'/common/directives/jsTree.directive.js',
+                        ] 
+                    });
+                }]
+            }
+        })
+    }
+
+    if(abp.hasPemission("Page.cauhinh.menu")){
+        $stateProvider
+        // Home
+        .state('menu', {
+            url: "/menu",
+            templateUrl: baseUrl+'/app/menu/index.html',            
+            data: {pageTitle: 'Menu'},
+            controller: "app.menu.index as vm",
+            resolve: {
+                deps: ['$ocLazyLoad', function($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        insertBefore: '#ng_load_plugins_before', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
+                        files: [
+                            baseUrl+'/app/menu/index.js',
+                            baseUrl+'/app/menu/modal/createOreUpdate.js',
+                            baseUrl+'/assets/admin/global/plugins/ckeditor/ckeditor.js',
+                            // baseUrl+'/assets/admin/global/plugins/jstree/dist/themes/default/style.min.css',
+                            // baseUrl+'/assets/admin/global/plugins/jstree/dist/jstree.min.js',
+                            // baseUrl+'/assets/admin/pages/scripts/ui-tree.min.js',
+                            // baseUrl+'/common/directives/jsTree.directive.js',
+                        ] 
+                    });
+                }]
+            }
+        })
+    }
+
+    if(abp.hasPemission("Page.cauhinh.categorytype")){
+        $stateProvider
+        // Home
+        .state('categorytype', {
+            url: "/categorytype",
+            templateUrl: baseUrl+'/app/categorytype/index.html',            
+            data: {pageTitle: 'Categorytype'},
+            controller: "app.categorytype.index as vm",
+            resolve: {
+                deps: ['$ocLazyLoad', function($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        insertBefore: '#ng_load_plugins_before', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
+                        files: [
+                            baseUrl+'/app/categorytype/index.js',
+                            baseUrl+'/app/categorytype/modal/createOreUpdate.js',
+                            baseUrl+'/assets/admin/global/plugins/ckeditor/ckeditor.js',
+                            // baseUrl+'/assets/admin/global/plugins/jstree/dist/themes/default/style.min.css',
+                            // baseUrl+'/assets/admin/global/plugins/jstree/dist/jstree.min.js',
+                            // baseUrl+'/assets/admin/pages/scripts/ui-tree.min.js',
+                            // baseUrl+'/common/directives/jsTree.directive.js',
+                        ] 
+                    });
+                }]
+            }
+        })
+    }
     //end cấu hình 
 
+    //Danh mục
+    if(abp.hasPemission("Page.danhmuc.menucategory")){
+        $stateProvider
+        // Home
+        .state('menucategory', {
+            url: "/menucategory",
+            templateUrl: baseUrl+'/app/menucategory/index.html',            
+            data: {pageTitle: 'menucategory'},
+            controller: "app.menucategory.index as vm",
+            resolve: {
+                deps: ['$ocLazyLoad', function($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        insertBefore: '#ng_load_plugins_before', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
+                        files: [
+                            baseUrl+'/app/menucategory/index.js',
+                            baseUrl+'/app/menucategory/modal/createOreUpdate.js',
+                            //baseUrl+'/assets/admin/global/plugins/ckeditor/ckeditor.js',
+                            // baseUrl+'/assets/admin/global/plugins/jstree/dist/themes/default/style.min.css',
+                            // baseUrl+'/assets/admin/global/plugins/jstree/dist/jstree.min.js',
+                            // baseUrl+'/assets/admin/pages/scripts/ui-tree.min.js',
+                            // baseUrl+'/common/directives/jsTree.directive.js',
+                        ] 
+                    });
+                }]
+            }
+        })
+    }
+    //end Danh mục
 
     $qProvider.errorOnUnhandledRejections(false);
 }]);

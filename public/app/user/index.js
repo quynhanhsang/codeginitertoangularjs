@@ -77,7 +77,7 @@ function($rootScope, $scope, $http, $timeout, $uibModal, $ngConfirm) {
                     btnClass: 'btn-primary',
                     keys: ['enter'],
                     action: function (scope) {
-                        debugger;
+                        
 
                         $http.post(ApiUrl+'/user/deleteAll', vm.arrCheckbox)
                         .then(function(response){

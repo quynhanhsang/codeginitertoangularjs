@@ -34,7 +34,7 @@
     // }
 
     abp.hasPemission = function($data){
-        debugger;
+        
         var data = abp.arrayPemission.filter(x=>x.permissionKey == $data);
         if(data.length>0){
             return true;
@@ -44,7 +44,7 @@
     }
 
     // var init = function(){
-    //     debugger;
+    //     
     //     abp.getRole();
     //     abp.getPermission();
     //     abp.getSession();

@@ -18,10 +18,10 @@ use \Psr\Log\LoggerInterface;
 use App\Libraries\Common_Libraries;
 use \DateTime; 
 
-class SystemConfig_Model extends Model {
+class Menus_Model extends Model {
     //put your code here
     
-    var $table = 'qa_systemconfig';
+    var $table = 'qa_menus';
     
     var $key = 'id';
     
@@ -39,7 +39,7 @@ class SystemConfig_Model extends Model {
         $arrayx = $this->libary->convertJsonToArray($data);
         
         $filter = array(
-            'settingKey'=> $arrayx['filter']
+            'title'=> $arrayx['filter']
         );
 
         $query = $this->db->table($this->table)->where('isDelete', 0)->like($filter); 
@@ -50,7 +50,7 @@ class SystemConfig_Model extends Model {
             // $result->ngayTao = date("d-m-Y H:s", strtotime($result->creatTime));
             // $result->ngaySua = date("d-m-Y H:s", strtotime($result->editTime));
             $result->isActive = (bool) $result->isActive;
-            $result->isDefault = (bool) $result->isDefault;
+            // $result->isDefault = (bool) $result->isDefault;
             $result->isDelete = (bool) $result->isDelete;
         }
         return $array;
@@ -68,7 +68,6 @@ class SystemConfig_Model extends Model {
             
             $array['editTime'] = $this->libary->dateTime();
             $array['creatTime'] = $this->libary->dateTime();
-            var_dump('sang');
             $query = $this->db->table($this->table)->update($array, [$this->key => $array[$this->key]]);
             
             return $array[$this->key];

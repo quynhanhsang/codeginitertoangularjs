@@ -1,5 +1,5 @@
 /* Setup Layout Part - Header */
-angular.module('MetronicApp').controller('app.cauhinhchung.index', ['$rootScope','$scope', '$http', '$timeout', '$uibModal','$ngConfirm',
+angular.module('MetronicApp').controller('app.categorytype.index', ['$rootScope','$scope', '$http', '$timeout', '$uibModal','$ngConfirm',
 function($rootScope, $scope, $http, $timeout, $uibModal, $ngConfirm) {
     var vm = this;
     vm.loading = false;
@@ -11,13 +11,13 @@ function($rootScope, $scope, $http, $timeout, $uibModal, $ngConfirm) {
     };
 
     vm.loadData = function(){
-        $http.post(ApiUrl+'/systemconfig/getList', vm.filter)
+        $http.post(ApiUrl+'/categorytype/getList', vm.filter)
         .then(function(response){
             //app.success('success');
             vm.data = response.data;
-            vm.data.forEach(function(item){
-               item.creatTime = new Date(item.creatTime);
-            })
+            // vm.data.forEach(function(item){
+            //     item.creatTime = new Date(item.creatTime);
+            // })
             vm.arrCheckbox = [];
         }, function(){
 
@@ -47,7 +47,7 @@ function($rootScope, $scope, $http, $timeout, $uibModal, $ngConfirm) {
                     btnClass: 'btn-primary',
                     keys: ['enter'],
                     action: function (scope) {
-                        $http.post(ApiUrl+'/systemconfig/delete', data.id)
+                        $http.post(ApiUrl+'/categorytype/delete', data.id)
                             .then(function(response){
                                 console.log(response);
                                 vm.loadData();
@@ -79,7 +79,7 @@ function($rootScope, $scope, $http, $timeout, $uibModal, $ngConfirm) {
                     action: function (scope) {
                         
 
-                        $http.post(ApiUrl+'/systemconfig/deleteAll', vm.arrCheckbox)
+                        $http.post(ApiUrl+'/categorytype/deleteAll', vm.arrCheckbox)
                         .then(function(response){
                             console.log(response, 'response');
                             vm.loadData();
@@ -138,8 +138,8 @@ function($rootScope, $scope, $http, $timeout, $uibModal, $ngConfirm) {
     function openCreateOrEditadvModal(data) {
         
         var modalInstance = $uibModal.open({
-            templateUrl: baseUrl+'/app/cauhinhchung/modal/createOreUpdate.html',
-            controller: 'app.cauhinhchung.modal.createOreUpdate as vm',
+            templateUrl: baseUrl+'/app/categorytype/modal/createOreUpdate.html',
+            controller: 'app.categorytype.modal.createOreUpdate as vm',
             backdrop: 'static',
             size: 'lg',
             resolve: {

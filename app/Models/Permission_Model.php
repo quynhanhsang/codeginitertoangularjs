@@ -35,7 +35,12 @@ class Permission_Model extends Model {
 
         $cauHinh = $this->createPermission('Cấu hình','Page.cauhinh');
         $cauHinh1 = $this->createChildPermission('Vị trí quảng cáo','Page.cauhinh.vitriquangcao', $cauHinh);
-        $cauHinh2 = $this->createChildPermission('Cấu hình chung','Page.cauhinh.cauhinhchung', $cauHinh);
+        $cauHinh2 = $this->createChildPermission('Menu','Page.cauhinh.menu', $cauHinh);
+        $cauHinh3 = $this->createChildPermission('Cấu hình chung','Page.cauhinh.cauhinhchung', $cauHinh);
+        $cauHinh4 = $this->createChildPermission('Menu','Page.cauhinh.categorytype', $cauHinh);
+
+        $danhmuc = $this->createPermission('Danh mục','Page.danhmuc');
+        $danhmuc1 = $this->createChildPermission('Menu danh mục','Page.danhmuc.menucategory', $danhmuc);
     }
 
     public function createPermission($name, $key)

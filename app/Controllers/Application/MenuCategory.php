@@ -8,11 +8,12 @@ use CodeIgniter\HTTP\ResponseInterface;
 use \Psr\Log\LoggerInterface;
 use CodeIgniter\HTTP\Message;
 use App\Controllers\BaseController;
-use App\Models\SystemConfig_Model;
+use App\Models\MenuCategory_Model;
+use App\Models\Menus_Model;
 use App\Database\Migrations;
 use App\Libraries\Common_Libraries;
 
-class SystemConfig extends BaseController
+class MenuCategory extends BaseController
 {
 	protected $session;
     protected $baseUrl;
@@ -26,8 +27,8 @@ class SystemConfig extends BaseController
 		$this->session = \Config\Services::session();
 		$this->session->start();
 		$this->libary = new Common_Libraries();
-		$this->SystemConfig_Model = new SystemConfig_Model();
-		
+		$this->MenuCategory_Model = new MenuCategory_Model();
+		$this->Menus_Model = new Menus_Model();
 		$this->baseUrl = base_url();
 		helper('url');
 		$this->inputRequet = $this->request->getJSON();
@@ -40,25 +41,30 @@ class SystemConfig extends BaseController
 
 	public function getList()
 	{	
-		
-		$uresult = $this->SystemConfig_Model->get_list($this->inputRequet);
+
+		$uresult = $this->MenuCategory_Model->get_list($this->inputRequet);
 		echo json_encode($uresult);
 	}
 
 	public function createOrUpdate()
 	{
-		$this->SystemConfig_Model->createOrUpdate($this->inputRequet);
+		$this->MenuCategory_Model->createOrUpdate($this->inputRequet);
 	}
 
 	public function delete(){
-		$this->SystemConfig_Model->deleteId($this->inputRequet);
+		$this->MenuCategory_Model->deleteId($this->inputRequet);
 	}
 
 	public function deleteAll(){
 		$data  = $this->inputRequet;
 		foreach($data as $item ){
-			$this->SystemConfig_Model->deleteId($item->id);
+			$this->MenuCategory_Model->deleteId($item->id);
 		}
 	}
 
+	public function menuGetAllDLL()
+	{
+		//echo 'sang';
+		echo json_encode($this->Menus_Model->getAllDLL());
+	}
 }
