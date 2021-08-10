@@ -1,0 +1,34 @@
+<div class="portlet light portlet-fit ">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-list font-dark"></i>
+            <span class="caption-subject font-dark bold uppercase">Thêm mới</span>
+        </div>
+        <div class="actions">
+            <div class="btn-group">
+                <button type="submit" class="btn blue btn-sm" ng-click="vm.addCauHinhChung(null)"> <em class="icon-plus"></em> Thêm mới</button>
+                <button type="submit" ng-if="vm.arrCheckbox.length>0" class="btn red btn-sm" ng-click="vm.deleteAll()" style="margin-left: 5px;"><em class="icon-trash"></em> Xóa</button>
+            </div>
+        </div>
+    </div>
+    <div class="portlet-body">
+        <div class="row">
+            <div class="col-md-5">
+                <div class="form-group">
+                    <label class="control-label">Tìm kiếm</label>
+                    <div class="input-group">
+                        <div class="input-icon">
+                            <i class="fa fa-search fa-fw"></i>
+                            <input class="form-control" type="text" name="timkiem" ng-model="vm.filter.filter" placeholder="tìm kiếm"> 
+                        </div>
+                        <span class="input-group-btn">
+                            <button  class="btn btn-success" type="button" ng-click="vm.search()">
+                                <i class="fa fa-search fa-fw"></i> Tìm kiếm</button>
+                        </span>
+                    </div>
+                </div>                   
+            </div>
+        </div>
+        
+    </div>
+</div>

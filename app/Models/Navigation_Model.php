@@ -103,8 +103,31 @@ class Navigation_Model extends Model {
                 )
             )
         );
+
+        $menuNoiDung =  array(
+            "name"       => "Nội dung",
+            "permission" => "Page.noidung",
+            "url"        => "",
+            "icon"       => "",
+            "length"     => 2,
+            "items"      => array(
+                array(
+                    "name"       => "Bài viết",
+                    "permission" => "Page.noidung.baiviet",
+                    "url"        => "baiviet",
+                    "icon"       => "",
+                ),
+                array(
+                    "name"       => "Sản phẩm",
+                    "permission" => "Page.noidung.sanpham",
+                    "url"        => "sanpham",
+                    "icon"       => "",
+                )
+            )
+        );
         array_push($array, $menuDashboard);
         array_push($array, $menuCauHinh);
+        array_push($array, $menuNoiDung);
         array_push($array, $menuDanhmuc);
         array_push($array, $menuHeThong);
 

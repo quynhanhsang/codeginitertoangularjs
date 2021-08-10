@@ -302,6 +302,62 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider
     }
     //end Danh mục
 
+    //Nội dung
+    if(abp.hasPemission("Page.noidung.baiviet")){
+        $stateProvider
+        // Home
+        .state('baiviet', {
+            url: "/baiviet",
+            templateUrl: baseUrl+'/app/1.noidung/blog/index.html',            
+            data: {pageTitle: 'Bài viết'},
+            controller: "app.noidung.blog.index as vm",
+            resolve: {
+                deps: ['$ocLazyLoad', function($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        insertBefore: '#ng_load_plugins_before', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
+                        files: [
+                            baseUrl+'/app/1.noidung/blog/index.js',
+                            baseUrl+'/app/1.noidung/blog/directive/createOreUpdate.js',
+                            //baseUrl+'/assets/admin/global/plugins/ckeditor/ckeditor.js',
+                            // baseUrl+'/assets/admin/global/plugins/jstree/dist/themes/default/style.min.css',
+                            // baseUrl+'/assets/admin/global/plugins/jstree/dist/jstree.min.js',
+                            // baseUrl+'/assets/admin/pages/scripts/ui-tree.min.js',
+                            // baseUrl+'/common/directives/jsTree.directive.js',
+                        ] 
+                    });
+                }]
+            }
+        })
+    }
+
+    // if(abp.hasPemission("Page.danhmuc.category")){
+    //     $stateProvider
+    //     // Home
+    //     .state('category', {
+    //         url: "/category",
+    //         templateUrl: baseUrl+'/app/category/index.html',            
+    //         data: {pageTitle: 'category'},
+    //         controller: "app.category.index as vm",
+    //         resolve: {
+    //             deps: ['$ocLazyLoad', function($ocLazyLoad) {
+    //                 return $ocLazyLoad.load({
+    //                     insertBefore: '#ng_load_plugins_before', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
+    //                     files: [
+    //                         baseUrl+'/app/category/index.js',
+    //                         baseUrl+'/app/category/modal/createOreUpdate.js',
+    //                         //baseUrl+'/assets/admin/global/plugins/ckeditor/ckeditor.js',
+    //                         // baseUrl+'/assets/admin/global/plugins/jstree/dist/themes/default/style.min.css',
+    //                         // baseUrl+'/assets/admin/global/plugins/jstree/dist/jstree.min.js',
+    //                         // baseUrl+'/assets/admin/pages/scripts/ui-tree.min.js',
+    //                         // baseUrl+'/common/directives/jsTree.directive.js',
+    //                     ] 
+    //                 });
+    //             }]
+    //         }
+    //     })
+    // }
+    //end Danh mục
+
     $qProvider.errorOnUnhandledRejections(false);
 }]);
 
