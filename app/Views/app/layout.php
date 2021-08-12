@@ -24,6 +24,7 @@
         <link href="<?php echo base_url()?>/assets/admin/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css" />
         <link href="<?php echo base_url()?>/assets/admin/global/plugins/bootstrap-toastr/toastr.css" rel="stylesheet" type="text/css" />
         <link href="<?php echo base_url()?>/scripts/angular-confirm/css/angular-confirm.css" rel="stylesheet" type="text/css" />
+        <link href="<?php echo base_url()?>/scripts/kendoui/css/kendo.default.min.css" rel="stylesheet" type="text/css" />
         <link href="<?php echo base_url()?>/assets/admin/css/layout.css" rel="stylesheet" type="text/css" />
         <script>
             var baseUrl =  '<?php echo base_url()?>';
@@ -113,6 +114,7 @@
         <script src="<?php echo base_url()?>/scripts/angular-ui-router.min.js" type="text/javascript"></script>
         <script src="<?php echo base_url()?>/assets/admin/global/plugins/angularjs/plugins/ocLazyLoad.min.js" type="text/javascript"></script>
         <script src="<?php echo base_url()?>/scripts/angular-ui/ui-bootstrap-tpls.min.js" type="text/javascript"></script>
+        <script src="<?php echo base_url()?>/scripts/kendoui/js/kendo.all.min.js" type="text/javascript"></script>
         <!-- END CORE ANGULARJS PLUGINS -->
         <script src="<?php echo base_url()?>/common/paging/dirPagination.js" type="text/javascript"></script>
         <script src="<?php echo base_url()?>/scripts/angular-confirm/js/angular-confirm.js" type="text/javascript"></script>
