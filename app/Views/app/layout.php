@@ -24,6 +24,7 @@
         <link href="<?php echo base_url()?>/assets/admin/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css" />
         <link href="<?php echo base_url()?>/assets/admin/global/plugins/bootstrap-toastr/toastr.css" rel="stylesheet" type="text/css" />
         <link href="<?php echo base_url()?>/scripts/angular-confirm/css/angular-confirm.css" rel="stylesheet" type="text/css" />
+        <link href="<?php echo base_url()?>/assets/admin/css/layout.css" rel="stylesheet" type="text/css" />
         <script>
             var baseUrl =  '<?php echo base_url()?>';
             var ApiUrl = '<?php echo base_admin_url()?>';

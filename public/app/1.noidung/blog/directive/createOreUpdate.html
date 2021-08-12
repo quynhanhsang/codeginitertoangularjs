@@ -5,7 +5,7 @@
             <div class="portlet-title">
                 <div class="input-group">
                 <span class="input-group-addon">
-                    <i class="fa fa-envelope"></i>
+                    <i class="fa fa-institution"></i>
                 </span>
                 <input type="text" class="form-control" ng-model="vm.data.title" ng-change="vm.getLink()" placeholder="Title"> 
             </div>
@@ -19,28 +19,7 @@
                     ckeditor="ckDescription"></textarea>
                 </div>
                 
-                <div class="form-group clearfix margin-top-15">
-                    <label class="control-label">Seo Title <span class="font-red">*</span></label>
-                    <input class="form-control"
-                               type="text"
-                               name="SeoTitle"
-                               ng-model="vm.data.seoTitle"/>
-                    <check-validate datacheck="vm.data.seoTitle"></check-validate>           
-                </div>
-                <div class="form-group clearfix margin-top-15">
-                    <label class="control-label">Seo keyword</label>
-                    <textarea class="form-control"
-                                  type="text"
-                                  name="SeoKeywords"
-                                  ng-model="vm.data.seoKeywords"></textarea>
-                </div>
-                <div class="form-group clearfix margin-top-15">
-                    <label class="control-label">Seo description</label>
-                    <textarea class="form-control"
-                    type="text"
-                    name="SeoDescription"
-                    ng-model="vm.data.seoDescription"></textarea>
-                </div>
+                
             </div>
         </div>
         <!-- END SAMPLE FORM PORTLET-->
@@ -63,7 +42,7 @@
             <div class="portlet-body form">
                 <div class="portlet box blue ">
                     <div class="portlet-title">
-                        <div class="caption">
+                        <div class="caption font-site-14">
                             Trạng thái hiển thị </div>
                         <div class="tools">
                             <a href="" class="expand" data-original-title="" title=""> </a>
@@ -71,7 +50,7 @@
                     </div>
                     <div class="portlet-body form" style="display: none;">
                         <div class="col-md-12">
-                            <p for="">Hiển thị <a href="#" uib-popover-template="'myPopoverTemplate.html'" popover-append-to-body="true"> {{(vm.data.isActive == true) ? 'Công khai': 'riêng tư' }}</a></p>
+                            <p for="" class="margin-top-15">Hiển thị <a href="#" class="pull-right" uib-popover-template="'myPopoverTemplate.html'" popover-append-to-body="true"> {{(vm.data.isActive == true) ? 'Công khai': 'riêng tư' }}</a></p>
                             <script type="text/ng-template" id="myPopoverTemplate.html">
                                 <div class="">
                                     <div class="mt-radio-list">
@@ -92,7 +71,7 @@
                             </script>
     
                             <p >
-                                Đăng <a href="#"> {{vm.data.creatTime}}</a>
+                                Đăng <a href="#" class="pull-right"> {{vm.data.creatTime}}</a>
                             </p>
                         </div>
                         <div class="clearfix">
@@ -103,7 +82,7 @@
 
                 <div class="portlet box blue ">
                     <div class="portlet-title">
-                        <div class="caption">
+                        <div class="caption font-site-14">
                             Đường dẫn tĩnh </div>
                         <div class="tools">
                             <a href="" class="expand" data-original-title="" title=""> </a>
@@ -111,7 +90,7 @@
                     </div>
                     <div class="portlet-body form" style="display: none;">
                         <div class="col-md-12">
-                            <div class="form-group">
+                            <div class="form-group margin-top-15">
                                 <label>Đường dẫn URL</label>
                                 <input type="text" class="form-control" ng-model="vm.data.target" placeholder="Đường dẫn URL"> 
                             </div>
@@ -124,7 +103,7 @@
                 </div>
                 <div class="portlet box blue ">
                     <div class="portlet-title">
-                        <div class="caption">
+                        <div class="caption font-site-14">
                             Chuyên mục </div>
                         <div class="tools">
                             <a href="" class="expand" data-original-title="" title=""> </a>
@@ -133,11 +112,66 @@
                     <div class="portlet-body form" style="display: none;">
                         <div class="col-md-12">
                             
-                            <div class="form-group">
+                            <div class="form-group margin-top-15">
                                 <a href="#">Thêm mới</a>
                             </div>
                         </div>
                         <div class="clearfix"></div>
+                    </div>
+                </div>
+                <div class="portlet box blue ">
+                    <div class="portlet-title">
+                        <div class="caption font-site-14">
+                            Seo bài viết </div>
+                        <div class="tools">
+                            <a href="" class="collapse" data-original-title="" title=""> </a>
+                        </div>
+                    </div>
+                    <div class="portlet-body form">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label">Seo Title <span class="font-red">*</span></label>
+                                <input class="form-control"
+                                           type="text"
+                                           name="SeoTitle"
+                                           ng-model="vm.data.seoTitle"/>
+                                <check-validate datacheck="vm.data.seoTitle"></check-validate>           
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">Seo keyword</label>
+                                <textarea class="form-control"
+                                              type="text"
+                                              name="SeoKeywords"
+                                              ng-model="vm.data.seoKeywords"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">Seo description</label>
+                                <textarea class="form-control"
+                                type="text"
+                                name="SeoDescription"
+                                ng-model="vm.data.seoDescription"></textarea>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+
+                <div class="portlet box blue ">
+                    <div class="portlet-title">
+                        <div class="caption font-site-14">
+                            Ảnh đại diện </div>
+                        <div class="tools">
+                            <a href="" class="expand" data-original-title="" title=""> </a>
+                        </div>
+                    </div>
+                    <div class="portlet-body form" style="display: none;">
+                        <div class="col-md-12">
+                            <div class="form-group margin-top-15">
+                                <a href="javascript:;" class="btn default btn-block"> Đặt ảnh đại diện </a>
+                            </div>
+                        </div>
+                       
+                        <div class="clearfix"> </div>
                     </div>
                 </div>
             </div>

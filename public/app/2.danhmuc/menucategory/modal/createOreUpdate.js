@@ -1,5 +1,5 @@
 /* Setup Layout Part - Header */
-angular.module('MetronicApp').controller('app.menucategory.modal.createOreUpdate', ['$rootScope', '$uibModalInstance','$scope', '$http', '$timeout', 'cauhinh',
+angular.module('MetronicApp').controller('app.danhmuc.menucategory.modal.createOreUpdate', ['$rootScope', '$uibModalInstance','$scope', '$http', '$timeout', 'cauhinh',
 function($rootScope, $uibModalInstance, $scope, $http, $timeout, cauhinh) {
 
     var vm = this;

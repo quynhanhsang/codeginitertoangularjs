@@ -1,0 +1,15 @@
+.font-site-14{
+    font-size: 14px !important;
+}
+
+.portlet>.portlet-title>.tools {
+    padding: 9px 0 8px !important;
+}
+
+.portlet>.portlet-title{
+    min-height: 30px !important;
+}
+
+.portlet.box>.portlet-title>.caption {
+    padding: 10px 0 9px !important;
+}

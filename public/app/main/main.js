@@ -252,16 +252,16 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider
         // Home
         .state('menucategory', {
             url: "/menucategory",
-            templateUrl: baseUrl+'/app/menucategory/index.html',            
+            templateUrl: baseUrl+'/app/2.danhmuc/menucategory/index.html',            
             data: {pageTitle: 'menucategory'},
-            controller: "app.menucategory.index as vm",
+            controller: "app.danhmuc.menucategory.index as vm",
             resolve: {
                 deps: ['$ocLazyLoad', function($ocLazyLoad) {
                     return $ocLazyLoad.load({
                         insertBefore: '#ng_load_plugins_before', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
                         files: [
-                            baseUrl+'/app/menucategory/index.js',
-                            baseUrl+'/app/menucategory/modal/createOreUpdate.js',
+                            baseUrl+'/app/2.danhmuc/menucategory/index.js',
+                            baseUrl+'/app/2.danhmuc/menucategory/modal/createOreUpdate.js',
                             //baseUrl+'/assets/admin/global/plugins/ckeditor/ckeditor.js',
                             // baseUrl+'/assets/admin/global/plugins/jstree/dist/themes/default/style.min.css',
                             // baseUrl+'/assets/admin/global/plugins/jstree/dist/jstree.min.js',
@@ -279,16 +279,16 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider
         // Home
         .state('category', {
             url: "/category",
-            templateUrl: baseUrl+'/app/category/index.html',            
+            templateUrl: baseUrl+'/app/2.danhmuc/category/index.html',            
             data: {pageTitle: 'category'},
-            controller: "app.category.index as vm",
+            controller: "app.danhmuc.category.index as vm",
             resolve: {
                 deps: ['$ocLazyLoad', function($ocLazyLoad) {
                     return $ocLazyLoad.load({
                         insertBefore: '#ng_load_plugins_before', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
                         files: [
-                            baseUrl+'/app/category/index.js',
-                            baseUrl+'/app/category/modal/createOreUpdate.js',
+                            baseUrl+'/app/2.danhmuc/category/index.js',
+                            baseUrl+'/app/2.danhmuc/category/modal/createOreUpdate.js',
                             //baseUrl+'/assets/admin/global/plugins/ckeditor/ckeditor.js',
                             // baseUrl+'/assets/admin/global/plugins/jstree/dist/themes/default/style.min.css',
                             // baseUrl+'/assets/admin/global/plugins/jstree/dist/jstree.min.js',
