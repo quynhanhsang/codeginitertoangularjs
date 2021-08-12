@@ -21,7 +21,6 @@ function($rootScope, $uibModalInstance, $scope, $http, $timeout, cauhinh) {
             app.error('Không được để trống');
             return false;
         }
-        debugger;
         $http.post(ApiUrl+'/category/createOrUpdate', vm.data)
         .then(function(response){
             app.success('Lưu thành công');
@@ -40,9 +39,10 @@ function($rootScope, $uibModalInstance, $scope, $http, $timeout, cauhinh) {
                     // abp.services.app.category.allCategoryToDDL().done(function (result) {
                     //     options.success(result);
                     // });
-                    $http.get(ApiUrl+'/category/createOrUpdate', vm.data)
+                    $http.get(ApiUrl+'/category/categoryGetAllDLL')
                     .then(function(response){
-                        options.success(result);
+                        debugger;
+                        options.success(response.data);
                     }, function(){
 
                     });
@@ -51,7 +51,7 @@ function($rootScope, $uibModalInstance, $scope, $http, $timeout, cauhinh) {
         }),
         dataValueField: "id",
         dataTextField: "title",
-        optionLabel: app.localize('Chọn ...'),
+        optionLabel: 'Chọn ...',
         filter: "contains",
     };
 

@@ -34,7 +34,15 @@
 
             </uib-tab>
         </uib-tabset>
-        
+        <div class="form-group">
+            <label class="control-label">Danh mục cha</label>
+            <input class="form-control" 
+            kendo-drop-down-list
+            type="text"  
+            name="parentId"  
+            k-options="vm.categoryOptions"
+            ng-model="vm.data.parentId" />
+        </div>
         <div class="table-scrollable">
             <table class="table table-bordered table-hover">
                 <thead>

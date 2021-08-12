@@ -137,6 +137,30 @@ function($rootScope, $scope, $http, $timeout, $uibModal, $ngConfirm) {
         };
     }
     
+    vm.categoryOptions = {
+        dataSource: new kendo.data.DataSource({
+            transport: {
+                read: function (options) {
+                    // abp.services.app.category.allCategoryToDDL().done(function (result) {
+                    //     options.success(result);
+                    // });
+                    $http.get(ApiUrl+'/category/categoryGetAllDLL')
+                    .then(function(response){
+                        debugger;
+                        options.success(response);
+                    }, function(){
+
+                    });
+                }
+            }
+        }),
+        dataValueField: "id",
+        dataTextField: "title",
+        optionLabel: 'Chọn ...',
+        filter: "contains",
+    };
+
+
     function openCreateOrEditDanhMucModal(data) {
         
         var modalInstance = $uibModal.open({

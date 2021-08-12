@@ -5,6 +5,7 @@ Metronic AngularJS App Main Script
 var MetronicApp = angular.module("MetronicApp", [
     "ui.router", 
     "ui.bootstrap", 
+    "kendo.directives",
     "oc.lazyLoad",  
     "ngSanitize",
     "angularUtils.directives.dirPagination",
