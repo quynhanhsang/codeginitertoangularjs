@@ -107,6 +107,15 @@ $routes->post('application/menucategory/delete', 'MenuCategory::delete', ['names
 $routes->post('application/menucategory/deleteAll', 'MenuCategory::deleteAll', ['namespace' => 'App\Controllers\Application', 'filter' => 'auth']);
 $routes->post('application/menucategory/getRollAllDLL', 'MenuCategory::getRollAllDLL', ['namespace' => 'App\Controllers\Application', 'filter' => 'auth']);
 
+//nội dung blog
+$routes->get('application/blog', 'Blog::index', ['namespace' => 'App\Controllers\Application', 'filter' => 'auth']);
+$routes->get('application/blog/menuGetAllDLL', 'Blog::menuGetAllDLL', ['namespace' => 'App\Controllers\Application', 'filter' => 'auth']);
+$routes->post('application/blog/getList', 'Blog::getList', ['namespace' => 'App\Controllers\Application', 'filter' => 'auth']);
+$routes->post('application/blog/createOrUpdate', 'Blog::createOrUpdate', ['namespace' => 'App\Controllers\Application', 'filter' => 'auth']);
+$routes->post('application/blog/delete', 'Blog::delete', ['namespace' => 'App\Controllers\Application', 'filter' => 'auth']);
+$routes->post('application/blog/deleteAll', 'Blog::deleteAll', ['namespace' => 'App\Controllers\Application', 'filter' => 'auth']);
+$routes->post('application/blog/getRollAllDLL', 'Blog::getRollAllDLL', ['namespace' => 'App\Controllers\Application', 'filter' => 'auth']);
+$routes->post('application/blog/getById', 'Blog::getById', ['namespace' => 'App\Controllers\Application', 'filter' => 'auth']);
 /*
  * --------------------------------------------------------------------
  * Additional Routing

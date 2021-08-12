@@ -317,7 +317,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider
                         insertBefore: '#ng_load_plugins_before', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
                         files: [
                             baseUrl+'/app/1.noidung/blog/index.js',
-                            baseUrl+'/app/1.noidung/blog/directive/createOreUpdate.js',
+                            //baseUrl+'/app/1.noidung/blog/directive/createOreUpdate.js',
                             //baseUrl+'/assets/admin/global/plugins/ckeditor/ckeditor.js',
                             // baseUrl+'/assets/admin/global/plugins/jstree/dist/themes/default/style.min.css',
                             // baseUrl+'/assets/admin/global/plugins/jstree/dist/jstree.min.js',
@@ -328,6 +328,25 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider
                 }]
             }
         })
+        .state('baivietchitiet',
+        {
+            url: "/baivietchitiet/{id}",
+            templateUrl: baseUrl+'/app/1.noidung/blog/directive/createOreUpdate.html',            
+            data: {pageTitle: 'Bài viết'},
+            controller: "app.noidung.blog.directive.createOreUpdate as vm",
+            resolve: {
+                deps: ['$ocLazyLoad', function($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        insertBefore: '#ng_load_plugins_before', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
+                        files: [
+                            // baseUrl+'/app/1.noidung/blog/index.js',
+                            baseUrl+'/app/1.noidung/blog/directive/createOreUpdate.js',
+                        ] 
+                    });
+                }]
+            }
+        })
+
     }
 
     // if(abp.hasPemission("Page.danhmuc.category")){

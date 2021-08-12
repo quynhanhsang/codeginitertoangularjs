@@ -1,4 +1,4 @@
-<div class="portlet light portlet-fit " ng-if="vm.show_mode == null">
+<div class="portlet light portlet-fit ">
     <div class="portlet-title">
         <div class="caption">
             <i class="fa fa-list font-dark"></i>
@@ -40,9 +40,10 @@
                                 <span></span>
                             </label>
                         </th>
-                        <th> Mã danh mục </th>
                         <th> Tiêu đề </th>
-                        <th> Thứ tự </th>
+                        <th> tác giả </th>
+                        <th> chuyên mục </th>
+                        <th> sửa đổi lần cuối </th>
                         <th style="text-align: center;"> Trạng Thái </th>
                         <th style="width:100px; text-align: center;"> Thao tác </th>
                     </tr>
@@ -56,9 +57,10 @@
                                 <span></span>
                             </label>
                         </td>
-                        <td> {{item.typeCode}}</td>
-                        <td> {{item.title}} </td>
-                        <td> {{item.sortOrder}} </td>
+                        <td> {{item.title}}</td>
+                        <td> {{item.user}} </td>
+                        <td> {{item.user}} </td>
+                        <td> {{item.c}} </td>
                         <td>
                             <p style="margin: 0;text-align:center;">
                                 <i ng-if="item.isActive == 0" class="fa fa-times font-red"></i>
@@ -66,8 +68,8 @@
                             </p>    
                         </td>
                         <td>
-                            <a href="javascript:;" class="btn btn-outline btn-circle green btn-sm purple" ng-click="vm.editCauHinhChung(item)"><i class="fa fa-edit"></i> </a>
-                            <a href="javascript:;" class="btn btn-outline btn-circle dark btn-sm black"  ng-click="vm.deleteCauHinhChung(item)"> <i class="fa fa-trash-o"></i> </a>
+                            <a href="javascript:;" class="btn btn-outline btn-circle green btn-sm purple" ng-click="vm.editBlog(item.id)"><i class="fa fa-edit"></i> </a>
+                            <a href="javascript:;" class="btn btn-outline btn-circle dark btn-sm black"  ng-click="vm.deleteBlog(item)"> <i class="fa fa-trash-o"></i> </a>
                         </td>
                     </tr>
                 </tbody>
@@ -79,9 +81,7 @@
         </div>
     </div>
 </div>
-<div ng-if="vm.show_mode == 'addOrEdit'">
-    <div app.noidung.blog.directive.createOreUpdate ></div>
-</div>
+
 
 
 

@@ -1,42 +1,73 @@
 (function () {
-    angular.module('MetronicApp').directive('app.noidung.blog.directive.createOreUpdate', ['$compile', '$templateRequest',
-        function ($compile, $templateRequest) {
-            var controller = ['$scope', '$http', '$uibModal',
-                function ($scope, $http, $uibModal) {
-                    //variable
-                    var vm = this;
-                    vm.loading = false;
-                    debugger;
+    /* Setup Layout Part - Header */
+    angular.module('MetronicApp').controller('app.noidung.blog.directive.createOreUpdate', 
+    ['$rootScope','$scope', '$http', '$timeout', '$stateParams', '$state',
+    function($rootScope, $scope, $http, $timeout, $stateParams,  $state) {
 
-                    //Init()
-                    var Init = function () {
+        var vm = this;
+        vm.loading = false;
+        vm.data = {
+            isActive: true,
+        };
 
-                        
-                    };
-                    //Run Init()
-                    Init();
-
-                }
-            ];
-
-            return {
-                restrict: 'EA',
-                scope: {
-                    dataitem: "=",
-                    fncallback: "&"
-                },
-                controller: controller,
-                controllerAs: 'vm',
-                bindToController: false,
-                link: function (scope, elem, attr, ctrl) {
-                    $templateRequest(baseUrl+"/app/1.noidung/blog/directive/createOreUpdate.html").then(function (html) {
-                        var template = angular.element(html);
-                        debugger;
-                        elem.append(template);
-                        $compile(template)(scope);
-                    });
-                }
-            };
+        vm.getLink = function () {
+            vm.data.target = app.locdau(vm.data.title);
+            vm.data.seoTitle = vm.data.title;
         }
-    ]);
+
+        vm.save = function () {
+            if (!app.checkValidateForm("#blogCreateOrEditForm")) {
+                app.error('Không được để trống');
+                return false;
+            }
+            $http.post(ApiUrl+'/blog/createOrUpdate', vm.data)
+            .then(function(response){
+                app.success('Lưu thành công');
+                console.log(response , 'sang');
+                //$uibModalInstance.close();
+            }, function(){
+
+            });
+
+        };
+        vm.delete = function(){
+            $http.post(ApiUrl+'/blog/delete', $stateParams.id)
+                .then(function(response){
+                    $state.go('baiviet');
+                }, function(){
+        
+                });
+        }
+        vm.cancel = function () {
+            $uibModalInstance.dismiss();
+        };
+        
+        vm.loadDataById = function(){
+            if (!app.isNullOrEmpty($stateParams.id)) {
+                $http.post(ApiUrl+'/blog/getById', $stateParams.id)
+                .then(function(response){
+                    if(response.data.length > 0){
+                        vm.data = response.data[0];
+                    }else{
+                        $state.go('baiviet');
+                    }
+                   
+                }, function(){
+        
+                });
+            }else{
+                
+            }
+        }
+        var init = function () {
+            vm.loadDataById();
+        };
+        init();
+
+        $scope.$on('$viewContentLoaded', function() {   
+            // initialize core components
+            App.initAjax();
+            
+        });
+    }]);
 })();

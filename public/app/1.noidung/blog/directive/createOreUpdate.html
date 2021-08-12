@@ -1,34 +1,147 @@
-<div class="portlet light portlet-fit ">
-    <div class="portlet-title">
-        <div class="caption">
-            <i class="fa fa-list font-dark"></i>
-            <span class="caption-subject font-dark bold uppercase">Thêm mới</span>
-        </div>
-        <div class="actions">
-            <div class="btn-group">
-                <button type="submit" class="btn blue btn-sm" ng-click="vm.addCauHinhChung(null)"> <em class="icon-plus"></em> Thêm mới</button>
-                <button type="submit" ng-if="vm.arrCheckbox.length>0" class="btn red btn-sm" ng-click="vm.deleteAll()" style="margin-left: 5px;"><em class="icon-trash"></em> Xóa</button>
+<div class="row" id="blogCreateOrEditForm">
+    <div class="col-md-8 ">
+        <!-- BEGIN SAMPLE FORM PORTLET-->
+        <div class="portlet light ">
+            <div class="portlet-title">
+                <div class="input-group">
+                <span class="input-group-addon">
+                    <i class="fa fa-envelope"></i>
+                </span>
+                <input type="text" class="form-control" ng-model="vm.data.title" ng-change="vm.getLink()" placeholder="Title"> 
             </div>
-        </div>
-    </div>
-    <div class="portlet-body">
-        <div class="row">
-            <div class="col-md-5">
+                <check-validate datacheck="vm.data.title"></check-validate>
+            </div>
+            <div class="portlet-body">
                 <div class="form-group">
-                    <label class="control-label">Tìm kiếm</label>
-                    <div class="input-group">
-                        <div class="input-icon">
-                            <i class="fa fa-search fa-fw"></i>
-                            <input class="form-control" type="text" name="timkiem" ng-model="vm.filter.filter" placeholder="tìm kiếm"> 
-                        </div>
-                        <span class="input-group-btn">
-                            <button  class="btn btn-success" type="button" ng-click="vm.search()">
-                                <i class="fa fa-search fa-fw"></i> Tìm kiếm</button>
-                        </span>
-                    </div>
-                </div>                   
+                    <textarea class="form-control"
+                    type="text"
+                    ng-model="vm.data.editedBy"
+                    ckeditor="ckDescription"></textarea>
+                </div>
+                
+                <div class="form-group clearfix margin-top-15">
+                    <label class="control-label">Seo Title <span class="font-red">*</span></label>
+                    <input class="form-control"
+                               type="text"
+                               name="SeoTitle"
+                               ng-model="vm.data.seoTitle"/>
+                    <check-validate datacheck="vm.data.seoTitle"></check-validate>           
+                </div>
+                <div class="form-group clearfix margin-top-15">
+                    <label class="control-label">Seo keyword</label>
+                    <textarea class="form-control"
+                                  type="text"
+                                  name="SeoKeywords"
+                                  ng-model="vm.data.seoKeywords"></textarea>
+                </div>
+                <div class="form-group clearfix margin-top-15">
+                    <label class="control-label">Seo description</label>
+                    <textarea class="form-control"
+                    type="text"
+                    name="SeoDescription"
+                    ng-model="vm.data.seoDescription"></textarea>
+                </div>
             </div>
         </div>
-        
+        <!-- END SAMPLE FORM PORTLET-->
+    </div>
+    <div class="col-md-4 ">
+        <!-- BEGIN SAMPLE FORM PORTLET-->
+        <div class="portlet light ">
+            <div class="portlet-title">
+                <div class="actions">
+                    <div class="btn-group">
+                        <a class="btn btn-sm green" href="javascript:;"> Xem thử
+                        </a>
+                        <a class="btn btn-sm blue" style="margin-left: 10px;" href="javascript:;" ng-click="vm.save()"> Lưu
+                        </a>
+                        <a class="btn btn-sm red " style="margin-left: 10px;" href="javascript:;" ng-click="vm.delete()" ng-if="vm.data.id != null"> Xóa
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="portlet-body form">
+                <div class="portlet box blue ">
+                    <div class="portlet-title">
+                        <div class="caption">
+                            Trạng thái hiển thị </div>
+                        <div class="tools">
+                            <a href="" class="expand" data-original-title="" title=""> </a>
+                        </div>
+                    </div>
+                    <div class="portlet-body form" style="display: none;">
+                        <div class="col-md-12">
+                            <p for="">Hiển thị <a href="#" uib-popover-template="'myPopoverTemplate.html'" popover-append-to-body="true"> {{(vm.data.isActive == true) ? 'Công khai': 'riêng tư' }}</a></p>
+                            <script type="text/ng-template" id="myPopoverTemplate.html">
+                                <div class="">
+                                    <div class="mt-radio-list">
+                                        <label class="mt-radio">
+                                            <input type="radio" name="optionsRadios" ng-model="vm.data.isActive" value="1" checked=""> 
+                                            Công khai <p style="margin: 0; font-style: italic;">Hiển thị tới tất cả.</p>
+                                            <span></span>
+                                        </label>
+                                        
+                                        <label class="mt-radio">
+                                            <input type="radio" name="optionsRadios" ng-model="vm.data.isActive" value="0"> 
+                                            Riêng tư <p style="margin: 0; font-style: italic;">Chỉ hiển thị cho quản trị viên và biên tập viên.</p>
+                                            <span></span>
+                                        </label>
+                                        
+                                    </div>
+                                </div>
+                            </script>
+    
+                            <p >
+                                Đăng <a href="#"> {{vm.data.creatTime}}</a>
+                            </p>
+                        </div>
+                        <div class="clearfix">
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portlet box blue ">
+                    <div class="portlet-title">
+                        <div class="caption">
+                            Đường dẫn tĩnh </div>
+                        <div class="tools">
+                            <a href="" class="expand" data-original-title="" title=""> </a>
+                        </div>
+                    </div>
+                    <div class="portlet-body form" style="display: none;">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Đường dẫn URL</label>
+                                <input type="text" class="form-control" ng-model="vm.data.target" placeholder="Đường dẫn URL"> 
+                            </div>
+                            <div class="form-group">
+                                <label>Xem bài viết: <a href="">{{vm.data.target}}</a></label>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                <div class="portlet box blue ">
+                    <div class="portlet-title">
+                        <div class="caption">
+                            Chuyên mục </div>
+                        <div class="tools">
+                            <a href="" class="expand" data-original-title="" title=""> </a>
+                        </div>
+                    </div>
+                    <div class="portlet-body form" style="display: none;">
+                        <div class="col-md-12">
+                            
+                            <div class="form-group">
+                                <a href="#">Thêm mới</a>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END SAMPLE FORM PORTLET-->
     </div>
 </div>

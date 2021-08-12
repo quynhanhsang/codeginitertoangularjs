@@ -1,19 +1,18 @@
 /* Setup Layout Part - Header */
-angular.module('MetronicApp').controller('app.noidung.blog.index', ['$rootScope','$scope', '$http', '$timeout', '$uibModal','$ngConfirm',
-function($rootScope, $scope, $http, $timeout, $uibModal, $ngConfirm) {
+angular.module('MetronicApp').controller('app.noidung.blog.index', ['$rootScope','$scope', '$http', '$timeout', '$uibModal','$ngConfirm', '$state',
+function($rootScope, $scope, $http, $timeout, $uibModal, $ngConfirm, $state) {
     var vm = this;
     vm.loading = false;
     vm.data =[];
     vm.listMenu = [];
     vm.currentPage = 1;
-    vm.show_mode = null;
 
     vm.filter = {
         filter: null
     };
 
     vm.loadData = function(){
-        $http.post(ApiUrl+'/category/getList', vm.filter)
+        $http.post(ApiUrl+'/blog/getList', vm.filter)
         .then(function(response){
             //app.success('success');
             vm.data = response.data;
@@ -27,7 +26,7 @@ function($rootScope, $scope, $http, $timeout, $uibModal, $ngConfirm) {
     }
 
     vm.loadMenu = function(){
-        $http.get(ApiUrl+'/category/menuGetAllDLL')
+        $http.get(ApiUrl+'/blog/menuGetAllDLL')
         .then(function(response){
             vm.listMenu = response.data;
         }, function(){
@@ -36,15 +35,15 @@ function($rootScope, $scope, $http, $timeout, $uibModal, $ngConfirm) {
     }
 
     vm.addBlog = function(data){
-        
-        vm.show_mode = "addOrEdit";
+        $state.go('baivietchitiet', {id:null});
     }
     
-    vm.editCauHinhChung = function(data){
-        var dataCopy = angular.copy(data);
+    vm.editBlog = function(data){
+        debugger;
+        $state.go('baivietchitiet', {id:data});
         
     }
-    vm.deleteCauHinhChung = function(data){
+    vm.deleteBlog = function(data){
         $ngConfirm({
             theme: 'modern',
             title: '',
