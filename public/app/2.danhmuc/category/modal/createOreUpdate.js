@@ -33,6 +33,28 @@ function($rootScope, $uibModalInstance, $scope, $http, $timeout, cauhinh) {
 
     };
 
+    vm.categoryOptions = {
+        dataSource: new kendo.data.DataSource({
+            transport: {
+                read: function (options) {
+                    // abp.services.app.category.allCategoryToDDL().done(function (result) {
+                    //     options.success(result);
+                    // });
+                    $http.get(ApiUrl+'/category/createOrUpdate', vm.data)
+                    .then(function(response){
+                        options.success(result);
+                    }, function(){
+
+                    });
+                }
+            }
+        }),
+        dataValueField: "id",
+        dataTextField: "title",
+        optionLabel: app.localize('Chọn ...'),
+        filter: "contains",
+    };
+
     vm.cancel = function () {
         $uibModalInstance.dismiss();
     };

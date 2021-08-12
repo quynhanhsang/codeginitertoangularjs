@@ -26,7 +26,7 @@ class Category extends BaseController
 		$this->session = \Config\Services::session();
 		$this->session->start();
 		$this->libary = new Common_Libraries();
-		$this->Categorytype_Model = new Categorytype_Model();
+		$this->Category_Model = new Category_Model();
 		
 		$this->baseUrl = base_url();
 		helper('url');
@@ -41,24 +41,29 @@ class Category extends BaseController
 	public function getList()
 	{	
 
-		$uresult = $this->Categorytype_Model->get_list($this->inputRequet);
+		$uresult = $this->Category_Model->get_list($this->inputRequet);
 		echo json_encode($uresult);
 	}
 
 	public function createOrUpdate()
 	{
-		$this->Categorytype_Model->createOrUpdate($this->inputRequet);
+		$this->Category_Model->createOrUpdate($this->inputRequet);
 	}
 
 	public function delete(){
-		$this->Categorytype_Model->deleteId($this->inputRequet);
+		$this->Category_Model->deleteId($this->inputRequet);
 	}
 
 	public function deleteAll(){
 		$data  = $this->inputRequet;
 		foreach($data as $item ){
-			$this->Categorytype_Model->deleteId($item->id);
+			$this->Category_Model->deleteId($item->id);
 		}
 	}
 
+	public function categoryGetAllDLL()
+	{
+		//echo 'sang';
+		echo json_encode($this->Category_Model->getAllDLL());
+	}
 }
