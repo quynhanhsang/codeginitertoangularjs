@@ -29,20 +29,6 @@
                 </div>                   
             </div>
         </div>
-        <uib-tabset active="active">
-            <uib-tab index="$index" ng-repeat="menu in vm.listMenu" heading="{{menu.title}}">
-
-            </uib-tab>
-        </uib-tabset>
-        <div class="form-group">
-            <label class="control-label">Danh mục cha</label>
-            <input class="form-control" 
-            kendo-drop-down-list
-            type="text"  
-            name="parentId"  
-            k-options="vm.categoryOptions"
-            ng-model="vm.data.parentId" />
-        </div>
         <div class="table-scrollable">
             <table class="table table-bordered table-hover">
                 <thead>
@@ -54,7 +40,7 @@
                                 <span></span>
                             </label>
                         </th>
-                        <th> Mã danh mục </th>
+                        <th> Kiểu danh mục </th>
                         <th> Tiêu đề </th>
                         <th> Thứ tự </th>
                         <th style="text-align: center;"> Trạng Thái </th>

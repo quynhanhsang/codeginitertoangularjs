@@ -61,4 +61,9 @@ class Categorytype extends BaseController
 		}
 	}
 
+	public function getAllDLL()
+	{
+		$data = $this->Categorytype_Model->getAllDLL();
+		echo json_encode($data);
+	}
 }

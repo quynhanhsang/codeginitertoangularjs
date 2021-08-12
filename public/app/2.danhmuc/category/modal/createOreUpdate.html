@@ -16,15 +16,33 @@
         <input class="form-control" type="text"  name="seoAlias"  ng-model="vm.data.seoAlias" />
         <check-validate datacheck="vm.data.seoAlias"></check-validate>
     </div>
-    <div class="form-group">
-        <label class="control-label">Danh mục cha</label>
-        <input class="form-control" 
-        kendo-drop-down-list
-        type="text"  
-        name="parentId"  
-        k-options="vm.categoryOptions"
-        ng-model="vm.data.parentId" />
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="control-label">Danh mục cha</label>
+                <input class="form-control" 
+                style="width:100%"
+                kendo-drop-down-list
+                type="text"  
+                name="parentId"  
+                k-options="vm.categoryOptions"
+                ng-model="vm.data.parentId" />
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="control-label">Kiểu danh mục</label>
+                <input class="form-control" 
+                style="width:100%"
+                kendo-drop-down-list
+                type="text"  
+                name="typeCode"  
+                k-options="vm.categoryTypeOptions"
+                ng-model="vm.data.typeCode" />
+            </div>
+        </div>
     </div>
+    
     <div class="form-group margin-top-15">
         <label class=" control-label">Thứ tự</label>
         <input class="form-control"

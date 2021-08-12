@@ -42,7 +42,7 @@ function($rootScope, $uibModalInstance, $scope, $http, $timeout, cauhinh) {
                     $http.get(ApiUrl+'/category/categoryGetAllDLL')
                     .then(function(response){
                         debugger;
-                        options.success(response.data);
+                        options.success(response.data.filter(x=>x.id != vm.data.id));
                     }, function(){
 
                     });
@@ -50,6 +50,29 @@ function($rootScope, $uibModalInstance, $scope, $http, $timeout, cauhinh) {
             }
         }),
         dataValueField: "id",
+        dataTextField: "title",
+        optionLabel: 'Chọn ...',
+        filter: "contains",
+    };
+
+    vm.categoryTypeOptions = {
+        dataSource: new kendo.data.DataSource({
+            transport: {
+                read: function (options) {
+                    // abp.services.app.category.allCategoryToDDL().done(function (result) {
+                    //     options.success(result);
+                    // });
+                    $http.get(ApiUrl+'/categorytype/getAllDLL')
+                    .then(function(response){
+                        debugger;
+                        options.success(response.data.filter(x=>x.id != vm.data.id));
+                    }, function(){
+
+                    });
+                }
+            }
+        }),
+        dataValueField: "typeCode",
         dataTextField: "title",
         optionLabel: 'Chọn ...',
         filter: "contains",

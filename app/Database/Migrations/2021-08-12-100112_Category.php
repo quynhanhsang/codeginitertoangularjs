@@ -66,6 +66,11 @@ class Category extends Migration
                 'type' => 'INT',
                 'constraint' => '11',
             ],
+            'typeCode' => [
+                'type' => 'VARCHAR',
+                'null' => true,
+                'constraint' => '100',
+            ],
             'tennantId' => [
                 'type' => 'INT',
                 'null' => true,
