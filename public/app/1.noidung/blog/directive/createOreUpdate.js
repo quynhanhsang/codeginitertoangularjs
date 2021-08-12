@@ -11,7 +11,7 @@
         };
 
         vm.getLink = function () {
-            vm.data.target = app.locdau(vm.data.title);
+            vm.data.seoAlias = app.locdau(vm.data.title);
             vm.data.seoTitle = vm.data.title;
         }
 

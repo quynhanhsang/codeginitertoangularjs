@@ -25,24 +25,16 @@ function($rootScope, $scope, $http, $timeout, $uibModal, $ngConfirm) {
         });
     }
 
-    vm.loadMenu = function(){
-        $http.get(ApiUrl+'/category/menuGetAllDLL')
-        .then(function(response){
-            vm.listMenu = response.data;
-        }, function(){
-
-        });
-    }
-
-    vm.addCauHinhChung = function(data){
-        
+    vm.addDanhMuc = function(data){
+        debugger;
         var dataCopy = angular.copy(data);
-        openCreateOrEditadvModal(dataCopy);
+        openCreateOrEditDanhMucModal(dataCopy);
     }
     
     vm.editCauHinhChung = function(data){
+        debugger;
         var dataCopy = angular.copy(data);
-        openCreateOrEditadvModal(dataCopy);
+        openCreateOrEditDanhMucModal(dataCopy);
     }
     vm.deleteCauHinhChung = function(data){
         $ngConfirm({
@@ -145,11 +137,11 @@ function($rootScope, $scope, $http, $timeout, $uibModal, $ngConfirm) {
         };
     }
     
-    function openCreateOrEditadvModal(data) {
+    function openCreateOrEditDanhMucModal(data) {
         
         var modalInstance = $uibModal.open({
-            templateUrl: baseUrl+'/app/2.danhmuc/menucategory/modal/createOreUpdate.html',
-            controller: 'app.danhmuc.menucategory.modal.createOreUpdate as vm',
+            templateUrl: baseUrl+'/app/2.danhmuc/category/modal/createOreUpdate.html',
+            controller: 'app.danhmuc.category.modal.createOreUpdate as vm',
             backdrop: 'static',
             size: 'lg',
             resolve: {
@@ -164,7 +156,7 @@ function($rootScope, $scope, $http, $timeout, $uibModal, $ngConfirm) {
 
     var init = function () {
         vm.loadData();
-        vm.loadMenu();
+        //vm.loadMenu();
     };
     init();
 

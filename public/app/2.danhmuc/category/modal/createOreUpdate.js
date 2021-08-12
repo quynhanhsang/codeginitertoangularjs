@@ -8,6 +8,14 @@ function($rootScope, $uibModalInstance, $scope, $http, $timeout, cauhinh) {
         isActive: true,
     };
 
+    $scope.states = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 'North Dakota', 'North Carolina', 'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'];
+
+    vm.getLink = function () {
+        vm.data.target = app.locdau(vm.data.title);
+        vm.data.seoAlias = app.locdau(vm.data.title);
+        vm.data.seoTitle = vm.data.title;
+    }
+
     vm.save = function () {
         if (!app.checkValidateForm("#categoryCreateOrEditForm")) {
             app.error('Không được để trống');

@@ -14,6 +14,11 @@ class Category extends Migration
                     'unsigned'       => true,
                     'auto_increment' => true,
             ],
+            'title' => [
+                'type' => 'VARCHAR',
+                'null' => true,
+                'constraint' => '200',
+            ],
             'target' => [
                 'type' => 'VARCHAR',
                 'null' => true,
