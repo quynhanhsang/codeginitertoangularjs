@@ -66,4 +66,9 @@ class Blog extends BaseController
 		$uresult = $this->Blog_Model->getById($this->inputRequet);
 		echo json_encode($uresult);
 	}
+
+	public function getMember()
+	{	
+		var_dump(session()->get());
+	}
 }

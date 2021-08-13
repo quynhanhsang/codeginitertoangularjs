@@ -26,11 +26,12 @@ class Category_Model extends Model {
     var $key = 'id';
     
     protected $libary;
+    protected $db;
 
     public function __construct() {
         parent::__construct();
         
-        $db      = \Config\Database::connect();
+        $this->db      = \Config\Database::connect();
         $this->libary = new Common_Libraries();
     }
 
@@ -39,12 +40,18 @@ class Category_Model extends Model {
         $arrayx = $this->libary->convertJsonToArray($data);
         
         $filter = array(
-            'title'=> $arrayx['filter']
+            'qa_category.title'=> $arrayx['filter']
         );
 
-        $query = $this->db->table($this->table)->where('isDelete', 0)->like($filter); 
-        
-        $array = $query->get()->getResult();   
+        //$query = $this->db->table($this->table)->where('isDelete', 0)->like($filter); 
+        $builder = $this->table($this->table)
+                        ->select('qa_category.title, qa_category.typeCode,qa_category.seoAlias,qa_category.seoTitle,qa_category.seoKeywords,qa_category.seoDescription,qa_category.parentId,qa_category.isActive,qa_category.isDelete, qa_categorytype.title as categoryTypeName')
+                        ->where('qa_category.isDelete', false)
+                        ->like($filter)
+                        ->join('qa_categorytype', 'qa_categorytype.typeCode = qa_category.typeCode','left');
+    
+        // $builder->where('isDelete', 0);
+        $array = $builder->get()->getResult();   
         foreach($array as $result){
             // $result->id = (int) $result->id;
             // $result->ngayTao = date("d-m-Y H:s", strtotime($result->creatTime));
@@ -62,6 +69,7 @@ class Category_Model extends Model {
         
         if(empty($array[$this->key])){
             $array['creatTime'] = $this->libary->dateTime();
+            $array['tennantId'] = session()->get('tennantId');
             $query = $this->db->table($this->table)->insert($array);
             return $this->db->insertID();
         }else{

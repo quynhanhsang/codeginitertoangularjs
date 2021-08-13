@@ -62,6 +62,7 @@ class Menus_Model extends Model {
         
         if(empty($array[$this->key])){
             $array['creatTime'] = $this->libary->dateTime();
+            $array['tennantId'] = session()->get('tennantId');
             $query = $this->db->table($this->table)->insert($array);
             return $this->db->insertID();
         }else{

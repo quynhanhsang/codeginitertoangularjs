@@ -23,8 +23,7 @@
             $http.post(ApiUrl+'/blog/createOrUpdate', vm.data)
             .then(function(response){
                 app.success('Lưu thành công');
-                console.log(response , 'sang');
-                //$uibModalInstance.close();
+                $state.go('baiviet');
             }, function(){
 
             });

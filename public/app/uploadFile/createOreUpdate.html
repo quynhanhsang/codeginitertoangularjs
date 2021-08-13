@@ -1,0 +1,22 @@
+<div draggable>
+    <div class="modal-header">
+        <span class="pull-right" ng-click="vm.cancel()" aria-hidden="true"><i class="glyphicon glyphicon-remove"></i></span>
+        <h4 class="modal-title">
+            <span>Upload Ảnh</span>
+        </h4>
+    </div>
+    <div class="modal-body" id="categoryCreateOrEditForm">
+        <uib-tabset active="active">
+            <uib-tab index="1" heading="Tải lên tập tin">
+
+            </uib-tab>
+            <uib-tab index="2" heading="Thư viện">
+
+            </uib-tab>
+        </uib-tabset>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn green-meadow" ng-click="vm.save()"><i class="fa fa-save"></i> <span>Lưu</span></button>
+        <button type="button" class="btn red" ng-click="vm.cancel()"><i class="glyphicon glyphicon-remove"></i>Đóng</button>
+    </div>
+</div>

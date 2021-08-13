@@ -13,3 +13,8 @@
 .portlet.box>.portlet-title>.caption {
     padding: 10px 0 9px !important;
 }
+
+.page-header .page-header-top .page-logo .logo-default{
+    width: 100%;
+    margin-top: 5px !important;
+}

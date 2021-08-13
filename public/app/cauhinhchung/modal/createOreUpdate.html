@@ -1,77 +1,79 @@
-<div class="modal-header">
-    <span class="pull-right" ng-click="vm.cancel()" aria-hidden="true"><i class="glyphicon glyphicon-remove"></i></span>
-    <h4 class="modal-title">
-        <span ng-if="!vm.data.id">Tạo mới cấu hình chung</span>
-        <span ng-if="vm.data.id">Sửa mới cấu hình chung</span>
-    </h4>
-</div>
-<div class="modal-body" id="systemConfigCreateOrEditForm">
-    <!-- <div class="form-group margin-top-15">
-        <label class=" control-label">Hệ thống</label>
-        <input class="form-control"
-        type="text"
-        name="Description"
-        ng-model="vm.data.hethong"/>
-    </div> -->
-    <div class="form-group">
-        <label class="control-label">Seting Key <span class="font-red">*</span></label>
-        <input class="form-control" type="text"  name="SettingKey"  ng-model="vm.data.settingKey" />
-        <check-validate datacheck="vm.data.settingKey"></check-validate>
+<div draggable>
+    <div class="modal-header">
+        <span class="pull-right" ng-click="vm.cancel()" aria-hidden="true"><i class="glyphicon glyphicon-remove"></i></span>
+        <h4 class="modal-title">
+            <span ng-if="!vm.data.id">Tạo mới cấu hình chung</span>
+            <span ng-if="vm.data.id">Sửa mới cấu hình chung</span>
+        </h4>
     </div>
-    <div class="form-group margin-top-15">
-        <label class=" control-label">Mô tả</label>
-        <input class="form-control"
-        type="text"
-        name="Description"
-        ng-model="vm.data.description"/>
-    </div>
-    <div class="form-group  margin-top-15">
-        <label class=" control-label">
-            Kiểu cấu hình
-        </label>
-        <select class="form-control" ng-model="vm.data.settingType">
-
-            <option value="1">Text</option>
-            <option value="2">Ảnh</option>
-            <option value="3">Văn bản</option>
-        </select>
-    </div>
-    <div class="form-group margin-top-15" ng-if="vm.data.settingType=='1'">
-        <label class=" control-label">Setting Value</label>
-        <textarea class="form-control"
-                      type="text"
-                      ng-model="vm.dataSetting.string"
-                      ></textarea>
-    </div>
-    <div class="form-group  margin-top-15" ng-if="vm.data.settingType=='2'">
-        <label class=" control-label">Setting Value</label>
-        <div class="row">
-            <div class="col-md-8 col-sm-8 col-xs-10">
-                <input class="form-control"
-                       type="text"
-                       ng-model="vm.dataSetting.image"
-                        />
-            </div>
-            <div class="col-md-2 col-sm-2 col-xs-2">
-                <button class="btn btn-default" type="button" ng-click="vm.ChooseImage()">Chọn ảnh</button>
+    <div class="modal-body" id="systemConfigCreateOrEditForm">
+        <!-- <div class="form-group margin-top-15">
+            <label class=" control-label">Hệ thống</label>
+            <input class="form-control"
+            type="text"
+            name="Description"
+            ng-model="vm.data.hethong"/>
+        </div> -->
+        <div class="form-group">
+            <label class="control-label">Seting Key <span class="font-red">*</span></label>
+            <input class="form-control" type="text"  name="SettingKey"  ng-model="vm.data.settingKey" />
+            <check-validate datacheck="vm.data.settingKey"></check-validate>
+        </div>
+        <div class="form-group margin-top-15">
+            <label class=" control-label">Mô tả</label>
+            <input class="form-control"
+            type="text"
+            name="Description"
+            ng-model="vm.data.description"/>
+        </div>
+        <div class="form-group  margin-top-15">
+            <label class=" control-label">
+                Kiểu cấu hình
+            </label>
+            <select class="form-control" ng-model="vm.data.settingType">
+    
+                <option value="1">Text</option>
+                <option value="2">Ảnh</option>
+                <option value="3">Văn bản</option>
+            </select>
+        </div>
+        <div class="form-group margin-top-15" ng-if="vm.data.settingType=='1'">
+            <label class=" control-label">Setting Value</label>
+            <textarea class="form-control"
+                          type="text"
+                          ng-model="vm.dataSetting.string"
+                          ></textarea>
+        </div>
+        <div class="form-group  margin-top-15" ng-if="vm.data.settingType=='2'">
+            <label class=" control-label">Setting Value</label>
+            <div class="row">
+                <div class="col-md-8 col-sm-8 col-xs-10">
+                    <input class="form-control"
+                           type="text"
+                           ng-model="vm.dataSetting.image"
+                            />
+                </div>
+                <div class="col-md-2 col-sm-2 col-xs-2">
+                    <button class="btn btn-default" type="button" ng-click="vm.ChooseImage()">Chọn ảnh</button>
+                </div>
             </div>
         </div>
+    
+        <div class="form-group clearfix margin-top-15" ng-if="vm.data.settingType=='3'">
+            <label class="control-label">Setting Value</label>
+            <textarea class="form-control"
+                          type="text"
+                          ng-model="vm.dataSetting.text"
+                           ckeditor="ckDescription"></textarea>
+        </div>
+        <div class="form-group clearfix margin-top-15">
+            <label class=" control-label">Kích hoạt</label>
+            <input ng-model="vm.data.isActive"
+                    type="checkbox">
+        </div>
     </div>
-
-    <div class="form-group clearfix margin-top-15" ng-if="vm.data.settingType=='3'">
-        <label class="control-label">Setting Value</label>
-        <textarea class="form-control"
-                      type="text"
-                      ng-model="vm.dataSetting.text"
-                       ckeditor="ckDescription"></textarea>
+    <div class="modal-footer">
+        <button type="button" class="btn green-meadow" ng-click="vm.save()"><i class="fa fa-save"></i> <span>Lưu</span></button>
+        <button type="button" class="btn red" ng-click="vm.cancel()"><i class="glyphicon glyphicon-remove"></i>Đóng</button>
     </div>
-    <div class="form-group clearfix margin-top-15">
-        <label class=" control-label">Kích hoạt</label>
-        <input ng-model="vm.data.isActive"
-                type="checkbox">
-    </div>
-</div>
-<div class="modal-footer">
-    <button type="button" class="btn green-meadow" ng-click="vm.save()"><i class="fa fa-save"></i> <span>Lưu</span></button>
-    <button type="button" class="btn red" ng-click="vm.cancel()"><i class="glyphicon glyphicon-remove"></i>Đóng</button>
 </div>

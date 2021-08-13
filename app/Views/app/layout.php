@@ -131,6 +131,7 @@
         <script src="<?php echo base_url()?>/app/quick-sidebar.js" type="text/javascript"></script>
         <script src="<?php echo base_url()?>/assets/admin/js/directives.js" type="text/javascript"></script>
         <script src="<?php echo base_url()?>/common/directives/checkValidate.js" type="text/javascript"></script>
+        <script src="<?php echo base_url()?>/common/directives/draggable.js" type="text/javascript"></script>
 
         <!-- <script src="<?php echo base_url()?>/common/checkValidate.js" type="text/javascript"></script> -->
         <!-- END APP LEVEL ANGULARJS SCRIPTS -->

@@ -72,7 +72,7 @@ class Login extends BaseController
 					'login' => TRUE, 
 					'userName' => $uresult[0]->userName,
 					'level'=>$uresult[0]->level,
-					'tennantId'=>$uresult[0]->tennantId,
+					'tennantId'=>$uresult[0]->id,
 					'email'=>$uresult[0]->email,
 					'roleID'=>$uresult[0]->roleID,
 					'uid' => $uresult[0]->id);

@@ -1,39 +1,41 @@
-<div class="modal-header">
-    <span class="pull-right" ng-click="vm.cancel()" aria-hidden="true"><i class="glyphicon glyphicon-remove"></i></span>
-    <h4 class="modal-title">
-        <span ng-if="!vm.data.id">Tạo mới cấu hình chung</span>
-        <span ng-if="vm.data.id">Sửa mới cấu hình chung</span>
-    </h4>
-</div>
-<div class="modal-body" id="categorytypeCreateOrEditForm">
-    <div class="form-group">
-        <label class="control-label">Tiêu đề <span class="font-red">*</span></label>
-        <input class="form-control" type="text"  name="title"  ng-model="vm.data.title" />
-        <check-validate datacheck="vm.data.title"></check-validate>
+<div draggable>
+    <div class="modal-header">
+        <span class="pull-right" ng-click="vm.cancel()" aria-hidden="true"><i class="glyphicon glyphicon-remove"></i></span>
+        <h4 class="modal-title">
+            <span ng-if="!vm.data.id">Tạo mới cấu hình chung</span>
+            <span ng-if="vm.data.id">Sửa mới cấu hình chung</span>
+        </h4>
     </div>
-    <div class="form-group">
-        <label class="control-label">Mã danh mục <span class="font-red">*</span></label>
-        <input class="form-control" type="text"  name="typeCode"  ng-model="vm.data.typeCode" />
-        <check-validate datacheck="vm.data.typeCode"></check-validate>
+    <div class="modal-body" id="categorytypeCreateOrEditForm">
+        <div class="form-group">
+            <label class="control-label">Tiêu đề <span class="font-red">*</span></label>
+            <input class="form-control" type="text"  name="title"  ng-model="vm.data.title" />
+            <check-validate datacheck="vm.data.title"></check-validate>
+        </div>
+        <div class="form-group">
+            <label class="control-label">Mã danh mục <span class="font-red">*</span></label>
+            <input class="form-control" type="text"  name="typeCode"  ng-model="vm.data.typeCode" />
+            <check-validate datacheck="vm.data.typeCode"></check-validate>
+        </div>
+        <div class="form-group margin-top-15">
+            <label class=" control-label">Thứ tự</label>
+            <input class="form-control"
+            type="text"
+            name="Description"
+            ng-model="vm.data.sortOrder"/>
+           
+        </div>
+        <div class="form-group clearfix margin-top-15">
+            <label for="">Note: Nếu không điền dữ liệu sẽ được sinh ra tự động</label>
+        </div>
+        <div class="form-group clearfix margin-top-15">
+            <label class=" control-label">Trạng thái</label>
+            <input ng-model="vm.data.isActive"
+                    type="checkbox">
+        </div>
     </div>
-    <div class="form-group margin-top-15">
-        <label class=" control-label">Thứ tự</label>
-        <input class="form-control"
-        type="text"
-        name="Description"
-        ng-model="vm.data.sortOrder"/>
-       
+    <div class="modal-footer">
+        <button type="button" class="btn green-meadow" ng-click="vm.save()"><i class="fa fa-save"></i> <span>Lưu</span></button>
+        <button type="button" class="btn red" ng-click="vm.cancel()"><i class="glyphicon glyphicon-remove"></i>Đóng</button>
     </div>
-    <div class="form-group clearfix margin-top-15">
-        <label for="">Note: Nếu không điền dữ liệu sẽ được sinh ra tự động</label>
-    </div>
-    <div class="form-group clearfix margin-top-15">
-        <label class=" control-label">Trạng thái</label>
-        <input ng-model="vm.data.isActive"
-                type="checkbox">
-    </div>
-</div>
-<div class="modal-footer">
-    <button type="button" class="btn green-meadow" ng-click="vm.save()"><i class="fa fa-save"></i> <span>Lưu</span></button>
-    <button type="button" class="btn red" ng-click="vm.cancel()"><i class="glyphicon glyphicon-remove"></i>Đóng</button>
 </div>
