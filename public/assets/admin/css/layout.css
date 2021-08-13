@@ -26,3 +26,20 @@
     margin: 0 auto;
     text-align: center;
 }
+
+.portlet.box.default {
+    border: 1px solid #f3f4f5 !important;
+    border-top: 0;
+}
+.portlet.default, .portlet.box.default>.portlet-title, .portlet>.portlet-body.default {
+    background-color: #f3f4f5 !important;
+}
+
+.portlet.box.default>.portlet-title>.tools>a.expand {
+    background-image: url(../global/img/portlet-expand-icon.png);
+}
+.portlet.box.default>.portlet-title>.tools>a.collapse {
+    background-image: url(../global/img/portlet-collapse-icon.png);
+    width: 14px;
+    visibility: visible;
+}
