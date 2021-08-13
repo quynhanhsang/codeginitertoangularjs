@@ -94,7 +94,7 @@ $routes->post('application/categorytype/deleteAll', 'Categorytype::deleteAll', [
 //category
 $routes->get('application/category', 'Category::index', ['namespace' => 'App\Controllers\Application', 'filter' => 'auth']);
 $routes->get('application/category/categoryGetAllDLL', 'Category::categoryGetAllDLL', ['namespace' => 'App\Controllers\Application', 'filter' => 'auth']);
-
+$routes->get('application/category/getTest', 'Category::getTest', ['namespace' => 'App\Controllers\Application', 'filter' => 'auth']);
 $routes->post('application/category/getList', 'Category::getList', ['namespace' => 'App\Controllers\Application', 'filter' => 'auth']);
 $routes->post('application/category/createOrUpdate', 'Category::createOrUpdate', ['namespace' => 'App\Controllers\Application', 'filter' => 'auth']);
 $routes->post('application/category/delete', 'Category::delete', ['namespace' => 'App\Controllers\Application', 'filter' => 'auth']);

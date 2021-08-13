@@ -16,6 +16,7 @@ use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 use \Psr\Log\LoggerInterface;
 use App\Libraries\Common_Libraries;
+use App\Models\Category_Model;
 use \DateTime; 
 
 class Blog_Model extends Model {
@@ -32,6 +33,7 @@ class Blog_Model extends Model {
         
         $db      = \Config\Database::connect();
         $this->libary = new Common_Libraries();
+        $this->Category_Model = new Category_Model();
     }
 
     public function get_list($data)
@@ -72,10 +74,16 @@ class Blog_Model extends Model {
         
         $array = $query->get()->getResult();   
         foreach($array as $result){
+            $arrayCategory = array();
+            foreach( json_decode($result->categoryId) as $item){
+                // var_dump($this->Category_Model->getCategoryById($item));
+                array_push($arrayCategory, $this->Category_Model->getCategoryById($item)[0]);
+            }
             // $result->id = (int) $result->id;
             // $result->ngayTao = date("d-m-Y H:s", strtotime($result->creatTime));
             // $result->ngaySua = date("d-m-Y H:s", strtotime($result->editTime));
             $result->isActive = (bool) $result->isActive;
+            $result->arrayCategory = $arrayCategory;
             // $result->isDefault = (bool) $result->isDefault;
             $result->isDelete = (bool) $result->isDelete;
         }

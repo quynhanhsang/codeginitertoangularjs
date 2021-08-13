@@ -66,4 +66,9 @@ class Category extends BaseController
 		//echo 'sang';
 		echo json_encode($this->Category_Model->getAllDLL());
 	}
+
+	public function getTest()
+	{
+		echo json_encode($this->Category_Model->getCategoryById(1));
+	}
 }

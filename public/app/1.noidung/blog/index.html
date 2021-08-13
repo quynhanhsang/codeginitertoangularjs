@@ -42,8 +42,8 @@
                         </th>
                         <th> Tiêu đề </th>
                         <th> tác giả </th>
-                        <th> chuyên mục </th>
-                        <th> sửa đổi lần cuối </th>
+                        <th style="width: 200px"> chuyên mục </th>
+                        <th style="width: 150px"> sửa đổi lần cuối </th>
                         <th style="text-align: center;"> Trạng Thái </th>
                         <th style="width:100px; text-align: center;"> Thao tác </th>
                     </tr>
@@ -57,9 +57,11 @@
                                 <span></span>
                             </label>
                         </td>
-                        <td> {{item.title}}</td>
+                        <td> <a href="javascript:;" ng-click="vm.editBlog(item.id)"><strong>{{item.title}}</strong></a></td>
                         <td> {{item.author}} </td>
-                        <td> {{item.editTime}} </td>
+                        <td> 
+                            <span class="font-blue" ng-repeat="category in item.arrayCategory"> {{category.title}}/ </span>
+                        </td>
                         <td> {{item.editTime}} </td>
                         <td>
                             <p style="margin: 0;text-align:center;">

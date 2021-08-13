@@ -15,6 +15,7 @@ function($rootScope, $scope, $http, $timeout, $uibModal, $ngConfirm, $state) {
         $http.post(ApiUrl+'/blog/getList', vm.filter)
         .then(function(response){
             //app.success('success');
+            debugger;
             vm.data = response.data;
             // vm.data.forEach(function(item){
             //     item.creatTime = new Date(item.creatTime);

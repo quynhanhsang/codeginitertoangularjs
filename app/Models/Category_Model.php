@@ -105,4 +105,11 @@ class Category_Model extends Model {
         $array = $query->get()->getResult();
         return $array;
     }
+
+    public function getCategoryById($id)
+    {    
+        $query = $this->db->table($this->table)->where("isDelete", 0)->where('id' ,$id);        
+            
+        return $query->get()->getResult();
+    }
 }
