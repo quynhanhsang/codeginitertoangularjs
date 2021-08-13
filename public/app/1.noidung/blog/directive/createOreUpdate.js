@@ -177,7 +177,7 @@
                         }
                     }
                 });
-            });
+            }, 0);
         }
         //end danh mục
 
@@ -230,7 +230,10 @@
 
         var init = function () {
             vm.loadDataById();
-            vm.loadDataDanhMuc();
+            $timeout(function(){
+                vm.loadDataDanhMuc();
+            }, 0);
+            
         };
         init();
 
