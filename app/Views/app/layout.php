@@ -46,7 +46,10 @@
         <!-- BEGIN THEME STYLES -->
         <!-- DOC: To use 'rounded corners' style just load 'components-rounded.css' stylesheet instead of 'components.css' in the below style tag -->
         <link href="<?php echo base_url()?>/assets/admin/global/css/components.min.css" id="style_components" rel="stylesheet" type="text/css" />
+        <link href="<?php echo base_url()?>/assets/admin/global/plugins/dropzone/dropzone.min.css" rel="stylesheet" type="text/css" />
+        <link href="<?php echo base_url()?>/assets/admin/global/plugins/dropzone/basic.min.css" rel="stylesheet" type="text/css" />
         <link href="<?php echo base_url()?>/assets/admin/global/css/plugins.min.css" rel="stylesheet" type="text/css" />
+       
         <link href="<?php echo base_url()?>/assets/admin/layouts/layout3/css/layout.min.css" rel="stylesheet" type="text/css" />
         <link href="<?php echo base_url()?>/assets/admin/layouts/layout3/css/themes/default.min.css" rel="stylesheet" type="text/css" id="style_color" />
         <link href="<?php echo base_url()?>/assets/admin/layouts/layout3/css/custom.min.css" rel="stylesheet" type="text/css" />
@@ -122,6 +125,7 @@
         <script src="<?php echo base_url()?>/scripts/angular-confirm/js/angular-confirm.js" type="text/javascript"></script>
         <script src="<?php echo base_url()?>/assets/admin/global/plugins/ckeditor/ckeditor.js" type="text/javascript"></script>
         <script src="<?php echo base_url()?>/scripts/ng-ckeditor/ng-ckeditor.js" type="text/javascript"></script>
+        <script src="<?php echo base_url()?>/assets/admin/global/plugins/dropzone/dropzone.min.js" type="text/javascript"></script>
         <!-- BEGIN APP LEVEL ANGULARJS SCRIPTS -->
         
         <script src="<?php echo base_url()?>/app/main/main.js" type="text/javascript"></script>
@@ -132,6 +136,8 @@
         <script src="<?php echo base_url()?>/assets/admin/js/directives.js" type="text/javascript"></script>
         <script src="<?php echo base_url()?>/common/directives/checkValidate.js" type="text/javascript"></script>
         <script src="<?php echo base_url()?>/common/directives/draggable.js" type="text/javascript"></script>
+
+        <script src="<?php echo base_url()?>/app/uploadFile/createOreUpdate.js" type="text/javascript"></script>
 
         <!-- <script src="<?php echo base_url()?>/common/checkValidate.js" type="text/javascript"></script> -->
         <!-- END APP LEVEL ANGULARJS SCRIPTS -->

@@ -38,9 +38,7 @@ class Blog extends Migration
                 'null' => true,
             ],
             'categoryId'          => [
-                'type'           => 'INT',
-                'unsigned'       => false,
-                'auto_increment' => false,
+                'type' => 'TEXT',
                 'null' => true,
             ],
             'viewCount'          => [

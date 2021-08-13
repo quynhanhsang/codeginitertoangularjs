@@ -39,10 +39,36 @@ class Blog_Model extends Model {
         $arrayx = $this->libary->convertJsonToArray($data);
         
         $filter = array(
-            'title'=> $arrayx['filter']
+            $this->table.'.title'=> $arrayx['filter']
         );
+        // $builder = $this->table($this->table)
+        // ->select('qa_category.title, qa_category.typeCode,qa_category.seoAlias,qa_category.seoTitle,qa_category.seoKeywords,qa_category.seoDescription,qa_category.parentId,qa_category.isActive,qa_category.isDelete, qa_categorytype.title as categoryTypeName')
+        // ->where('qa_category.isDelete', false)
+        // ->like($filter)
+        // ->join('qa_categorytype', 'qa_categorytype.typeCode = qa_category.typeCode','left');
 
-        $query = $this->db->table($this->table)->where('isDelete', 0)->like($filter); 
+        $query = $this->db->table($this->table)
+                            ->select('
+                            qa_blog.id, 
+                            qa_blog.title, 
+                            qa_blog.editedBy,
+                            qa_blog.description,
+                            qa_blog.categoryId,
+                            qa_blog.tag, 
+                            qa_blog.isActive,
+                            qa_blog.isDelete,
+                            qa_blog.viewCount,
+                            qa_blog.seoTitle,
+                            qa_blog.seoKeywords,
+                            qa_blog.seoAlias,
+                            qa_blog.seoDescription,
+                            qa_blog.tennantId,
+                            qa_blog.creatTime,
+                            qa_blog.editTime,
+                            qa_user.userName,
+                            qa_user.name as author')
+                            ->where($this->table.'.isDelete', 0)->like($filter)
+                            ->join('qa_user', 'qa_user.id = qa_blog.tennantId','left'); 
         
         $array = $query->get()->getResult();   
         foreach($array as $result){

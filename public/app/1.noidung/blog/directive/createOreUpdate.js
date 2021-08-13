@@ -1,8 +1,8 @@
 (function () {
     /* Setup Layout Part - Header */
     angular.module('MetronicApp').controller('app.noidung.blog.directive.createOreUpdate', 
-    ['$rootScope','$scope', '$http', '$timeout', '$stateParams', '$state',
-    function($rootScope, $scope, $http, $timeout, $stateParams,  $state) {
+    ['$rootScope','$scope', '$http', '$timeout', '$stateParams', '$state', '$uibModal',
+    function($rootScope, $scope, $http, $timeout, $stateParams,  $state, $uibModal) {
 
         var vm = this;
         vm.loading = false;
@@ -42,6 +42,7 @@
         };
         
         vm.loadDataById = function(){
+            debugger;
             if (!app.isNullOrEmpty($stateParams.id)) {
                 $http.post(ApiUrl+'/blog/getById', $stateParams.id)
                 .then(function(response){
@@ -58,6 +59,28 @@
                 
             }
         }
+
+        vm.createUpdateImage = function(data){
+            openCreateOrEditImageModal(null);
+        }
+
+        function openCreateOrEditImageModal(data) {
+        
+            var modalInstance = $uibModal.open({
+                templateUrl: baseUrl+'/app/uploadFile/createOreUpdate.html',
+                controller: 'app.uploadFile.modal.createOreUpdate as vm',
+                backdrop: 'static',
+                size: 'lg',
+                resolve: {
+                    cauhinh: data
+                }
+            });
+    
+            modalInstance.result.then(function (result) {
+                //vm.loadData();
+            });
+        }
+
         var init = function () {
             vm.loadDataById();
         };
