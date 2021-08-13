@@ -81,10 +81,10 @@ function($rootScope, $uibModalInstance, $scope, $http, $timeout, cauhinh) {
     };
 
     vm.uploadFile = function(){
-        var myDropzone = new Dropzone("#my-dropzone", 
-        { 
-            url: "/file/post"
-        });
+        // var myDropzone = new Dropzone("#my-dropzone", 
+        // { 
+        //     url: "/file/post"
+        // });
 
     }
     var init = function () {
