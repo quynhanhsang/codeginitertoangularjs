@@ -14,7 +14,9 @@
             vm.data.seoAlias = app.locdau(vm.data.title);
             vm.data.seoTitle = vm.data.title;
         }
-
+        vm.comback = function(){
+            $state.go('baiviet');
+        }
         vm.save = function () {
             if (!app.checkValidateForm("#blogCreateOrEditForm")) {
                 app.error('Không được để trống');
@@ -197,6 +199,32 @@
     
             modalInstance.result.then(function (result) {
                 //vm.loadData();
+            });
+        }
+
+        vm.addDanhMuc = function(data){
+            var dataCopy = angular.copy(data);
+            openCreateOrEditDanhMucModal(dataCopy);
+        }
+
+        function openCreateOrEditDanhMucModal(data) {
+        
+            var modalInstance = $uibModal.open({
+                templateUrl: baseUrl+'/app/2.danhmuc/category/modal/createOreUpdate.html',
+                controller: 'app.danhmuc.category.modal.createOreUpdate as vm',
+                backdrop: 'static',
+                size: 'lg',
+                resolve: {
+                    cauhinh: data
+                }
+            });
+    
+            modalInstance.result.then(function (result) {
+                debugger;
+                $('#tree_danhmuc').remove();
+                $("#tree_danhmuc_item").append(`<div id="tree_danhmuc" class="tree_danhmuc margin-top-15"> </div>`);
+                vm.loadDataDanhMuc();
+
             });
         }
 

@@ -345,6 +345,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider
                             baseUrl+'/assets/admin/global/plugins/jstree/dist/jstree.min.js',
                             baseUrl+'/assets/admin/pages/scripts/ui-tree.min.js',
                             baseUrl+'/app/1.noidung/blog/directive/createOreUpdate.js',
+                            baseUrl+'/app/2.danhmuc/category/modal/createOreUpdate.js',
                         ] 
                     });
                 }]
