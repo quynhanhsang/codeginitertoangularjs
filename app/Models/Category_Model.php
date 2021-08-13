@@ -45,7 +45,18 @@ class Category_Model extends Model {
 
         //$query = $this->db->table($this->table)->where('isDelete', 0)->like($filter); 
         $builder = $this->table($this->table)
-                        ->select('qa_blog.id,qa_category.title, qa_category.typeCode,qa_category.seoAlias,qa_category.seoTitle,qa_category.seoKeywords,qa_category.seoDescription,qa_category.parentId,qa_category.isActive,qa_category.isDelete, qa_categorytype.title as categoryTypeName')
+                        ->select('
+                        qa_category.id,
+                        qa_category.title, 
+                        qa_category.typeCode,
+                        qa_category.seoAlias,
+                        qa_category.seoTitle,
+                        qa_category.seoKeywords,
+                        qa_category.seoDescription,
+                        qa_category.parentId,
+                        qa_category.isActive,
+                        qa_category.isDelete, 
+                        qa_categorytype.title as categoryTypeName')
                         ->where('qa_category.isDelete', false)
                         ->like($filter)
                         ->join('qa_categorytype', 'qa_categorytype.typeCode = qa_category.typeCode','left');

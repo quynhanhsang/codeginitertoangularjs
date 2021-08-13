@@ -80,10 +80,18 @@ function($rootScope, $uibModalInstance, $scope, $http, $timeout, cauhinh) {
         $uibModalInstance.dismiss();
     };
 
+    vm.uploadFile = function(){
+        var myDropzone = new Dropzone("#my-dropzone", 
+        { 
+            url: "/file/post"
+        });
+
+    }
     var init = function () {
         if (cauhinh != null) {
             vm.data = cauhinh;
         }
+        vm.uploadFile();
     };
     init();
 
