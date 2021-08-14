@@ -29,7 +29,6 @@ class Navigation extends BaseController
     }
 
 	public function index(){
-		//var_dump($this->NavigationModel->setNavigation());
 		echo json_encode($this->NavigationModel->setNavigation());
 	}
 }

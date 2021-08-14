@@ -48,7 +48,7 @@ class User_Model extends Model {
         //->where('isDelete',0)
         // ->like('userName', $searchData['filter']? $searchData['filter'] : '')
         //->orlike($filter); 
-        $query = $this->db->query('SELECT id,userName,level,tennantId,email,phone,name,surName,subName,creatTime,roleID,isDelete,imageSlug FROM '.$this->table.' where isDelete = 0 AND (userName LIKE "%'.$searchData['filter'].'%" OR name LIKE "%'.$searchData['filter'].'%" OR surName LIKE "%'.$searchData['filter'].'%") ');
+        $query = $this->db->query('SELECT id,userName,level,tennantId,email,phone,name,surName,subName,creatTime,roleID,isDelete FROM '.$this->table.' where isDelete = 0 AND (userName LIKE "%'.$searchData['filter'].'%" OR name LIKE "%'.$searchData['filter'].'%" OR surName LIKE "%'.$searchData['filter'].'%") ');
         $array =$query->getResult(); 
         foreach($array as $result){
             // $result->id = (int) $result->id;
@@ -73,7 +73,6 @@ class User_Model extends Model {
             'surName' => $arrayClient['surName'],
             'subName' => $arrayClient['subName'],
             'roleID' => $arrayClient['roleID'],
-            'imageSlug' => $arrayClient['imageSlug'],
         );
 
         if(empty($arrayClient[$this->key])){

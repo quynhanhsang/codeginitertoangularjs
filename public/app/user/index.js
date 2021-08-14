@@ -14,7 +14,6 @@ function($rootScope, $scope, $http, $timeout, $uibModal, $ngConfirm) {
         $http.post(ApiUrl+'/user/getList', vm.filter)
         .then(function(response){
             //app.success('success');
-            debugger;
             vm.data = response.data;
             
             vm.data.forEach(function(item){
