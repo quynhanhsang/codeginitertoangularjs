@@ -43,7 +43,7 @@ $routes->get('application/createAcount', 'CreateAcount::index', ['namespace' => 
 $routes->post('application/authenticate', 'Login::auth_user', ['namespace' => 'App\Controllers\Application']);
 $routes->get('application/authenticate/logout', 'Login::logout', ['namespace' => 'App\Controllers\Application']);
 
-$routes->post('application/navigation', 'Navigation::index', ['namespace' => 'App\Controllers\Application', 'filter' => 'auth']);
+$routes->get('application/navigation', 'Navigation::index', ['namespace' => 'App\Controllers\Application', 'filter' => 'auth']);
 
 $routes->add('application/dashboard', 'Dashboard::index', ['namespace' => 'App\Controllers\Application', 'filter' => 'auth']);
 $routes->post('application/dashboard/$1', 'Dashboard::index/$1', ['namespace' => 'App\Controllers\Application', 'filter' => 'auth']);
@@ -65,6 +65,8 @@ $routes->post('application/role/createOrUpdate', 'Role::createOrUpdate', ['names
 $routes->post('application/role/delete(:any)', 'Role::delete/$1', ['namespace' => 'App\Controllers\Application', 'filter' => 'auth']);
 
 $routes->post('application/getpermission', 'Role::getPermissionAll', ['namespace' => 'App\Controllers\Application', 'filter' => 'auth']);
+
+$routes->post('application/file/uploads', 'File::Uploads', ['namespace' => 'App\Controllers\Application', 'filter' => 'auth']);
 
 // cấu hình chung
 $routes->get('application/systemconfig', 'SystemConfig::index', ['namespace' => 'App\Controllers\Application', 'filter' => 'auth']);

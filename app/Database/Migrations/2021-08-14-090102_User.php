@@ -28,6 +28,10 @@ class User extends Migration
                     'unsigned'       => true,
                     'auto_increment' => false,
             ],
+            'imageSlug' => [
+                'type' => 'TEXT',
+                'null' => true,
+            ],
             'tennantId' => [
                 'type' => 'TEXT',
                 'null' => true,

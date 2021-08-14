@@ -66,7 +66,6 @@
             $http.get(ApiUrl+'/category/categoryGetAllDLL')
             .then(function (response) {
                 vm.loading = true;
-                debugger;
                 var categotys = response.data;
 
                 var categoryIds = (vm.data.categoryId) ? JSON.parse(vm.data.categoryId) : null;
@@ -220,7 +219,6 @@
             });
     
             modalInstance.result.then(function (result) {
-                debugger;
                 $('#tree_danhmuc').remove();
                 $("#tree_danhmuc_item").append(`<div id="tree_danhmuc" class="tree_danhmuc margin-top-15"> </div>`);
                 vm.loadDataDanhMuc();

@@ -19,6 +19,8 @@ function($rootScope, $uibModalInstance, $scope, $http, $timeout, user) {
             app.error('Mật khẩu và nhập lại mật khẩu không khớp !!!');
             return false;
         }
+        vm.data.imageSlug  = $('#imageSlug').val();
+        debugger;
         $http.post(ApiUrl+'/user/createOrUpdate', vm.data)
         .then(function(response){
             console.log(response);

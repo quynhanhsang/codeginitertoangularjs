@@ -110,6 +110,7 @@
         <script src="<?php echo base_url()?>/assets/admin/global/plugins/js.cookie.min.js" type="text/javascript"></script>
         <script src="<?php echo base_url()?>/assets/admin/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
         <script src="<?php echo base_url()?>/assets/admin/global/plugins/bootstrap-toastr/toastr.js" type="text/javascript"></script>
+        <script src="<?php echo base_url()?>/assets/admin/global/plugins/dropzone/dropzone.min.js" type="text/javascript"></script>
         <!-- END CORE JQUERY PLUGINS -->
         <script src="<?php echo base_url()?>/app/main/appConfig.js" type="text/javascript"></script>
         <!-- BEGIN CORE ANGULARJS PLUGINS -->
@@ -125,7 +126,7 @@
         <script src="<?php echo base_url()?>/scripts/angular-confirm/js/angular-confirm.js" type="text/javascript"></script>
         <script src="<?php echo base_url()?>/assets/admin/global/plugins/ckeditor/ckeditor.js" type="text/javascript"></script>
         <script src="<?php echo base_url()?>/scripts/ng-ckeditor/ng-ckeditor.js" type="text/javascript"></script>
-        <script src="<?php echo base_url()?>/assets/admin/global/plugins/dropzone/dropzone.min.js" type="text/javascript"></script>
+     
         <!-- BEGIN APP LEVEL ANGULARJS SCRIPTS -->
         
         <script src="<?php echo base_url()?>/app/main/main.js" type="text/javascript"></script>

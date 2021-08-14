@@ -28,7 +28,7 @@ class Layout extends BaseController
 		//set lại sesion khi không còn dữ liêu user
 		$this->Login_Model = new Login_Model();
 		$session = session();
-		$uresult = $this->Login_Model->get_user($data);
+		$uresult = $this->Login_Model->getList();
 		if(count($uresult) <= 0){
 			$session->destroy();
 		}
