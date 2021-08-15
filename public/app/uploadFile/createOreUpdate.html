@@ -8,18 +8,148 @@
     <div class="modal-body" id="categoryCreateOrEditForm">
         <uib-tabset active="active">
             <uib-tab index="1" heading="Tải lên tập tin">
-                <form action="../assets/global/plugins/dropzone/upload.php" class="dropzone dropzone-file-area" id="my-dropzone" style="width: 500px; margin-top: 50px;">
+                <form method="post" enctype="multipart/form-data" action="javascript:void(0)" class="dropzone dropzone-file-area" id="my-dropzone" style=" margin-top: 10px;">
                     <h3 class="sbold">Drop files here or click to upload</h3>
                     <p> This is just a demo dropzone. Selected files are not actually uploaded. </p>
+                    <!-- <input name="file" type="file" multiple /> -->
                 </form>
+                
+                <div id="preview-template" style="display: none;">
+                    <div class="dz-preview dz-file-preview">
+                        <div class="dz-image"><img data-dz-thumbnail=""></div>
+                        <div class="dz-details">
+                            <div class="dz-size"><span data-dz-size=""></span> </div>
+                            <div class="dz-filename"><span data-dz-name=""></span></div>
+                        </div>
+                        <div class="dz-progress"><span class="dz-upload" data-dz-uploadprogress=""></span></div>
+                        <div class="dz-error-message"><span data-dz-errormessage=""></span></div>
+                        <div class="dz-success-mark">
+                        <svg width="54px" height="54px" viewBox="0 0 54 54" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                            <title>Check</title>
+                            <desc>Created with Sketch.</desc>
+                            <defs></defs>
+                            <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+                                <path d="M23.5,31.8431458 L17.5852419,25.9283877 C16.0248253,24.3679711 13.4910294,24.366835 11.9289322,25.9289322 C10.3700136,27.4878508 10.3665912,30.0234455 11.9283877,31.5852419 L20.4147581,40.0716123 C20.5133999,40.1702541 20.6159315,40.2626649 20.7218615,40.3488435 C22.2835669,41.8725651 24.794234,41.8626202 26.3461564,40.3106978 L43.3106978,23.3461564 C44.8771021,21.7797521 44.8758057,19.2483887 43.3137085,17.6862915 C41.7547899,16.1273729 39.2176035,16.1255422 37.6538436,17.6893022 L23.5,31.8431458 Z M27,53 C41.3594035,53 53,41.3594035 53,27 C53,12.6405965 41.3594035,1 27,1 C12.6405965,1 1,12.6405965 1,27 C1,41.3594035 12.6405965,53 27,53 Z" id="Oval-2" stroke-opacity="0.198794158" stroke="#747474" fill-opacity="0.816519475" fill="#FFFFFF" sketch:type="MSShapeGroup"></path>
+                            </g>
+                        </svg>
+                        </div>
+                        <div class="dz-error-mark">
+                        <svg width="54px" height="54px" viewBox="0 0 54 54" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                            <title>error</title>
+                            <desc>Created with Sketch.</desc>
+                            <defs></defs>
+                            <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+                                <g id="Check-+-Oval-2" sketch:type="MSLayerGroup" stroke="#747474" stroke-opacity="0.198794158" fill="#FFFFFF" fill-opacity="0.816519475">
+                                    <path d="M32.6568542,29 L38.3106978,23.3461564 C39.8771021,21.7797521 39.8758057,19.2483887 38.3137085,17.6862915 C36.7547899,16.1273729 34.2176035,16.1255422 32.6538436,17.6893022 L27,23.3431458 L21.3461564,17.6893022 C19.7823965,16.1255422 17.2452101,16.1273729 15.6862915,17.6862915 C14.1241943,19.2483887 14.1228979,21.7797521 15.6893022,23.3461564 L21.3431458,29 L15.6893022,34.6538436 C14.1228979,36.2202479 14.1241943,38.7516113 15.6862915,40.3137085 C17.2452101,41.8726271 19.7823965,41.8744578 21.3461564,40.3106978 L27,34.6568542 L32.6538436,40.3106978 C34.2176035,41.8744578 36.7547899,41.8726271 38.3137085,40.3137085 C39.8758057,38.7516113 39.8771021,36.2202479 38.3106978,34.6538436 L32.6568542,29 Z M27,53 C41.3594035,53 53,41.3594035 53,27 C53,12.6405965 41.3594035,1 27,1 C12.6405965,1 1,12.6405965 1,27 C1,41.3594035 12.6405965,53 27,53 Z" id="Oval-2" sketch:type="MSShapeGroup"></path>
+                                </g>
+                            </g>
+                        </svg>
+                        </div>
+                    </div>
+                </div>
             </uib-tab>
-            <uib-tab index="2" heading="Thư viện">
+            <uib-tab index="2" heading="Thư viện" ng-click="vm.loadData();">
+               <div class="row" style="display: flex;">
+                    <div class="col-md-8" style="height: 100%;">
+                        <!-- BEGIN SAMPLE FORM PORTLET-->
+                        <div class="portlet light " style="height: 100%;">
+                            <div class="portlet-title">
+                                <div class="caption font-green">
+                                </div>
+                                <div class="actions">
+                                    <div class="portlet-input input-inline input-small">
+                                        <div class="input-icon right">
+                                            <i class="icon-magnifier"></i>
+                                            <input type="text" class="form-control" style="height: 30px;" ng-change="vm.loadData()" ng-model="vm.filter.filter" placeholder="Title"> 
+                                        </div>
+                                    </div>
+                                </div>
 
+                            </div>
+                            <div class="portlet-body form" style="position: relative;">
+                                <spinner-loader sl-visible="vm.loading" sl-size="medium"></spinner-loader>
+                                <div class="clearfix"></div>
+                                <div class="row" style="margin-left:5px !important;margin-right:5px !important;">
+                                    
+                                    <div class="col-md-2" style="padding-left:5px !important; padding-right: 5px !important; margin-bottom: 10px;" ng-repeat="item in vm.data">
+                                        <div class="img-thumb-item" ng-click="vm.checkImage(item)" ng-class="{selected: vm.selectedPeeps[item.id]}">
+                                            <div class="img-thumb">
+                                                <img style="width:100%" ng-if="item.typeId == 1" src="{{item.slug}}">
+                                                <img style="width:100%" ng-if="item.typeId == 2" src="public/assets/admin/image/icon-video.jpg">
+                                                <img style="width:100%" ng-if="item.typeId == 3" src="public/assets/admin/image/icon-file.png">
+                                                
+                                            </div>
+                                            <div class="img-check bg-blue">
+                                                <em class="fa fa-check font-white"></em>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                        <!-- END SAMPLE FORM PORTLET-->
+                    </div>
+                    <div class="col-md-4">
+                        <div class="portlet light bg-inverse" style="height: 100%;">
+                            <div class="portlet-title">
+                                <div class="caption font-red-sunglo">
+                                    <span class="caption-helper">Chi tiết đính kèm</span>
+                                </div>
+                                <div class="actions">
+                                
+                                </div>
+                            </div>
+                            <div class="portlet-body">
+                                <p>tên: {{vm.dataCheck.title}}</p>
+                                <p>Ngày tháng: {{vm.dataCheck.creatTime}}</p>
+                                <!-- <p>Độ dài: {{vm.dataCheck.creatTime}}</p> -->
+                                <a href="#" ng-click="vm.deleteImage(vm.dataCheck)" class="font-red">Xóa vĩnh viễn</a>
+                            </div>
+                        </div>
+                    </div>
+               </div>
             </uib-tab>
         </uib-tabset>
     </div>
     <div class="modal-footer">
-        <button type="button" class="btn green-meadow" ng-click="vm.save()"><i class="fa fa-save"></i> <span>Lưu</span></button>
+        <button type="button" class="btn green-meadow" ng-click="vm.save()"><i class="fa fa-save"></i> <span>Chọn</span></button>
         <button type="button" class="btn red" ng-click="vm.cancel()"><i class="glyphicon glyphicon-remove"></i>Đóng</button>
     </div>
 </div>
+
+<style>
+    .img-thumb-item{
+        position: relative;
+        box-shadow: inset 0 0 15px rgb(0 0 0 / 10%), inset 0 0 0 1px rgb(0 0 0 / 5%);
+        background: #eee;
+        cursor: pointer;
+        min-height: 100px;
+    }
+    .img-thumb{
+        overflow: hidden;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        opacity: 1;
+        transition: opacity .1s;
+    }
+
+    .img-thumb-item.selected{
+        border: 3px solid #3598dc;
+    }
+
+    .img-check{
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 5px 8px;
+        display: none;
+    }
+
+    .img-thumb-item.selected .img-check{
+        display: block;
+    }
+</style>

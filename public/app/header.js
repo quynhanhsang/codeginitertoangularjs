@@ -4,7 +4,7 @@ function($rootScope, $scope, $http, $timeout, $uibModal, $state) {
     var vm = this;
     vm.menu = [];
     vm.getMenu = function(){
-        $http.post(ApiUrl+'/navigation').then(function(response) {
+        $http.get(ApiUrl+'/navigation').then(function(response) {
             // vm.loading = true;
             vm.menu = response.data;
             console.log(vm.menu, 'meny');

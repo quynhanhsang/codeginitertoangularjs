@@ -12,35 +12,33 @@ function($rootScope, $scope, $http, $timeout, $uibModal, $ngConfirm, $state) {
     };
 
     vm.loadData = function(){
+        vm.loading = false;
         $http.post(ApiUrl+'/blog/getList', vm.filter)
         .then(function(response){
-            //app.success('success');
-            debugger;
+            vm.loading = false;
             vm.data = response.data;
-            // vm.data.forEach(function(item){
-            //     item.creatTime = new Date(item.creatTime);
-            // })
             vm.arrCheckbox = [];
         }, function(){
 
+        }).finally(function () {
+            vm.loading = false;
         });
     }
 
-    vm.loadMenu = function(){
-        $http.get(ApiUrl+'/blog/menuGetAllDLL')
-        .then(function(response){
-            vm.listMenu = response.data;
-        }, function(){
+    // vm.loadMenu = function(){
+    //     $http.get(ApiUrl+'/blog/menuGetAllDLL')
+    //     .then(function(response){
+    //         vm.listMenu = response.data;
+    //     }, function(){
 
-        });
-    }
+    //     });
+    // }
 
     vm.addBlog = function(data){
         $state.go('baivietchitiet', {id:null});
     }
     
     vm.editBlog = function(data){
-        debugger;
         $state.go('baivietchitiet', {id:data});
         
     }
@@ -148,7 +146,7 @@ function($rootScope, $scope, $http, $timeout, $uibModal, $ngConfirm, $state) {
 
     var init = function () {
         vm.loadData();
-        vm.loadMenu();
+        // vm.loadMenu();
     };
     init();
 

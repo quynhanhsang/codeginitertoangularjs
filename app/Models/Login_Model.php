@@ -29,4 +29,11 @@ class Login_Model extends Model {
         $query = $this->db->table($this->table)->where("isDelete", 0)->getWhere($data);        
         return $query->getResult();
     }
+
+    public function getList()
+    {
+        $query = $this->db->table($this->table)->where('isDelete', 0); 
+        $array = $query->get()->getResult();
+        return $array;
+    }
 }

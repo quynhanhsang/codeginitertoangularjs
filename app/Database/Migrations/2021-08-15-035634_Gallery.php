@@ -24,6 +24,18 @@ class Gallery extends Migration
                     'type' => 'TEXT',
                     'null' => true,
             ],
+            'type' => [
+                'type' => 'VARCHAR',
+                'null' => true,
+                'constraint' => '200',
+                //có 3 loại/ video/image/file
+            ],
+            'typeId' => [
+                'type' => 'INT',
+                'null' => true,
+                'constraint' => '11',
+                //có 3 loại/ / 1.image /2.video/ 3.file
+            ],
             'description' => [
                 'type' => 'VARCHAR',
                 'null' => true,
